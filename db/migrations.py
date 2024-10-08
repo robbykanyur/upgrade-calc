@@ -8,8 +8,16 @@ sql_create_races_table = """ CREATE TABLE IF NOT EXISTS races(
   crossresults_id TEXT NOT NULL
 )"""
 
+sql_create_riders_table = """ CREATE TABLE IF NOT EXISTS riders(
+  id INTEGER PRIMARY KEY,
+  name TEXT NOT NULL,
+  current_category TEXT,
+  age
+)"""
+
 cursor = conn.cursor()
 cursor.execute(sql_create_races_table)
+cursor.execute(sql_create_riders_table)
 
 races = [
   ["Jackson Park", "2023-10-07", "11821"],
@@ -29,7 +37,7 @@ def seed_races():
       VALUES(?, ?, ?, ?)
   ''', (None, race[0], race[1], race[2])) 
 
-seed_races()
+# seed_races()
 
 conn.commit()
 cursor.close()
