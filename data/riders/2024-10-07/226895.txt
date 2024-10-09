@@ -1,0 +1,1776 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml"  class="no-js" lang="en">
+
+<head>
+            <link rel="icon" type="image/png" href="/img/crskull.png">
+    
+    <base href="https://www.crossresults.com/" />
+            <script type='text/javascript'>
+            var googletag = googletag || {};
+            googletag.cmd = googletag.cmd || [];
+            (function () { var gads = document.createElement('script'); gads.async = true; gads.type = 'text/javascript'; var useSSL = 'https:' == document.location.protocol; gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js'; var node = document.getElementsByTagName('script')[0]; node.parentNode.insertBefore(gads, node); }
+            )();
+        </script>
+        <script type='text/javascript'>
+            googletag.cmd.push(function () { googletag.defineSlot('/6664979/CrossResults-Sidebar-160x600', [160, 600], 'div-gpt-ad-1412617045810-0').addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }
+            );
+        </script>
+    
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" value="A pile of race results, neatly arranged for effortless obsession" />
+
+    <link rel="stylesheet" type="text/css"
+        href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/ui-darkness/jquery-ui.min.css" />
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700" rel="stylesheet"
+        type="text/css" />
+
+    <link href="redesign.css" type="text/css" rel="stylesheet" />
+    <link href="css/foundation.css" type="text/css" rel="stylesheet" />
+    <link href="css/crossresults.css" type="text/css" rel="stylesheet" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
+
+    <style type="text/css">
+        .fma {
+                        background: url(/img/fma7.jpg) center top no-repeat;
+
+
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            max-height: 700px;
+
+            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/fmafma7.jpg', sizingMethod='scale');
+            -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/fmafma7.jpg', sizingMethod='scale')";
+        }
+    </style>
+
+    
+
+            <link rel="alternate" type="application/rss+xml" title="crossresults.com RSS Feed"
+            href="/wordpress/index.php?feed=rss2" />
+    
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js" type="text/javascript"></script>
+    <script src="https://www.crossresults.com/jquery.simplemodal.1.4.1.min.js?x=1" type="text/javascript"></script>
+    <script src="jquery.cookie.js" type="text/javascript"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+    <script type='text/javascript' src='/TableSorter/jquery.tablesorter.js'></script>
+    <script type="text/javascript" src="/js/responsive-nav.min.js"></script>
+    <link type="text/css" href="/TableSorter/themes/blue/style.css" rel="Stylesheet" />
+        
+    
+    <script defer data-strict-csp 
+        src="https://cdn-prod.securiti.ai/consent/cookie-consent-sdk-loader-strict-csp.js"
+        data-tenant-uuid="b9175515-2a76-4948-b708-5ea88d27483c" 
+        data-domain-uuid="54773b41-7973-4efa-82b1-ac18dac5a7ea"
+        data-backend-url="https://app.securiti.ai"
+        data-skip-css="false"   >
+        </script>
+
+
+    <script type="text/javascript">
+        var key = 'AmcWixq9TVG2GTEN7ylt-DSxqTZPhgu_MC1DJKKKrBMKIM6Cv0NtYZHoHdX91CUB';
+
+        $(document).ready(function () {
+
+            // show thge logo on scroll
+            $(document).bind('scroll', function () {
+                if ($(this).scrollTop() > 225) {
+                    $("#smalllogo").fadeIn('1000');
+                    $("#profilebar").addClass("scrolled");
+                } else {
+                    $("#smalllogo").hide();
+                    $("#profilebar").removeClass("scrolled");
+                }
+            });
+            $("#searchinput").autocomplete({
+                source: "autocomplete.php",
+                minLength: 3,
+                select: function (event, ui) {
+                    var url = ui.item.id;
+                    if (url != '#') {
+                        location.href = '/' + url;
+                    }
+                },
+                open: function (event, ui) {
+                    $(".ui-autocomplete").css("z-index", 1000);
+                }
+            });
+
+
+            $("#banner").click(
+                function (e) {
+                    if (e.target.id == "banner") {
+                        window.location = 'https://www.crossresults.com';
+                    }
+                }
+            );
+            $("#searchinput").click(
+                function () { return false; }
+            );
+
+            $("#searchform").submit(function () {
+                return $("#searchinput").val() != "";
+            });
+
+        });
+
+        if (!document.addEventListener) {
+            //IE8 fix
+            $(function () {
+                //DOM has loaded, put your code here
+                setupResponsiveNav();
+            });
+        }
+        else {
+            document.addEventListener("DOMContentLoaded", function () { setupResponsiveNav(); })
+        }
+
+
+        function setupResponsiveNav() {
+            $("#nav").show();
+
+            /* call responsive nav */
+            var navigation = responsiveNav("#nav", { // Selector: The ID of the wrapper
+                animate: true, // Boolean: Use CSS3 transitions, true or false
+                transition: 400, // Integer: Speed of the transition, in milliseconds
+                label: "menu", // String: Label for the navigation toggle
+                insert: "before", // String: Insert the toggle before or after the navigation
+                customToggle: "", // Selector: Specify the ID of a custom toggle
+                openPos: "relative", // String: Position of the opened nav, relative or static
+                jsClass: "js", // String: 'JS enabled' class which is added to <html> el
+                init: function () { }, // Function: Init callback
+                open: function () { }, // Function: Open callback
+                close: function () { } // Function: Close callback
+            });
+        }
+        function UpdateUpgrades() {
+            var cat = $("#category").val();
+            var region = $("#region").val();
+
+            $.cookie("upgradecategory", cat, { expires: 30 });
+            $.cookie("upgraderegion", region, { expires: 30 });
+
+            var ajaxMsg = "<div style=\"text-align:center;\"><img src=\"img/snake_transparent.gif\"/></div>";
+            $("#upgradeboard").html(ajaxMsg);
+
+            $("#upgradeboard").load("upgradeboard.php?cat=" + cat + "&region=" + region + "&sn=r");
+        }
+
+    </script>
+
+    <title>
+        Dane Schmidt's Race History at crossresults.com    </title>
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@crossresults" />
+    <meta name="twitter:title" content="Dane Schmidt's Race History at crossresults.com" />
+
+    <meta name="twitter:description" content="Every race Dane Schmidt has ever participated in." />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+
+<body class=" crossresults">
+        <div id="profilebar" class="row-full utility no-print">
+        <div class="large-12">
+            <script type="text/javascript">
+$(document).ready(function(){ 
+	
+    $(".getRacersButton").click(function() {
+        var searchText = $("#searchText").val();
+		if(searchText.length > 0)
+		{
+			var url = "ajaxracers.php?s="+escape(searchText) + "&team=yes&confirm=1";
+			
+			$(".target").html("<img src='img/snake_transparent.gif'/>");
+			$(".target").load(url, function(response, status, xhr){			
+				});
+			$(".input").hide();
+			$("#profilesearchresults").show();
+		}
+		else
+		{
+			alert('Type your name in the box first, guy');
+			$("#searchText").val('THIS BOX!');
+			$("#searchText").focus();
+			$("#searchText").select();
+		}
+        });
+	$(".togglelogin").click(function(){
+		$("#loginform").modal({maxWidth: 600,overlayClose:true, maxHeight: 600 });
+		$("#CreateAccountButton").click(function(){
+            
+            var email = $("#newemail").val();
+            var pass = $("#newpass").val();
+            var racerID = $("#racerID").val();
+            var valid = true;
+            var error = "";
+            if(email.indexOf("@") == -1)
+            {
+                valid = false;
+                error = "Invalid email.";
+            }
+            if(pass.length == 0)
+            {
+                valid = false;
+                error = "No zero length passwords.";
+            }
+            if(valid)
+            {
+                          
+				
+                var data = { email: email, pass: pass, racerID:racerID };
+                $("#CreateAccountTarget").html("<div style=\"text-align: center\">Creating Account...</div>");                
+                $("#CreateAccountTarget").load("procNewAccount.php",data);
+            }
+            else
+            {
+                alert(error);
+            }
+            return false;
+        });
+		return false;
+	});
+	$("#SubmitButton").click(function(){
+            //var pass = $("#newpass").val();
+            //var hexpass = hex_md5(pass);  
+            //$("#newpass").val(hexpass);
+        });
+    $("#regiononly").click(function(){
+        var checked = ($("#regiononly").is(':checked'));
+        window.location = "setprofile.php?setregionpref="+checked;
+    });
+    $("a.togglebutton").click(function(){
+			
+            $(this).next().toggle("slow");
+            var expander = $(this).children().children("img");
+            if(expander.attr("src") == "img/minus.png")
+            {
+                expander.attr("src","img/plus.png");
+            }
+            else
+            {
+                expander.attr("src","img/minus.png");
+            }
+            return false;
+        });
+	    
+});
+function SetProfile(jQueryObj)
+{
+        var name = (jQueryObj.text());
+         var id = jQueryObj.children(".racerID").val();
+         window.location = "setprofile.php?id="+id;
+		 
+}
+
+</script>
+	<span style="float:right; padding-right: 10px; padding-left: 10px; font-size: smaller;">
+       <A href="/">
+                         <img src="/img/logosmall.png" id="smalllogo"/>
+        </A>
+			  <a href="#" class="togglelogin">Log In</a>
+		  
+		  <div id="loginform" style="display: none;">
+			
+
+<div style="padding: 5px">
+	<form method="post" action="procLogin.php">
+	<div style="margin-top: 0px" class="headerrow1"><h2 style="margin-top: 0px">Login or Create Account</h2></div>
+    <table class="datatable1" >
+                    
+                <tr>
+            <td>
+                Email Address
+            </td>
+            <td>
+                <input type="text" id="newemail" name="email"/></td>
+        </tr>
+        <tr>
+            <td>
+                Password:
+            </td>
+            <td>
+                <input type="password" id="newpass" name="newpass" /></td>
+        </tr>
+	</table>
+	<div style="text-align: center;font-size:smaller; padding: 4px; ">
+				<input type="checkbox" id="remember" name="remember" checked/> <label for="remember">Remember Me</label>
+	</div>
+    <div style="text-align: center;font-size: smaller;" class="">
+                       
+				<input type="hidden" name="return" value="/racer/226895"/>
+				<input type="hidden" id="racerID" name="racerID" value=""/>
+                <input type="Submit" class="button" value="Login" id="SubmitButton" style="padding: 2px;" />
+                <input type="Button" class="button" value="Create Account" style="padding: 2px;" id="CreateAccountButton" />
+				<br/>						
+				<a href="/?n=talk&sn=forgot" id="forgotpass">Forgot Password?</a>
+	</div>
+    </form>
+
+    <div id="CreateAccountTarget">
+    </div>
+	<div style="padding: 2px;" align="center" class="headerrow3">
+	  Or...
+	  		<a class='fb_button fb_button_medium' href="https://www.facebook.com/dialog/oauth?client_id=136755476866&amp;redirect_uri=http%3A%2F%2Fwww.crossresults.com%2Fracer%2F226895%3Flogin%3D1">
+		<span class='fb_button_text'>Log In With Facebook</span>
+        </a>
+			</div>
+</div>
+		  </div>
+	  			 
+	</span>
+</div>
+        </div>
+
+    </div>
+    <div style="clear: both;">
+    </div>
+    <!-- .wrap -->
+    </div>
+    
+            <div class="inside">
+            <div class="row-full fma">
+
+                <div id="navparent" >               
+                	<nav id="nav" style="display: none;">
+        <ul class="dropdown">
+            				
+		    <li>
+				<a href="?n=talk" class="dropdownarrow" onclick="javscript: return false;">Talk</a> 
+									
+					<ul><li>									<a href="/?n=talk&sn=news">News</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=talk&sn=f">FAQ</a>
+			                    			                    </li>
+			                    <li>										<a href="/contact">Report a Bug</a>
+													                    </li>
+			                    <li>									<a href="/?n=talk&sn=rac">Report Duplicate Racer</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=talk&sn=feat">Contact Us</a>
+			                    			                    </li>
+			                    					</ul>
+				            </li>
+     
+
+					
+		    <li>
+				<a href="?n=racers" class="dropdownarrow" onclick="javscript: return false;">Racers</a> 
+									
+					<ul><li>									<a href="/?n=racers&sn=find">Find Racers</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=racers&sn=r&rID=226895">Racer History</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=racers&sn=h2h">Head To Head</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=racers&sn=t&rID=226895">Team Names</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=racers&sn=rp&rID=226895">Racer Points</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=racers&sn=movers">Floaters and Sinkers</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=racers&sn=c">Report Duplicate Racers</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=racers&sn=pred">Race Predictor</a>
+			                    			                    </li>
+			                    <li>										<a href="/stalk">Stalk Racers</a>
+													                    </li>
+			                    					</ul>
+				            </li>
+     
+
+					
+		    <li>
+				<a href="?n=results" class="dropdownarrow" onclick="javscript: return false;">Results</a> 
+									
+					<ul><li>									<a href="/?n=results&sn=all">View All Races</a>
+			                    			                    </li>
+			                    <li>										<a href="/points/">Points List</a>
+													                    </li>
+			                    <li>									<a href="/?n=results&sn=ug">Upgrade Points</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=results&sn=rts">Top Rated</a>
+			                    			                    </li>
+			                    <li>										<a href="/upload">Upload Results</a>
+													                    </li>
+			                    					</ul>
+				            </li>
+     
+
+					
+		    <li>
+				<a href="?n=series" class="dropdownarrow" onclick="javscript: return false;">Series</a> 
+									
+					<ul><li>										<a href="/vNECXS">New England</a>
+										                                    <ul>
+                                    <li><a href="/vNECXS">NECXS</a></li><li><a href="/necxss">New England SSCX Series</a></li><li><a href="/ctcx">CT Series of CX</a></li><li><a href="/project-mayhem">Project Mayhem CX</a></li><li><a href="/rvcx">River Valley CX</a></li><li><a href="/nebracx">NEBRA Rankings</a></li>                                    </ul>
+                                    			                    </li>
+			                    <li>									<a href="/?n=series&sn=mida">Mid Atlantic</a>
+			                                                        <ul>
+                                    <li><a href="/dmvcx">DMV Junior CX Series</a></li><li><a href="/superseries">BikeReg Cyclocross Super Series</a></li><li><a href="/mac">MAC</a></li><li><a href="/sportif">MABRA Sportif Series</a></li><li><a href="/pacx">PACX</a></li>                                    </ul>
+                                    			                    </li>
+			                    <li>									<a href="/?n=series&sn=cnycx">CNY Cup</a>
+			                    			                    </li>
+			                    <li>										<a href="/CBRCX">CBRCX</a>
+													                    </li>
+			                    <li>										<a href="/vacx">VACX</a>
+													                    </li>
+			                    <li>									<a href="/?n=series&sn=bhbcx">BHB Cross Series</a>
+			                    			                    </li>
+			                    <li>										<a href="/utcx">UTCX</a>
+													                    </li>
+			                    <li>										<a href="/mscx">Mississippi</a>
+										                                    <ul>
+                                    <li><a href="/mscx">Mississippi CX Cup</a></li><li><a href="/?n=series&sn=ridge">Ridgeland CX Series</a></li>                                    </ul>
+                                    			                    </li>
+			                    <li>										<a href="/wicx">Wisconsin CX Series</a>
+													                    </li>
+			                    <li>										<a href="/atxcx">Texas</a>
+										                                    <ul>
+                                    <li><a href="/atxcx">ATX CX Cup</a></li><li><a href="/sxcx">SXCX</a></li>                                    </ul>
+                                    			                    </li>
+			                    <li>										<a href="/basp">BASP</a>
+													                    </li>
+			                    <li>										<a href="/Sweden/CXPokalen">Sweden</a>
+										                                    <ul>
+                                    <li><a href="/Sweden/CXPokalen">CX Pokalen</a></li><li><a href="/Sweden/SweCup ">SweCup</a></li>                                    </ul>
+                                    			                    </li>
+			                    					</ul>
+				            </li>
+     
+
+	
+        </ul>
+        <div style="clear: both;"></div>
+    </nav>
+	                </div>
+
+                <div style="float: right;">
+                    <a href="/">
+
+                                                <img src="/img/crossResultsLogo.png" id="logo" />
+                    </a>
+                    <div id="search" width="100%">
+                        <form method="get" action="/search" id="searchform">
+                            <button id="searchimage" title="Submit Search" style="display: none;"></button>
+                            <input id="searchinput" type="text" name="q" placeholder="search everything" />
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+                <div class="fullstyle maincontent">
+
+            
+            <div id="divWrap" class="wrap">
+                <!-- thinking here is wrap can be used within full width containers as well -->
+                <section class="main">
+                    <aside class="sidebar" id="adsidebar" runat="server" visible="false">
+                        <div class="ads side-ads">
+                                                            <!-- CrossResults-Sidebar-160x600 -->
+                                <div id='div-gpt-ad-1412617045810-0' style='width:160px; height:600px;'>
+                                    <script type='text/javascript'>
+                                        googletag.cmd.push(function () { googletag.display('div-gpt-ad-1412617045810-0'); }
+                                        );
+                                    </script>
+                                </div>
+                            
+                        </div>
+                    </aside>
+                    <article id="content">
+                        <style type="text/css">
+.popup{
+    z-index: 9999;
+}
+.racerdetails {
+    font-size: smaller; 
+}
+.rating:nth-child(odd)
+{
+    background-color: #eeeeee;
+}
+
+.detail
+{
+	max-width: 400px;
+	display: none;
+	position: absolute;
+    right: 0px;
+	border: 1px solid #8EB6FF;
+	background: #D8E2FF;
+	padding:5px;
+}
+</style>
+
+<script type="text/javascript" src="//www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(chartInitialize);
+    function chartInitialize() {
+        GraphDataService("/racerhistorygraph.php?racerID=226895&type=pct&subtype=pts&json=1",updateChart);
+    }
+
+      function GraphDataService(endpoint, onsuccess) {
+                
+                $.ajax({
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    url: endpoint,
+                    async: true,
+                    dataType: "json",
+                    success: function (data, status) {
+                        if(status == "success") {
+                            if (onsuccess != undefined) {
+                                onsuccess(data._data);
+                            }
+                        } else {
+                            $("#graphtarget").hide();
+                        }
+                    },
+                    error: function(data,status){
+                        $("#graphtarget").hide();
+                    }
+                });
+            }
+     function updateChart(data){
+              
+              var total = 0;
+              var compareTotal = 0;
+              if(data.length > 1){
+                  var graphData = new Array();
+                  var cols = data.length;
+                  
+                  graphData[0] = new Array();
+                  graphData[0][0] = 'Race';
+                  graphData[0][1] = 'Points';                  
+          
+                  var totalraces = data.length;
+                  var min = 9999;
+                  var max = 0;
+                  for(i = 0; i < data.length; i++)
+                  {
+                      graphData[i+1] = new Array();                           
+                                                   
+                      graphData[i+1][0] = data[i].X
+                      graphData[i+1][1] = data[i].Y;                   
+
+                      if(data[i].Y < min)
+                        min = data[i].Y;
+                      if(data[i].Y > max)
+                        max = data[i].Y;
+
+                  }
+                   
+                  if(max <= 1){
+                    max = 1;
+                    min = 0;
+                  } else { 
+                    min = min-50;
+                  }
+
+                  var options = {
+                     
+                      fontSize: 16,
+                      //fontName: '"Open Sans", "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif',
+                      hAxis: { titleTextStyle: {color: '#333'}, minValue: 0},
+                      vAxis: {minValue: min, maxValue: max,
+                        viewWindow: { min: min, max: max}
+                        },
+                      legend: { position: "bottom" },
+                      animation: {"startup": true,
+                          duration: 1000,
+                          easing: 'out'
+                      }, 
+                      chartArea: {
+                          left: 40,
+                          top: 20,
+                          width: '95%'
+                      },
+                      series: {
+                          0: { color: '#FC6719' },
+                          1: { color: '#C4C4C4' }
+                        }
+                    };
+                  $("#graphtarget").animate({height: "250px"}, 100,"swing",function(){
+                        var chart = new google.visualization.AreaChart(document.getElementById('graphtarget'));
+                        var dt = google.visualization.arrayToDataTable(graphData);
+                        chart.draw(dt, options);
+                  });
+                }
+            }
+
+    $(document).ready(function(){ 
+        $(".download").click(function(){ $(this).hide(); $(this).next().fadeToggle() });
+		$(".MetaDataSubmit").click(function(){
+			var url = $(this).prev().val();
+			var error = false;
+			if(url.trim() == "" || url.indexOf(".") == -1)
+			{
+				alert("You need to enter a url, dude.");
+				error = true;
+			}
+			return !error;
+		});
+        $('.showupgradepoints').click(function(){
+            $(".totalupgradepoints").toggle("fast");
+                    return false;
+        });
+			$(".togglechallenge").click(function(){ 
+			$(this).next().toggle(); 
+			$(this).hide(); 
+			$(this).prev().hide(); 
+			$(this).next().next().hide(); 
+			});
+		$(".challengesubmit").click(function(){
+			var data = $(this).parent().children(".challengeemail").val();
+			var target = $(this).attr("targetID");
+			var postthis = { email: data, targetid: target };
+			if(data)
+			{
+				$(this).parent().children(".challengesubmittarget").html("Challenging...");
+				$(this).parent().children(".challengesubmittarget").load("procNewChallenge.php",postthis);
+			}
+			else
+			{
+				alert('Enter an email, punk');
+			}
+		});
+		
+		$(".editteamsubmit").click(function(){
+			var newTeamName = $(this).parent().children("input").val();
+			
+			var resultID = $(this).parent().children("input").attr("rID");
+			 
+			$(this).parent().hide();
+			$(this).parent().next().show();
+			
+			$(this).parent().next().load("updateTeamName.php?rID="+resultID+"&team="+encodeURIComponent(newTeamName));
+		});
+		        $(".editteambutton").click(function(){
+			$(this).parent().hide();
+			$(this).parent().prev().show();
+		});
+        $("a.expandMonth").click(function(){
+        
+            $(this).next().toggle("slow");
+            var expander = $(this).children().children("img");
+            if(expander.attr("src") == "img/minus.png")
+            {
+                expander.attr("src","img/plus.png");
+            }
+            else
+            {
+                expander.attr("src","img/minus.png");
+            }
+            return false;
+        });
+		$("#head2headall").click(function(){
+			
+			$(".popup1").html("<Center><img src='img/snake_transparent.gif'></Center>");
+			$(".popup1").load("headtoheadall.php?racerID="+226895, function(){ $(".popup1").modal({overlayClose:true}); });
+		});
+		$(".addmeta").click(function(event){
+			
+			var theDiv = $(this).next()
+
+			//var tPosX = event.pageX;
+			//var tPosY = event.pageY+10;
+			//theDiv.css({top: tPosY, left: tPosX});
+			theDiv.toggle();
+			return false;
+		});
+		$(".selregion").change(function(){
+		
+			var region = $(this).val();
+			
+			$("input[type=checkbox][region='"+region+"']").prop("checked",$(this).is(":checked"));
+			
+		});
+        $(".showteamdetails").click(function(event) {
+			var expander = $(this).children("img");
+			var nemID = $(this).attr("arg1");
+			var victID = $(this).attr("arg2");
+			var months = $(this).attr("arg3");
+            if(expander.attr("src") == "img/minus.png")
+            {
+                expander.attr("src","img/plus.png");
+            }
+            else
+            {
+            // collapse all popupts
+				$(".popup").hide();
+                expander.attr("src","img/minus.png");
+            }
+		 
+			var theDiv = $(this).next();
+			var tPosX = event.pageX;
+			var tPosY = event.pageY+10;
+			theDiv.css({top: tPosY, left: tPosX});
+			theDiv.toggle();
+			//alert("nemesisdrilldown.php?nem="+nemID+"&vict="+victID+"&months="+months);
+			theDiv.load("nemesisdrilldown.php?nem="+nemID+"&vict="+victID+"&months="+months);
+			return false;
+			});
+		$("#pointsdetail").click(function(event) {
+			
+		 
+			var theDiv = $(this).next();
+			var tPosX = event.pageX-300;
+			var tPosY = event.pageY+10;
+			theDiv.css({top: tPosY, left: tPosX});
+			theDiv.toggle();
+			var racerID = $(this).attr("racerID");
+			var AsOfDate = escape($(this).attr("AsOfDate"));
+			theDiv.load("pointsdetail.php?racerID="+racerID+"&AsOfDate="+AsOfDate);
+			return false;
+			});
+		$(".durationradio").click(function(event) {
+				if($(this).val() == 'alltime')
+				{
+					$(".yearstat").hide();
+					$(".careerstat").show();
+				}
+				else
+				{
+					$(".yearstat").show();
+					$(".careerstat").hide();
+				}
+			});
+		$("#commonopponentheader").click(function(event) {
+				var expander = $(this).children(".toggler");
+				var otherexpander = $("#nemesesheader").children(".toggler");
+				
+				if(expander.attr("src") == "img/minus.png")
+				{
+					expander.attr("src","img/plus.png");
+					otherexpander.attr("src","img/minus.png");
+				}
+				else
+				{
+					expander.attr("src","img/minus.png");
+					otherexpander.attr("src","img/plus.png");
+				}
+				$("#commonopponents").toggle("slow");
+				$("#nemeses").toggle("slow");
+				return false;
+			});
+		$("#nemesesheader .toggler").click(function(event) {
+				var expander = $(this);
+				var otherexpander = $("#commonopponentheader").children("");
+				if(expander.attr("src") == "img/minus.png")
+				{
+					expander.attr("src","img/plus.png");
+					otherexpander.attr("src","img/minus.png");
+				}
+				else
+				{
+					expander.attr("src","img/minus.png");
+					otherexpander.attr("src","img/plus.png");
+				}
+				$("#commonopponents").toggle("slow");
+				$("#nemeses").toggle("slow");
+				return false;
+			});
+    });
+	
+    function showImages()
+    {
+        $("#frequencyfinish").attr("src",$("#frequencyfinish").attr("altsrc"));
+        $("#frequencyfinish2").attr("src",$("#frequencyfinish2").attr("altsrc"));
+        $("#frequencyfinish3").attr("src",$("#frequencyfinish3").attr("altsrc"));
+    }
+	var savedInterval = '1y';
+    function ChangeGraph(interval)
+    {
+		var selected = $("#graphchanger").val();
+		if(interval != '')
+			savedInterval = interval;
+		if(!savedInterval)
+			savedInterval = '1y';
+		
+		var titles = new Array('% Beat','Points List Rank','Points Scored','% Beat Histogram');
+		var urls= new Array('racerhistorygraph.php?racerID=226895&type=pct','racerhistorygraph.php?racerID=226895&type=ptslist&subtype=ptslist','racerhistorygraph.php?racerID=226895&type=pct&subtype=pts','racerhistorygraph.php?racerID=226895');
+		var intervalText = "All Time";
+		switch(savedInterval)
+		{
+			case '1m': intervalText = "Last Month"; break;
+			case '3m': intervalText = "Last 3 Months"; break;
+			case '1y': intervalText = "Last Year"; break;
+			case '3y': intervalText = "Last 3 Years"; break;
+		}
+		$('#graphtarget').html('<img src=\"img/snake_transparent.gif\"/>');
+		//$('#graphtarget').html("/" + urls[selected]+"&json=1&interval="+savedInterval);
+		GraphDataService("/" + urls[selected]+"&json=1&interval="+savedInterval,updateChart);
+		
+		$('#graphtitle').html(titles[selected]+ " - "+intervalText);
+		
+		/*for(var i = 0; i < 4; i++)
+		{
+			if(graphs[i]== selected)
+			{
+				$("#"+graphs[i]).show();
+				var url = urls[i] + "&interval="+savedInterval;
+				alert(url);
+				$("#"+graphs[i]+"img").attr('src',url);
+			}
+			else
+				$("#"+graphs[i]).hide();
+		}*/
+		return false;
+    }
+	
+</script>
+<style type="text/css">
+.ui-dialog .ui-dialog-content {
+    padding: 0;
+	font-size: inherit;
+}
+</style>
+<div class="popup1" style="display: none;">
+</div>
+<div id="racerhistory">
+        <div class="headerrow1 racer-header" >
+		<div class="racer-name">
+				
+				<h1>Dane Schmidt</span></h1>
+				<span class="racerdetails">
+									Racing Age:  12										&bull; Category:  5								</div>
+                <div class="other-site-results">				    					
+										 					  
+					<div><a href="https://results.bikereg.com/?n=racers&sn=f&fname=Dane&lname=Schmidt" tagret="_blank">Find this racer on results.bikereg.com</a> <img src="img/url_icon.gif" /></div>
+			    </div>
+		</div>
+	<div>	
+		
+	</div>
+	
+						
+    
+
+
+	<div style="max-width: 100%; overflow-x: auto; overflow-y: hidden; ">			
+	<table class="datatable1" width="100%" >
+	<tr>
+	    <td class="topdatacell">			
+			<div class="headerrow1 roundtop"><h2>Finish Breakdown</h2></div>
+			<div class="headerrow">
+				<input type="radio" name="duration" value="alltime" class="durationradio"/>Career
+				<input type="radio" name="duration" value="year" checked  class="durationradio"/>12 months
+			</div>
+			<table class="datatable1" width="100%" style="text-align: left; margin-top: 0px; border-top: 0px; border-bottom: 0px;">
+			<tr class="datarow2"><td>Wins</td><td>	<span class='careerstat' style='display: none;'>0</span>
+	<span class='yearstat'>0</span>
+	</td></tr>
+			<tr class="datarow1"><td>Top 5%</td><td>	<span class='careerstat' style='display: none;'>0</span>
+	<span class='yearstat'>0</span>
+	</td></tr>
+			<tr class="datarow2"><td>Top 10%</td><td>	<span class='careerstat' style='display: none;'>0</span>
+	<span class='yearstat'>0</span>
+	</td></tr>
+			<tr class="datarow1"><td>Top 25%</td><td>	<span class='careerstat' style='display: none;'>2</span>
+	<span class='yearstat'>2</span>
+	</td></tr>
+			<tr class="datarow2"><td>Top 50%</td><td>	<span class='careerstat' style='display: none;'>4</span>
+	<span class='yearstat'>4</span>
+	</td></tr>
+			<tr class="datarow1"><td>Bottom 50%</td><td>	<span class='careerstat' style='display: none;'>1</span>
+	<span class='yearstat'>1</span>
+	</td></tr>
+							<tr class="datarow2"><td>DNF</td><td>	<span class='careerstat' style='display: none;'>0</span>
+	<span class='yearstat'>0</span>
+	</td></tr>
+				<tr class="datarow2"><td>DQ</td><td>	<span class='careerstat' style='display: none;'>0</span>
+	<span class='yearstat'>0</span>
+	</td></tr>
+					</table>
+		
+		<div style="text-align: center; font-size: larger;">
+			<input id="head2headall" type="button" class="button" value="Career Head to Head"/>
+		</div>
+				
+		
+						<div class="careerstat">
+				<div class="headerrow1 roundtop">
+					Course Performance
+					&nbsp;<a href="?n=talk&sn=f#q18"><span class="faqlink">?</span></a>
+				</div>
+				<div class="graycontent">
+							<div class="techrating rating" title="This racer does very slightly worse when the course is technical than when it's easy.">
+				<div class="ratingnumeral centered" id="rating">
+					-0.8				</div>
+		</div>
+				<div class="elevationrating rating" title="This racer does worse when the course is hilly than when it's flat.">
+				<div class="ratingnumeral centered" id="rating">
+					-1.4				</div>
+		</div>
+				<div class="accelrating rating" title="This racer does worse when the course is lots of braking and sprinting than when it's steady pedaling.">
+				<div class="ratingnumeral centered" id="rating">
+					-4.8				</div>
+		</div>
+				<div class="moisturerating rating" title="This racer does better when the course is wet than when it's dry.">
+				<div class="ratingnumeral centered" id="rating">
+					+1.2				</div>
+		</div>
+						</div>
+				
+			</div>
+							
+		</td>
+		
+		<td class="topdatacell" width="45%">
+				<div class="headerrow1 roundtop" id="nemesesheader" style="text-align: left; cursor: pointer ;">
+        <div style="float: right; line-height: 18px;" class="h2hfaq">
+            <img border="0" src="img/h2h.png"/>
+		&nbsp;<a href="?n=talk&sn=f#q13"><span class="faqlink">?</span></a>
+        </div>
+		<h2 style="display: inline-block; "><img src="img/minus.png" class="toggler expanderimg" border="0"/> Top Nemeses</h2> 
+        
+	</div>
+	<div id="nemeses" style="display: block;">
+		<table class="fulldatatable" style="margin: 0px;"	 >
+		<tr class="headerrow2"><th>Nemeses</th><th>Wins</th><th>Losses</th><th>Win%</th><th>Margin</th></tr>
+						<tr class="datarow1">
+					<td>
+                        <a href="" class="showteamdetails" arg1="202751" arg2="226895" arg3="12">
+                            <img src="img/plus.png" border="0" class="expanderimg"/>
+                         </a>  
+                         <div class="popup ageinfo" style="position:absolute; display:none; border: 1px solid black; background: white; padding: 5px; font-size: larger;">
+						    <img src="img\snake_transparent.gif"/>
+					    </div>
+                        <a href="racer/202751">Oscar Garner</a>					
+					
+				
+					</td>
+					<td align="center">
+						0					</td>
+					<td align="center">
+						2					</td>
+					<td align="center">
+						0					</td>
+				
+					<td align="center">
+						3					</td>
+				</tr>
+								<tr class="datarow2">
+					<td>
+                        <a href="" class="showteamdetails" arg1="208555" arg2="226895" arg3="12">
+                            <img src="img/plus.png" border="0" class="expanderimg"/>
+                         </a>  
+                         <div class="popup ageinfo" style="position:absolute; display:none; border: 1px solid black; background: white; padding: 5px; font-size: larger;">
+						    <img src="img\snake_transparent.gif"/>
+					    </div>
+                        <a href="racer/208555">George Bender</a>					
+					
+				
+					</td>
+					<td align="center">
+						0					</td>
+					<td align="center">
+						2					</td>
+					<td align="center">
+						0					</td>
+				
+					<td align="center">
+						1.5					</td>
+				</tr>
+								<tr class="datarow1">
+					<td>
+                        <a href="" class="showteamdetails" arg1="189823" arg2="226895" arg3="12">
+                            <img src="img/plus.png" border="0" class="expanderimg"/>
+                         </a>  
+                         <div class="popup ageinfo" style="position:absolute; display:none; border: 1px solid black; background: white; padding: 5px; font-size: larger;">
+						    <img src="img\snake_transparent.gif"/>
+					    </div>
+                        <a href="racer/189823">Judah Bower</a>					
+					
+				
+					</td>
+					<td align="center">
+						0					</td>
+					<td align="center">
+						2					</td>
+					<td align="center">
+						0					</td>
+				
+					<td align="center">
+						1					</td>
+				</tr>
+								<tr class="datarow2">
+					<td>
+                        <a href="" class="showteamdetails" arg1="186333" arg2="226895" arg3="12">
+                            <img src="img/plus.png" border="0" class="expanderimg"/>
+                         </a>  
+                         <div class="popup ageinfo" style="position:absolute; display:none; border: 1px solid black; background: white; padding: 5px; font-size: larger;">
+						    <img src="img\snake_transparent.gif"/>
+					    </div>
+                        <a href="racer/186333">Cyrus Valentin</a>					
+					
+				
+					</td>
+					<td align="center">
+						1					</td>
+					<td align="center">
+						1					</td>
+					<td align="center">
+						50					</td>
+				
+					<td align="center">
+						6.5					</td>
+				</tr>
+				                    
+					<tr class="headerrow1" ><td colspan="5" style="height: 35px; vertical-align: bottom; padding-bottom: 2px;">
+                       
+                            <div style="float: right; line-height: 18px;" class="h2hfaq">
+                                <img border="0" src="img/h2h.png"/>
+		                    &nbsp;<a href="?n=talk&sn=f#q13"><span class="faqlink">?</span></a>
+                            </div>
+		                    <h2 style="display: inline-block; "><img src="img/minus.png" class="toggler expanderimg" border="0"/> Top Victims</h2> 
+        
+	                   
+                    </td></tr>
+					<tr class="headerrow2"><th>Victims</th><th>Wins</th><th>Losses</th><th>Win%</th><th>Margin</th></tr>
+								<tr class="datarow1">
+					<td>
+                        <a href="" class="showteamdetails" arg1="207937" arg2="226895" arg3="12">
+                            <img src="img/plus.png" border="0" class="expanderimg"/>
+                         </a>  
+                         <div class="popup ageinfo" style="position:absolute; display:none; border: 1px solid black; background: white; padding: 5px; font-size: larger;">
+						    <img src="img\snake_transparent.gif"/>
+					    </div>
+                        <a href="racer/207937">Benjamin Mcnamara</a>					
+					
+				
+					</td>
+					<td align="center">
+						2					</td>
+					<td align="center">
+						0					</td>
+					<td align="center">
+						100					</td>
+				
+					<td align="center">
+						1					</td>
+				</tr>
+								<tr class="datarow2">
+					<td>
+                        <a href="" class="showteamdetails" arg1="198240" arg2="226895" arg3="12">
+                            <img src="img/plus.png" border="0" class="expanderimg"/>
+                         </a>  
+                         <div class="popup ageinfo" style="position:absolute; display:none; border: 1px solid black; background: white; padding: 5px; font-size: larger;">
+						    <img src="img\snake_transparent.gif"/>
+					    </div>
+                        <a href="racer/198240">Jonathan Knuth</a>					
+					
+				
+					</td>
+					<td align="center">
+						2					</td>
+					<td align="center">
+						0					</td>
+					<td align="center">
+						100					</td>
+				
+					<td align="center">
+						1.5					</td>
+				</tr>
+								<tr class="datarow1">
+					<td>
+                        <a href="" class="showteamdetails" arg1="226896" arg2="226895" arg3="12">
+                            <img src="img/plus.png" border="0" class="expanderimg"/>
+                         </a>  
+                         <div class="popup ageinfo" style="position:absolute; display:none; border: 1px solid black; background: white; padding: 5px; font-size: larger;">
+						    <img src="img\snake_transparent.gif"/>
+					    </div>
+                        <a href="racer/226896">Philip Bender</a>					
+					
+				
+					</td>
+					<td align="center">
+						2					</td>
+					<td align="center">
+						0					</td>
+					<td align="center">
+						100					</td>
+				
+					<td align="center">
+						2.5					</td>
+				</tr>
+								<tr class="datarow2">
+					<td>
+                        <a href="" class="showteamdetails" arg1="207091" arg2="226895" arg3="12">
+                            <img src="img/plus.png" border="0" class="expanderimg"/>
+                         </a>  
+                         <div class="popup ageinfo" style="position:absolute; display:none; border: 1px solid black; background: white; padding: 5px; font-size: larger;">
+						    <img src="img\snake_transparent.gif"/>
+					    </div>
+                        <a href="racer/207091">Henry Semple</a>					
+					
+				
+					</td>
+					<td align="center">
+						3					</td>
+					<td align="center">
+						0					</td>
+					<td align="center">
+						100					</td>
+				
+					<td align="center">
+						2.7					</td>
+				</tr>
+								<tr class="datarow1">
+					<td>
+                        <a href="" class="showteamdetails" arg1="219316" arg2="226895" arg3="12">
+                            <img src="img/plus.png" border="0" class="expanderimg"/>
+                         </a>  
+                         <div class="popup ageinfo" style="position:absolute; display:none; border: 1px solid black; background: white; padding: 5px; font-size: larger;">
+						    <img src="img\snake_transparent.gif"/>
+					    </div>
+                        <a href="racer/219316">Oliver Kozicki</a>					
+					
+				
+					</td>
+					<td align="center">
+						2					</td>
+					<td align="center">
+						0					</td>
+					<td align="center">
+						100					</td>
+				
+					<td align="center">
+						5					</td>
+				</tr>
+								<tr class="datarow2">
+					<td>
+                        <a href="" class="showteamdetails" arg1="207938" arg2="226895" arg3="12">
+                            <img src="img/plus.png" border="0" class="expanderimg"/>
+                         </a>  
+                         <div class="popup ageinfo" style="position:absolute; display:none; border: 1px solid black; background: white; padding: 5px; font-size: larger;">
+						    <img src="img\snake_transparent.gif"/>
+					    </div>
+                        <a href="racer/207938">Nils Todd</a>					
+					
+				
+					</td>
+					<td align="center">
+						3					</td>
+					<td align="center">
+						0					</td>
+					<td align="center">
+						100					</td>
+				
+					<td align="center">
+						6.3					</td>
+				</tr>
+							<tr class="footerrow1"><td colspan="5" align="right">
+			<form action="/" method="get">
+			<input type="hidden" name="n" value="racers" />
+			<input type="hidden" name="sn" value="r" />
+			<input type="hidden" name="rID" value="226895" />
+			from the last <input type="text" value="12" size="2" name="months" /> months
+			</form>
+			</td>   
+			</tr>
+		</table>
+		
+	</div>
+		
+		<div class="headerrow1" id="commonopponentheader" style="text-align: left; cursor: pointer ;" >
+			<img src="img/plus.png " class="toggler expanderimg"  border="0"/> Most Common Opponents
+		</div>
+	
+	<div id="commonopponents" style="display: none;">
+		<table class="fulldatatable" style="margin: 0px;">
+			<tr class="headerrow2"><td>Name</td><td>Races</td><td></td></tr>
+									<tr class="datarow1">
+							<td><a href="/racer/207091">Henry Semple</a></td>
+							<td>3</td>
+							<td><a href="/?n=racers&sn=h2h&months=24&rID0=226895&rID1=207091" title="Head to Head">h2h</a></td>
+						</tr>
+											<tr class="datarow2">
+							<td><a href="/racer/207938">Nils Todd</a></td>
+							<td>3</td>
+							<td><a href="/?n=racers&sn=h2h&months=24&rID0=226895&rID1=207938" title="Head to Head">h2h</a></td>
+						</tr>
+											<tr class="datarow1">
+							<td><a href="/racer/207937">Benjamin Mcnamara</a></td>
+							<td>2</td>
+							<td><a href="/?n=racers&sn=h2h&months=24&rID0=226895&rID1=207937" title="Head to Head">h2h</a></td>
+						</tr>
+											<tr class="datarow2">
+							<td><a href="/racer/202751">Oscar Garner</a></td>
+							<td>2</td>
+							<td><a href="/?n=racers&sn=h2h&months=24&rID0=226895&rID1=202751" title="Head to Head">h2h</a></td>
+						</tr>
+											<tr class="datarow1">
+							<td><a href="/racer/198240">Jonathan Knuth</a></td>
+							<td>2</td>
+							<td><a href="/?n=racers&sn=h2h&months=24&rID0=226895&rID1=198240" title="Head to Head">h2h</a></td>
+						</tr>
+								<tr class="footerrow1"><td colspan="5" align="right">
+			<form action="/" method="get">
+			<input type="hidden" name="n" value="racers" />
+			<input type="hidden" name="sn" value="r" />
+			<input type="hidden" name="rID" value="226895" />
+			from the last <input type="text" value="24" size="2" name="comm_months" /> months
+			</form>
+			</td>   
+			</tr>
+		</table>
+		
+	</div>
+
+	
+		</td>
+		<td class="topdatacell" width="30%" id="graphs">
+			
+				<div class="headerrow1 roundtop"><h2>Graphs o' Stuff</h2></div>
+				<div class="headerrow" style="text-align: right">
+					
+						Select: <select id="graphchanger" onchange="ChangeGraph('');">
+							<option value="2">Points Over Time</option>
+							<option value="1">Points List Over Time</option>
+							<option value="0">Percent Beat Over Time</option>
+							<option value="3">Percent Beat Histogram</option>
+							
+						</select>
+				</div>
+				<div class="headerrow3" style="text-align:right">
+					
+						<a href="#" onclick="ChangeGraph('All'); return false;">All</a>
+						<a href="#" onclick="ChangeGraph('3y');return false;">3y</a>
+						<a href="#" onclick="ChangeGraph('1y');return false;">1y</a>
+						<a href="#" onclick="ChangeGraph('3m');return false;">3m</a>
+						<a href="#" onclick="ChangeGraph('1m');return false;">1m</a>
+					</div>
+				<div>
+					<table class="datatable1" id="pointsovertime" >
+						<tr class="headerrow3"><td><span id="graphtitle">Points Scored - All Time</span></td><td align="center" valign="middle"><a href="?n=talk&sn=f#q3"><span class="faqlink">?</span></a></td></tr>
+						<tr><td align="center" colspan="2">
+							<div id="graphtarget">
+								<!--<img src="racerhistorygraph.php?racerID=226895&type=pct&subtype=pts"/>-->
+							</div>
+							<div id="debug">
+							</div>
+						</td></tr>
+					</table>
+					<table class="datatable1" id="pointslistovertime" style="display:none;" >
+						<tr class="headerrow3"><td>Points List Over Time</td>
+						<td align="center" valign="middle"><a href="?n=talk&sn=f#q3"><span class="faqlink">?</span></a></td></tr>
+						<tr><td align="center" colspan="2">
+						<img id="pointslistovertimeimg">
+						</td></table>
+					<table class="datatable1" id="pctbeathist" style="display:none;">
+						<tr class="headerrow3"><td>% beat Histogram </td><td align="center" valign="middle"><a href="?n=talk&sn=f#q3"><span class="faqlink">?</span></a></td></tr>
+						<tr><td align="center" colspan="2">
+							<img id="pctbeathistimg">
+						</td></tr>
+						<tr><td align="left"><-bad-</td><td align="right"> -good-></td></tr>
+					</table>
+					<table class="datatable1" id="pctbeattime" style="display:none;" >
+						<tr class="headerrow3"><td>% beaten over time</td><td align="center" valign="middle"><a href="?n=talk&sn=f#q3"><span class="faqlink">?</span></a></td></tr>
+						<tr><td align="center" colspan="2">
+						<img id="pctbeattimeimg" >
+						</td></tr>
+					</table>
+					</div>
+			
+		<div class="careerstat" width="100%" style="display: none; margin: 0px;">
+			<div class="headerrow1 roundtop"><h2>Regions</h2></div>
+            
+			<table width="100%" class="graycontent datatable1" style="text-align: left;">
+            <tr><th>Name</th><th>Races</th></tr>
+								<tr class="datarow2"><td>North Central</td><td>5</td></tr>
+						</table>
+			
+		</div>
+		
+		<div class="yearstat" width="100%" style="margin: 0px;">
+			<div class="headerrow1 roundtop"><h2>Regions</h2></div>
+         
+			<table width="100%" class="graycontent datatable1">
+            <tr><th>Name</th><th>Races</th></tr>
+								<tr class="datarow1"><td>North Central</td><td>5</td></tr>
+						</table>
+			
+		</div>
+		</td>
+		</tr>
+	</table>
+    </div>
+    
+    <h2>Race History
+        <i class="fa fa-download download" title="download"></i>
+        <span class="downloadoptions">
+            
+            <a href="downloadracer.php?rID=226895">
+                csv
+            </a>
+           |
+            <a href="downloadracer.php?rID=226895&json=1">
+                json
+            </a>
+            
+        </span>
+    </h2>
+    
+			    <a class="expandMonth" href="#">
+		        <div class="headerrow1" style="margin-top: 1em;" >
+		            <img src="img/minus.png" border="0" class="expanderimg"/>2024 - 5 races 
+		        </div>
+		        </a>
+		        <div class="monthContent" style="">
+                <div style=" max-width: 100%; overflow-x: auto; ">
+       
+		        <table class="datatable1" width="100%">
+		        <tr class="headerrow2">
+								
+				<th width="60px" class="hidemobile"></th><th width="300px">Race Name</th><th>Category</th><th width="200px">Team Name</th><th class="number">Place</th><th width="70px;" class="number">Racers</th><th class="number">Points</th><th width="70px;" class="number upgrades">Upg Pts*</th>
+		        		        
+		        </tr>
+		        			<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 8				                </td>
+                <td>
+										<a href="/race/12348#r226895">Englewood Open CX</a>
+									</td>
+				<td>Men  Junior 11-12</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="3503769" size="40" value="SLS MTB">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/73160">
+						SLS MTB						</a>
+										</div>
+				</td>
+				<td class="number">2 </td>
+                <td class="number">4</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; "></span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 29				                </td>
+                <td>
+										<a href="/race/12471#r226895">Glenwood Academy CX</a>
+									</td>
+				<td>Junior 9-14</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="3541644" size="40" value="">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/1238">
+												</a>
+										</div>
+				</td>
+				<td class="number">13 </td>
+                <td class="number">29</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; font-style: italic;">609.78</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 29				                </td>
+                <td>
+										<a href="/race/12471#r226895">Glenwood Academy CX</a>
+									</td>
+				<td>Men Cat 5</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="3541856" size="40" value="">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/1238">
+												</a>
+										</div>
+				</td>
+				<td class="number">22 </td>
+                <td class="number">40</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; font-weight: bold;  color: green;">547.67</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Oct 5				                </td>
+                <td>
+										<a href="/race/12491#r226895">Trek USCX Trek CX Cup</a>
+									</td>
+				<td>Men  Junior 11-12</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="3553961" size="40" value="SLS">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/73969">
+						SLS						</a>
+										</div>
+				</td>
+				<td class="number">2 </td>
+                <td class="number">7</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; font-weight: bold;  color: green;">566.12</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+													2													                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Oct 6				                </td>
+                <td>
+										<a href="/race/12493#r226895">Trek USCX Trek CX Cup</a>
+									</td>
+				<td>Men  Junior 11-12</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="3559759" size="40" value="SLS">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/73969">
+						SLS						</a>
+										</div>
+				</td>
+				<td class="number">3 </td>
+                <td class="number">10</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; font-weight: bold;  color: green;">537.37</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+													1													                    </span>
+                   
+                </td>
+							</tr>
+			<tr class="headerrow2 historyfooter">
+	<td colspan="5" align="right">
+		<b>Points</b> (Oct 8 2024):
+	
+        </td>
+    <td align="center">
+
+					550.39		
+		<!--a href="#" id="pointsdetail" racerID="226895" AsOfDate="Oct 8 2024"><span class="faqlink">?</span></a-->
+		<div class="popup" style="position:absolute; display:none; border: 1px solid black; background: white; padding: 5px;">
+			<img src="img\snake_transparent.gif"/>
+		</div>
+        	</td>
+	<td ></td>
+    <td align="center">
+        <div class="upgrades">Upgrade Points: 
+            <a href="#" class="showupgradepoints">[show]</a>
+            <div class="totalupgradepoints detail" style="display:none; position: absolute; ">
+                <b>Estimated USAC Upgrade points</b>:<br/>
+                <span style="font-size: smaller">(Assuming every race they've done was USAC-sanctioned,
+                 and everyone they raced was in their category -- i.e. this is a high estimate)</span><br/>
+                <i>Voluntary Upgrade Points (last 36 months)</i>: <b>3</b><br/>
+                <i>Mandatory Upgrade Points (last 12 months)</i>: <b>3</b><br/>
+            </div>
+        </div>
+    </td>
+	    </table>
+<div class="ageinfo" id="pointsexp">
+    <p>
+		<strong>Points in bold</strong> are being considered for the current points. <br/>
+		<em>Points in italics</em> are being ignored because they were your second race that day.</em><br/>
+		<span style="color: green;"> Green points</span> are the <b>best five races in the last 12 months</b> -- the average of these are your current points.
+    </p>
+</div
+
+<br/>
+
+
+<div class="ageinfo upgrades"  style="font-size: smaller;">
+* - Upgrade points make some assumptions about what category the race was (different categories have different minimum racer requirements and point structures).  
+Points are based off of information found <a href="https://usacycling.org/about-us/governance/policy-viii?gad_source=1&gclid=Cj0KCQjw8pKxBhD_ARIsAPrG45kD6m4eBF7g5avZzjGDLD19vS2gVvi_C8Oun8YeJby6HtJI_BfEXgEaAoa1EALw_wcB">here</a>.  As with any other metadata on this site, this information should be used as
+a guide, not a definitive source -- for upgrade questions, please contact your local USA Cycling representative.  Upgrade points from more than three years ago appear in italics and are excluded from calculations.
+</div>
+
+</div>
+
+<div id="habitat">
+
+ <style type="text/css">
+      html, body, #myMap {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+	  .customInfoBox-previewArea
+	  {
+		margin-bottom: -25px;
+	  }
+    </style>
+</script>
+<script type="text/javascript" src="ts/habitat.js"/>
+<script type="text/javascript">
+	var map = new mapboxgl.Map({
+		container: 'myMap',
+		style: 'https://tilecdn.pinkbike.org/styles/trailforks-imperial/style.json',
+		center: [-11.84664, 40.783726],
+		zoom: 4
+	  });
+
+
+	var map;
+    var lat;
+	var lon;
+	var geocoder = null;	
+	var racesOnMap = new Array(); 
+	
+	function mapsLoaded() {	
+         if(document.getElementById("myMap")) {
+          var uluru = {lat: -25.363, lng: 131.044};
+                var mapOptions = {
+                    zoomControl: true,
+                    zoomControlOptions: {
+                        style: google.maps.ZoomControlStyle.SMALL
+                        },
+                   
+                    mapTypeControl: false,
+                    streetViewControl: false,
+                    zoom: 9,
+                    center: uluru,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+            map = new google.maps.Map(document.getElementById("myMap"), mapOptions);
+       }
+                
+       
+		//add races
+		var race = new Object();
+							race.RaceLat = 43.38696289;
+					race.RaceLon = -89.04775238;
+					race.RaceName = 'Englewood Open CX';
+					race.RaceID = 12348;
+					race.RaceDate = new Date('2024-09-8');
+					race.RaceDateDisplay = '09/8/2024';
+					AddMarker(race);
+										race.RaceLat = 41.54376221;
+					race.RaceLon = -87.61228943;
+					race.RaceName = 'Glenwood Academy CX';
+					race.RaceID = 12471;
+					race.RaceDate = new Date('2024-09-29');
+					race.RaceDateDisplay = '09/29/2024';
+					AddMarker(race);
+										race.RaceLat = 41.54376221;
+					race.RaceLon = -87.61228943;
+					race.RaceName = 'Glenwood Academy CX';
+					race.RaceID = 12471;
+					race.RaceDate = new Date('2024-09-29');
+					race.RaceDateDisplay = '09/29/2024';
+					AddMarker(race);
+										race.RaceLat = 43.18381882;
+					race.RaceLon = -88.99043274;
+					race.RaceName = 'Trek USCX Trek CX Cup';
+					race.RaceID = 12491;
+					race.RaceDate = new Date('2024-10-5');
+					race.RaceDateDisplay = '10/5/2024';
+					AddMarker(race);
+										race.RaceLat = 43.18381882;
+					race.RaceLon = -88.99043274;
+					race.RaceName = 'Trek USCX Trek CX Cup';
+					race.RaceID = 12493;
+					race.RaceDate = new Date('2024-10-6');
+					race.RaceDateDisplay = '10/6/2024';
+					AddMarker(race);
+										//var rect = Microsoft.Maps.LocationRect.fromCorners(new Microsoft.Maps.Location(41.54376221,-89.04775238),new Microsoft.Maps.Location(43.38696289,-87.61228943));
+					var rect= new google.maps.LatLngBounds({lat:41.54376221,lng:-89.04775238},{lat:43.38696289,lng:-87.61228943});
+					map.fitBounds(rect);
+				   //  map.setCenter(rect.getCenter());
+						}
+	
+    function PlaceMarker(map, marker,latLng, centerMap,color,caption) {
+        if (marker != null) {
+            marker.setMap(null);
+        }
+        if(centerMap)
+            map.setCenter(latLng);
+        marker = new google.maps.Marker({
+            map: map,
+            position: latLng,
+            title: caption//,
+
+            //icon: '/Images/orange.png'
+        });
+        if (caption)
+            marker.setTitle(caption);
+        if (color)
+            marker.setIcon("http://maps.google.com/mapfiles/ms/icons/"+color+"-dot.png")
+        return marker;
+    }
+
+	function AddMarker(race)
+	{
+		//var latLong = new Microsoft.Maps.Location(race.RaceLat, race.RaceLon);
+        var latlong = {lat: race.RaceLat,lng:race.RaceLon};
+		
+       
+		
+		
+		var today = new Date();
+		today.setFullYear(today.getFullYear()-1);
+		
+		if(race.RaceDate > today)
+			var src='/img/wheelicon2.png';
+		else
+			var src='/img/wheelicon3.png';
+		
+	 var marker = new google.maps.Marker({
+          position: latlong,
+          map: map,
+          title: race.RaceName,
+          icon: src
+        });
+	}
+
+</script>
+<div class="headerrow1">
+<div style="float: right; text-align: right; ">
+		<img src="img/wheelicon2.png" style="vertical-align: middle;"/>- Last 12 months 
+		<img src="img/wheelicon3.png" style="vertical-align: middle;"/> - Older</div>
+	
+	<h2>Natural Habitat</h2>
+	</div>
+<div style="position: relative; width: 100%;	height: 400px; border 1px solid black;" id="myMap">
+</div>
+</div>
+                    </article>
+                </section>
+            </div>
+        </div>
+
+
+
+                    <div class="row-full footer no-print">
+                <div class="row" style="text-align: left">
+                    <p>
+                                                    crossresults.com is a division of <a href="http://athleteReg.com">athleteReg.com</a>, the best
+                            event registration website in the world. If you like
+                            crossresults.com, you should use <A href="http://www.bikereg.com">BikeReg.com</a>.
+                                            </p>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <div class="race">
+                            <p>
+                                <span>Register with</span> <a href="https://www.bikereg.com" target="new">
+                                    <img src="/img/footer-br.png"></a> <a href="https://www.runreg.com" target="new">
+                                    <img src="/img/footer-rr.png"></a> <a href="http://www.trireg.com" target="new">
+                                    <img src="/img/footer-tr.png"></a> <a href="https://www.skireg.com" target="new">
+                                    <img src="/img/footer-sr.png"></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row-full footer-bottom no-print">
+                <div class="row" style="display: flex; align-items:center;">
+
+                    <img src="https://d36gb93zszu20a.cloudfront.net/i/outside/outside.svg" data-src="/i/outside/outside.svg"
+                        alt="Outside Logo" class="outside-logo" style="max-width:125px;" />
+
+                    <div class="legal" style="margin-left: auto; color: #aaa;">
+                        &copy;
+                        2024 Outside Interactive, Inc.
+                    </div>
+                    <img src="https://d36gb93zszu20a.cloudfront.net/i/outside/O-color.svg" data-src="/i/outside/O-color.svg"
+                        alt="Outside Logo" class="o-logo" style="max-width:31px; margin-left: 0.5em;">
+                </div>
+                <div style="text-align: right" class="row">
+                    <a href="https://www.outsideinc.com/privacy-policy/" target="_blank">Privacy Policy</a> |
+                    <a href="https://www.outsideinc.com/terms-of-use/" target="_blank">Terms of Use</a> |
+                    <a href="javascript: void(0)" class="cmp-revoke-consent" style="position: relative; top: 0; left:0; padding: 0">Manage
+                        Cookie Preferences</a>
+                </div>
+            </div>
+
+                        <div id="fb-root"></div>
+            <script src="//connect.facebook.net/en_US/all.js"></script>
+            <script src="https://use.fontawesome.com/3c6a782759.js"></script>
+            <script>
+
+                FB.init({ appId: '136755476866', status: true, cookie: true, xfbml: true, oauth: true });
+                FB.Event.subscribe('auth.sessionChange', function (response) {
+                    if (response.session) {
+
+                        var user_id = FB.getSession().uid;
+                        var query = FB.Data.query('select name, uid from user where uid={0}', user_id);
+                        query.wait(function (rows) {
+                            var name = rows[0].name;
+                            jQuery.post("taguser.php", { uid: user_id, name: name });
+                        });
+                    } else {
+                        // The user has logged out, and the cookie has been cleared
+                    }
+                });
+            </script>
+            <script type="text/javascript">
+                var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+                document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+            </script>
+            <script type="text/javascript">
+                try {
+                    var pageTracker = _gat._getTracker("UA-2467733-1");
+                    pageTracker._trackPageview();
+                } catch (err) { }
+            </script>
+                          <script type="text/javascript" charset="UTF-8">!function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)
+                    window.console&&console.error&&console.error("MetaRouter snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink"
+                    ,"trackForm","pageview","identify","reset","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){
+                    var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];
+                    analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;
+                    e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.metarouter.io/outside/v2/cross_results_prod.js.gz";var n=document.getElementsByTagName("script")[0];
+                    n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.1.0";
+                    analytics.load("cross_results_prod");            
+                    analytics.page({"domain":"crossresults"});
+                }}();</script>
+    </body>
+    </html>

@@ -1,11 +1,11 @@
+import os
 import sqlite3
 from bs4 import BeautifulSoup
-import soupsieve as sv
 
 conn = sqlite3.connect('./db/main.db')
 cursor = conn.cursor()
 
-most_recent_race_data = "2024-10-07"
+most_recent_race_data = os.getenv('MOST_RECENT_RACE_DATA')
 
 def create_rider_list():
  

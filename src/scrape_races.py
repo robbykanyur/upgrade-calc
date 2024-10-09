@@ -1,9 +1,7 @@
 import os
 from datetime import datetime
-from bs4 import BeautifulSoup
 import requests
 import sqlite3
-import json
 from random import randint
 from time import sleep
 

@@ -1,5 +1,7 @@
 import sqlite3
 conn = sqlite3.connect("./db/main.db")
+conn.execute("PRAGMA foreign_keys = 1")
+conn.commit()
 
 sql_create_races_table = """ CREATE TABLE IF NOT EXISTS races(
   id INTEGER PRIMARY KEY,
@@ -15,9 +17,32 @@ sql_create_riders_table = """ CREATE TABLE IF NOT EXISTS riders(
   age
 )"""
 
+sql_create_results_table = """ CREATE TABLE IF NOT EXISTS results(
+  id INTEGER PRIMARY KEY,
+  rider_id INTEGER NOT NULL,
+  race_date TEXT NOT NULL,
+  race_name TEXT NOT NULL,
+  race_category TEXT NOT NULL,
+  race_position TEXT NOT NULL,
+  race_starters TEXT NOT NULL,
+  upgrade_points INTEGER,
+  FOREIGN KEY (rider_id) REFERENCES riders (id)
+)"""
+
+sql_create_categories_table = """ CREATE TABLE IF NOT EXISTS categories(
+  id INTEGER PRIMARY KEY,
+  race_date TEXT NOT NULL,
+  category_name TEXT UNIQUE NOT NULL,
+  simple_category TEXT,
+  excluded INTEGER,
+  excluded_reason TEXT
+)"""
+
 cursor = conn.cursor()
 cursor.execute(sql_create_races_table)
 cursor.execute(sql_create_riders_table)
+cursor.execute(sql_create_results_table)
+cursor.execute(sql_create_categories_table)
 
 races = [
   ["Jackson Park", "2023-10-07", "11821"],
