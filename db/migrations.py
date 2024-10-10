@@ -38,11 +38,22 @@ sql_create_categories_table = """ CREATE TABLE IF NOT EXISTS categories(
   excluded_reason TEXT
 )"""
 
+sql_create_upgrade_points_table = """ CREATE TABLE IF NOT EXISTS upgrade_points(
+  id INTEGER PRIMARY KEY,
+  rider_id INTEGER NOT NULL UNIQUE,
+  date_calculated TEXT NOT NULL,
+  upgrade_points INT NOT NULL,
+  cat_5_races INT,
+  qualified_wins INT,
+  FOREIGN KEY(rider_id) REFERENCES riders (id)
+)"""
+
 cursor = conn.cursor()
 cursor.execute(sql_create_races_table)
 cursor.execute(sql_create_riders_table)
 cursor.execute(sql_create_results_table)
 cursor.execute(sql_create_categories_table)
+cursor.execute(sql_create_upgrade_points_table)
 
 races = [
   ["Jackson Park", "2023-10-07", "11821"],
