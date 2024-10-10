@@ -48,12 +48,23 @@ sql_create_upgrade_points_table = """ CREATE TABLE IF NOT EXISTS upgrade_points(
   FOREIGN KEY(rider_id) REFERENCES riders (id)
 )"""
 
+sql_create_upgrade_flags_table = """ CREATE TABLE IF NOT EXISTS upgrade_flags(
+  id INTEGER PRIMARY KEY,
+  rider_id INTEGER NOT NULL,
+  date_calculated TEXT NOT NULL,
+  reason TEXT NOT NULL,
+  details TEXT NOT NULL,
+  warning TEXT,
+  override TEXT
+)"""
+
 cursor = conn.cursor()
 cursor.execute(sql_create_races_table)
 cursor.execute(sql_create_riders_table)
 cursor.execute(sql_create_results_table)
 cursor.execute(sql_create_categories_table)
 cursor.execute(sql_create_upgrade_points_table)
+cursor.execute(sql_create_upgrade_flags_table)
 
 races = [
   ["Jackson Park", "2023-10-07", "11821"],

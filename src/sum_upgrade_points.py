@@ -22,6 +22,9 @@ cursor.execute("SELECT * FROM results ORDER BY race_date asc")
 results = cursor.fetchall()
 
 for result in results:
+  if "RELAY" in result[3].upper():
+    continue
+
   cursor.execute("SELECT * FROM categories WHERE category_name=?", (result[4],))
   simple_category = cursor.fetchone()[3]
 
@@ -35,15 +38,16 @@ for result in results:
   result_starters = result[6]
   match = re.search(r'\b(DNF|DNP|DQ)\b', result_position)
   
-  if not match:
-    if simple_category and "5" in simple_category and rider_category == "5":
-      points[result[1]]["cat_5_finishes"] += 1
+  if not match and simple_category:
+    if (rider_category in simple_category) or "0" in simple_category:
+      if "5" in simple_category and rider_category == "5" or rider_category == "0":
+        points[result[1]]["cat_5_finishes"] += 1
 
-    if simple_category and (rider_category in simple_category) and eval(result_position) == 1 and eval(result_starters) >= 20:
-      points[result[1]]["qualified_victories"] += 1
+      if simple_category and (rider_category in simple_category) and eval(result_position) == 1 and eval(result_starters) >= 20:
+        points[result[1]]["qualified_victories"] += 1
 
-  if race_date > (datetime.now() - timedelta(366)) and result[7] > 0:
-    points[result[1]]["upgrade_points"].append(result[7])
+      if race_date > (datetime.now() - timedelta(366)) and result[7] > 0:
+        points[result[1]]["upgrade_points"].append(result[7])
 
 for rider in points.items():
   rider_id = rider[0]
