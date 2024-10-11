@@ -67,3 +67,7 @@ excluded_not_usac = [
     "MEN'S BEGINNER",
     "CAT C"
 ]
+
+excluded_events = [
+  "RELAY"
+]

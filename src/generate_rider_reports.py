@@ -1,6 +1,7 @@
 import sqlite3
-from datetime import datetime
-from _constants import excluded_not_elite, excluded_not_usac
+from datetime import datetime, timedelta
+from time import strptime, mktime
+from _constants import excluded_not_elite, excluded_not_usac, excluded_events
 
 conn = sqlite3.connect('./db/main.db')
 cursor = conn.cursor()
@@ -35,9 +36,15 @@ for rider in riders:
   output += f"  \n### Results:  \n"
   for result in rider_results:
     valid_result = True
-    if any(exclusion in result[4] for exclusion in excluded_not_elite):
+    if any(exclusion in result[4].upper() for exclusion in excluded_not_elite):
       valid_result = False
-    if any(exclusion in result[4] for exclusion in excluded_not_elite):
+    if any(exclusion in result[4].upper() for exclusion in excluded_not_usac):
+      valid_result = False
+    if any(exclusion in result[3].upper() for exclusion in excluded_events):
+      valid_result = False
+
+    race_date = datetime.fromtimestamp(mktime(strptime(result[2], "%Y-%m-%d")))
+    if race_date < (datetime.now() - timedelta(days = 366)):
       valid_result = False
 
     if result[7] > 0 and valid_result:

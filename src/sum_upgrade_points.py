@@ -46,7 +46,7 @@ for result in results:
       if simple_category and (rider_category in simple_category) and eval(result_position) == 1 and eval(result_starters) >= 20:
         points[result[1]]["qualified_victories"] += 1
 
-      if race_date > (datetime.now() - timedelta(366)) and result[7] > 0:
+      if race_date > (datetime.now() - timedelta(days = 366)) and result[7] > 0:
         points[result[1]]["upgrade_points"].append(result[7])
 
 for rider in points.items():
