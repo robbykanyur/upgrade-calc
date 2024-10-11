@@ -19,26 +19,31 @@ if not os.path.exists(new_path):
 
 def scrape_race(race_id, save_path):
   url = f'https://crossresults.com/race/{race_id}'
+  file_path = save_path / f"{race_id}.txt"
+  file_exists = os.path.isfile(file_path)
   
   max_retries = 3
   retry_count = 0
   while retry_count < max_retries:
-    try:
-      response = requests.get(url, timeout=10)
-      if response.status_code == 200:
-        race_file = save_path / f"{race_id}.txt"
-        race_file.write_text(response.text)
-        print(f"Successfully scraped race {race_id} and saved to file")
-        return True
-      else:
-        print(f"Failed to scrape race {race_id}. Status code: {response.status_code}")
-        return False
-    except RequestException as e:
-      retry_count += 1
-      print(f"Error while scraping race {race_id}: {e}. Sleeping for 30 seconds and retrying ({retry_count}/{max_retries})")
-      sleep(30)
-  print(f"Failed to scrape race {race_id} after {max_retries} retries")
-  return False
+    if file_exists:
+      print(f"Race {race_id} has already been scraped")
+      return False
+    else:
+      try:
+        response = requests.get(url, timeout=10)
+        if response.status_code == 200:
+          file_path.write_text(response.text)
+          print(f"Successfully scraped race {race_id} and saved to file")
+          return True
+        else:
+          print(f"Failed to scrape race {race_id}. Status code: {response.status_code}.")
+          return False
+      except RequestException as e:
+        retry_count += 1
+        print(f"Error while scraping race {race_id}: {e}. Sleeping for longer and retrying ({retry_count}/{max_retries})")
+        sleep(randint(30,60))
+    print(f"Failed to scrape race {race_id} after {max_retries} retries")
+    return False
 
 def fetch_races(conn):
   cursor = conn.cursor()
@@ -52,10 +57,11 @@ def run_scraper():
     races = fetch_races(conn)
     for race in races:
       race_id = race[3] # crossresults_id
-      scrape_race(race_id, data_dir)
+      scraped_successfully = scrape_race(race_id, data_dir)
       sleep_interval = randint(4,11)
-      print(f"Sleeping for {sleep_interval} seconds before the next request")
-      sleep(sleep_interval)
+      if scraped_successfully:
+        print(f"Sleeping for {sleep_interval} seconds before the next request")
+        sleep(sleep_interval)
   conn.commit()
   conn.close()
 
