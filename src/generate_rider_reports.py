@@ -35,6 +35,16 @@ for rider in riders:
     output += f"- {flag[3]} – {flag[4]}  \n"
   output += f"  \n### Results:  \n"
   for result in rider_results:
+    try:
+        numerical_result = eval(result[5])
+    except:
+      numerical_result = None
+
+    try:
+      rider_category = eval(rider_details[2])
+    except:
+      rider_category = 6
+
     valid_result = True
     if any(exclusion in result[4].upper() for exclusion in excluded_not_elite):
       valid_result = False
@@ -43,12 +53,18 @@ for rider in riders:
     if any(exclusion in result[3].upper() for exclusion in excluded_events):
       valid_result = False
 
+    race_too_old = False
     race_date = datetime.fromtimestamp(mktime(strptime(result[2], "%Y-%m-%d")))
     if race_date < (datetime.now() - timedelta(days = 366)):
-      valid_result = False
+      race_too_old = True
+      if rider_category < 5 and numerical_result != 1:
+        valid_result = False
 
-    if result[7] > 0 and valid_result:
-      output += f"- {result[3]} on {result[2]} (P{result[5][:-1]} of {result[6]} in {result[4]} = {result[7]} upgrade points)  \n"
+    if valid_result:
+      output += f"- {result[3]} on {result[2]} (P{result[5][:-1]} of {result[6]} in {result[4]})  \n"
+      if result[7] > 0 and str(rider_category) in result[4] and not race_too_old:
+        output += f"  - {result[7]} UPGRADE POINTS  \n"
+
   output += "  \n---  \n  \n"
 
 with open(f"./data/reports/{datestamp}.md", "w") as text_file:
