@@ -1,4 +1,5 @@
 import sqlite3
+from _constants import excluded_not_elite, excluded_not_usac
 
 conn = sqlite3.connect('./db/main.db')
 cursor = conn.cursor()
@@ -115,80 +116,11 @@ for category in categories:
   cursor.execute("UPDATE categories SET excluded=?, simple_category=?, excluded_reason=? WHERE category_name=?", (1, None, None, category_name))
   if eval(category[1][:4]) < 2023:
     cursor.execute("UPDATE categories SET excluded=?, excluded_reason=? WHERE category_name=?", (1, "Race too old", category_name)) 
-  
-  excluded_strings = [
-    "WOMEN",
-    "MASTER",
-    "SINGLESPEED",
-    "SINGLE SPEED",
-    "JUNIOR",
-    "35",
-    "40+",
-    "45",
-    "50+",
-    "55",
-    "60-64",
-    "65",
-    "75",
-    "SS",
-    "HANDCYCLE",
-    "15-16",
-    "RELAY",
-    "FAT BIKE",
-    "70-74",
-    "60-69",
-    "50-54",
-    "19-22",
-    "GIRLS",
-    "914",
-    "30-34",
-    '"SUNDAY',
-    "40-44",
-    "BOYS",
-    "COLLEGIATE",
-    "SINGE SPEED",
-    "11-12",
-    "13-14",
-    "9-14",
-    "W CAT_1/2/3",
-    "FEMALE",
-    "UNDER 23",
-    "COED",
-    "17-18",
-    "60+",
-  ]
 
-  if any(x in category_name.upper() for x in excluded_strings):
+  if any(x in category_name.upper() for x in excluded_not_elite):
     cursor.execute("UPDATE categories SET excluded=?, excluded_reason=? WHERE category_name=?", (1, "Not men's elite", category_name))
 
-  excluded_strings = [
-    "OPEN A",
-    "CAT B",
-    "MENS B",
-    "MEN MENS A",
-    "WAVE 6",
-    "SATURDAY OPEN",
-    "MEN A",
-    "BEGINNER MALE",
-    "WAVE 5",
-    "WAVE 2",
-    "MEN'S ADVANCED",
-    "GENDER EXPANSIVE",
-    "WAVE 4",
-    "WAVE 1",
-    "MEN ELITE",
-    "MEN SPORT",
-    "A RACE",
-    "MEN OPEN",
-    "B RACE",
-    "MEN A",
-    "MEN  A",
-    "DIVISION A MEN",
-    "INTERMEDIATE",
-    "MEN'S BEGINNER",
-    "CAT C"
-  ]
-  if any(x in category_name.upper() for x in excluded_strings):
+  if any(x in category_name.upper() for x in excluded_not_usac):
     cursor.execute("UPDATE categories SET excluded=?, excluded_reason=? WHERE category_name=?", (1, "Not USAC category/race", category_name))
 
 conn.commit()
