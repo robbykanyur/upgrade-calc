@@ -1,5 +1,8 @@
+import os
 import sqlite3
 from _constants import usac_points
+from dotenv import load_dotenv
+load_dotenv()
 
 def calculate_upgrade_points():
   def calculate_usac_points (position, starters):
@@ -16,7 +19,7 @@ def calculate_upgrade_points():
     
     return 0
 
-  with sqlite3.connect('./db/main.db') as conn:
+  with sqlite3.connect(os.getenv('DB_PATH')) as conn:
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM results ORDER BY race_date DESC")
     results = cursor.fetchall()
@@ -28,5 +31,4 @@ def calculate_upgrade_points():
     
     cursor.executemany("UPDATE results SET upgrade_points=? WHERE id=?", update_data)
     conn.commit()
-
-  conn.close()
+    conn.close()

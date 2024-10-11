@@ -13,7 +13,8 @@ def create_rider_list():
   races = cursor.fetchall()
 
   for race in races:
-    f = open(f"./data/races/{most_recent_race_data}/{race[3]}.txt").read()
+    race_id = race[3] # crossresults_id
+    f = open(f"./data/races/{most_recent_race_data}/{race_id}.txt").read()
     soup = BeautifulSoup(f, "html.parser")
     for element in soup.find_all("tr", class_="resultsrow"):
       racer_id = element.get('id')[1:]

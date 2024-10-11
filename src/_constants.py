@@ -1,3 +1,14 @@
+ccc_races = [
+  ["Jackson Park", "2023-10-07", "11821"],
+  ["ABD Sunrise Park", "2023-10-22", "11934"],
+  ["Campton CX", "2023-10-29", "11999"],
+  ["Groundhog PSI", "2023-11-05", "12049"],
+  ["Wheeling Heritage Park", "2023-11-12", "12100"],
+  ["Quarry Cross", "2023-11-19", "12152"],
+  ["Montrose Beach CX", "2023-12-03", "12211"],
+  ["Glenwood Academy", "2024-09-29", "12471"]
+]
+
 excluded_not_elite = [
   "WOMEN",
   "MASTER",
