@@ -33,7 +33,7 @@
 
     <style type="text/css">
         .fma {
-                        background: url(/img/fma7.jpg) center top no-repeat;
+                        background: url(/img/fma2.jpg) center top no-repeat;
 
 
             -webkit-background-size: cover;
@@ -42,8 +42,8 @@
             background-size: cover;
             max-height: 700px;
 
-            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/fmafma7.jpg', sizingMethod='scale');
-            -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/fmafma7.jpg', sizingMethod='scale')";
+            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/fmafma2.jpg', sizingMethod='scale');
+            -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/fmafma2.jpg', sizingMethod='scale')";
         }
     </style>
 
@@ -2440,8 +2440,8 @@ function VerifyUrl()
 			    			
 			    </td>
 			    <td style="white-space: nowrap; empty-cells: show; overflow: hidden; font-size:smaller">
-			    				    <a href="/team/864">
-				    The Pony Shop				    </a>
+			    				    <a href="/team/73163">
+				    SLSCX				    </a>
 			    
 			    </td>
 			    <td>				

@@ -75,6 +75,13 @@ def create_tables(conn):
         override TEXT,
         FOREIGN KEY (rider_id) REFERENCES riders (id) ON DELETE CASCADE
       )
+    """,
+    "completed_scrapes": """
+      CREATE TABLE IF NOT EXISTS completed_scrapes (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        type TEXT NOT NULL,
+        date TEXT NOT NULL
+      )
     """
   }
 

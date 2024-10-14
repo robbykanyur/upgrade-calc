@@ -51,9 +51,8 @@ def fetch_races(conn):
   races = cursor.fetchall()
   return races
 
-def run_scraper():
-  conn = sqlite3.connect(os.getenv('DB_PATH'))
-  with conn:
+def run_race_scraper():
+  with sqlite3.connect(os.getenv('DB_PATH')) as conn:
     races = fetch_races(conn)
     for race in races:
       race_id = race[3] # crossresults_id
@@ -62,7 +61,9 @@ def run_scraper():
       if scraped_successfully:
         print(f"Sleeping for {sleep_interval} seconds before the next request")
         sleep(sleep_interval)
-  conn.commit()
-  conn.close()
+
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO completed_scrapes (id, type, date) VALUES (?, ?, ?)", (None, "Riders", datestamp))
+    conn.commit()
 
 
