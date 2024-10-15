@@ -2,20 +2,9 @@ import os
 from datetime import datetime
 import requests
 from requests.exceptions import RequestException
-import sqlite3
 from pathlib import Path
 from random import randint
 from time import sleep
-from dotenv import load_dotenv
-load_dotenv()
-
-datestamp = datetime.now().strftime('%Y-%m-%d')
-data_dir = Path(f"./data/races/{datestamp}")
-data_dir.mkdir(parents=True, exist_ok=True)
-
-new_path = f'./data/races/{datestamp}'
-if not os.path.exists(new_path):
-   os.makedirs(new_path)
 
 def scrape_race(race_id, save_path):
   url = f'https://crossresults.com/race/{race_id}'
@@ -51,19 +40,26 @@ def fetch_races(conn):
   races = cursor.fetchall()
   return races
 
-def run_race_scraper():
-  with sqlite3.connect(os.getenv('DB_PATH')) as conn:
-    races = fetch_races(conn)
-    for race in races:
-      race_id = race[3] # crossresults_id
-      scraped_successfully = scrape_race(race_id, data_dir)
-      sleep_interval = randint(4,11)
-      if scraped_successfully:
-        print(f"Sleeping for {sleep_interval} seconds before the next request")
-        sleep(sleep_interval)
+def run_race_scraper(conn):
+  datestamp = datetime.now().strftime('%Y-%m-%d')
+  data_dir = Path(f"./data/races/{datestamp}")
+  data_dir.mkdir(parents=True, exist_ok=True)
 
-    cursor = conn.cursor()
-    cursor.execute("INSERT INTO completed_scrapes (id, type, date) VALUES (?, ?, ?)", (None, "Riders", datestamp))
-    conn.commit()
+  new_path = f'./data/races/{datestamp}'
+  if not os.path.exists(new_path):
+    os.makedirs(new_path)
+
+  races = fetch_races(conn)
+  for race in races:
+    race_id = race[3] # crossresults_id
+    scraped_successfully = scrape_race(race_id, data_dir)
+    sleep_interval = randint(4,11)
+    if scraped_successfully:
+      print(f"Sleeping for {sleep_interval} seconds before the next request")
+      sleep(sleep_interval)
+
+  cursor = conn.cursor()
+  cursor.execute("INSERT INTO completed_scrapes (id, type, date) VALUES (?, ?, ?)", (None, "Riders", datestamp))
+  conn.commit()
 
 

@@ -1,47 +1,51 @@
 import os
-import sqlite3
 from bs4 import BeautifulSoup
-from dotenv import load_dotenv
-load_dotenv()
+from multiprocessing import Pool, cpu_count
+from utilities import get_latest_scrape_dir
 
 most_recent_race_data = os.getenv('MOST_RECENT_RACE_DATA')
 
-def insert_rider(cursor, racer_id, racer_name):
-  cursor.execute('SELECT * FROM riders where id = ?', (racer_id,))
-  racer_record = cursor.fetchone()
+def parse_race_file(args):
+  race_file_path, race_id = args
+  rider_list = []
 
-  if not racer_record:
-    cursor.execute('''
-      INSERT INTO riders (id, name)
-      VALUES (?, ?)
-    ''', (racer_id, racer_name))
+  if os.path.exists(race_file_path):
+    with open(race_file_path, 'r') as f:
+      print(f"Parsing results for for race {race_id}")
+      soup = BeautifulSoup(f, "lxml")
 
-def create_rider_list():
-  with sqlite3.connect(os.getenv('DB_PATH')) as conn:
-    cursor = conn.cursor()
+      for element in soup.find_all("tr", class_="resultsrow"):
+        racer_id = element.get('id')[1:]
+        racer_name_first = element.find_all('a')[1].contents[0].strip()
+        racer_name_last = element.find_all('a')[2].contents[0].strip()
+        racer_name = f"{racer_name_first} {racer_name_last}"
 
-    cursor.execute('SELECT * FROM races')
-    races = cursor.fetchall()
+        rider_list.append((racer_id, racer_name))
+  else:
+    print(f"Race file not found: {race_file_path}")
 
-    cursor.execute("SELECT date FROM completed_scrapes WHERE type='Races' ORDER BY id DESC")
-    most_recent_scrape_date = cursor.fetchone()[0]
+  return rider_list
 
-    for race in races:
-      race_id = race[3] # crossresults_id
-      race_file_path = os.path.join('./data/races', most_recent_scrape_date, f"{race_id}.txt")
+def create_rider_list(conn):
+  cursor = conn.cursor()
+  cursor.execute('SELECT * FROM races')
+  races = cursor.fetchall()
 
-      if os.path.exists(race_file_path):
-        with open(race_file_path, 'r') as f:
-          soup = BeautifulSoup(f, "html.parser")
+  most_recent_scrape_date = get_latest_scrape_dir('./data/races')
+  rider_update_data = []
 
-          for element in soup.find_all("tr", class_="resultsrow"):
-            racer_id = element.get('id')[1:]
-            racer_name_first = element.find_all('a')[1].contents[0].strip()
-            racer_name_last = element.find_all('a')[2].contents[0].strip()
-            racer_name = f"{racer_name_first} {racer_name_last}"
+  race_file_paths = [(f"./data/races/{most_recent_scrape_date}/{race[3]}.txt", race[3]) for race in races]
 
-            insert_rider(cursor, racer_id, racer_name)
-      else:
-        print(f"Race file not found: {race_file_path}")
+  with Pool(cpu_count()) as pool:
+    results = pool.map(parse_race_file, race_file_paths)
 
-    conn.commit()
+  for result in results:
+    if result:
+      rider_update_data.extend(result)
+
+  cursor.executemany("""
+    INSERT or REPLACE into riders (id, name)
+    VALUES (?, ?)
+  """, rider_update_data)
+
+  conn.commit()

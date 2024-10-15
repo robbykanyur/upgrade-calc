@@ -1,10 +1,7 @@
 import os
-import sqlite3
 from _constants import usac_points
-from dotenv import load_dotenv
-load_dotenv()
 
-def calculate_upgrade_points():
+def calculate_upgrade_points(conn):
   def calculate_usac_points (position, starters):
     try:
       position = int(position)
@@ -15,20 +12,17 @@ def calculate_upgrade_points():
         if starters in starter_range:
           return points.get(position, 0)
     except (ValueError, KeyError):
-      return 0
-    
+      return 0    
     return 0
 
-  with sqlite3.connect(os.getenv('DB_PATH')) as conn:
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM results ORDER BY race_date DESC")
-    results = cursor.fetchall()
+  cursor = conn.cursor()
+  cursor.execute("SELECT * FROM results ORDER BY race_date DESC")
+  results = cursor.fetchall()
 
-    update_data = []
-    for i, result in enumerate(results):
-      upgrade_points = calculate_usac_points(result[5], result[6])
-      update_data.append((upgrade_points, result[0]))
-    
-    cursor.executemany("UPDATE results SET upgrade_points=? WHERE id=?", update_data)
-    conn.commit()
-    conn.close()
+  update_data = []
+  for i, result in enumerate(results):
+    upgrade_points = calculate_usac_points(result[5], result[6])
+    update_data.append((upgrade_points, result[0]))
+  
+  cursor.executemany("UPDATE results SET upgrade_points=? WHERE id=?", update_data)
+  conn.commit()

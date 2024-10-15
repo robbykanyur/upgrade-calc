@@ -1,12 +1,4 @@
-import os
-import sqlite3
-from dotenv import load_dotenv
-load_dotenv()
-
 from _constants import ccc_races
-
-def create_connection(db_path):
-  return sqlite3.connect(db_path)
 
 def enable_foreign_keys(conn):
   conn.execute("PRAGMA foreign_keys = 1")
@@ -76,13 +68,6 @@ def create_tables(conn):
         override TEXT,
         FOREIGN KEY (rider_id) REFERENCES riders (id) ON DELETE CASCADE
       )
-    """,
-    "completed_scrapes": """
-      CREATE TABLE IF NOT EXISTS completed_scrapes (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        type TEXT NOT NULL,
-        date TEXT NOT NULL
-      )
     """
   }
 
@@ -99,9 +84,7 @@ def seed_races(conn, ccc_races):
   ''', ccc_races)
   conn.commit()
 
-def run_migrations():
-  db_path = os.getenv('DB_PATH')
-  with create_connection(db_path) as conn:
-    enable_foreign_keys(conn)
-    create_tables(conn)
-    seed_races(conn, ccc_races)
+def run_migrations(conn):
+  enable_foreign_keys(conn)
+  create_tables(conn)
+  seed_races(conn, ccc_races)
