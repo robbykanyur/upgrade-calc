@@ -1,0 +1,3618 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml"  class="no-js" lang="en">
+
+<head>
+            <link rel="icon" type="image/png" href="/img/crskull.png">
+    
+    <base href="https://www.crossresults.com/" />
+            <script type='text/javascript'>
+            var googletag = googletag || {};
+            googletag.cmd = googletag.cmd || [];
+            (function () { var gads = document.createElement('script'); gads.async = true; gads.type = 'text/javascript'; var useSSL = 'https:' == document.location.protocol; gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js'; var node = document.getElementsByTagName('script')[0]; node.parentNode.insertBefore(gads, node); }
+            )();
+        </script>
+        <script type='text/javascript'>
+            googletag.cmd.push(function () { googletag.defineSlot('/6664979/CrossResults-Sidebar-160x600', [160, 600], 'div-gpt-ad-1412617045810-0').addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }
+            );
+        </script>
+    
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" value="A pile of race results, neatly arranged for effortless obsession" />
+
+    <link rel="stylesheet" type="text/css"
+        href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/ui-darkness/jquery-ui.min.css" />
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700" rel="stylesheet"
+        type="text/css" />
+
+    <link href="redesign.css" type="text/css" rel="stylesheet" />
+    <link href="css/foundation.css" type="text/css" rel="stylesheet" />
+    <link href="css/crossresults.css" type="text/css" rel="stylesheet" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
+
+    <style type="text/css">
+        .fma {
+                        background: url(/img/fma3.jpg) center top no-repeat;
+
+
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            max-height: 700px;
+
+            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/fmafma3.jpg', sizingMethod='scale');
+            -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/fmafma3.jpg', sizingMethod='scale')";
+        }
+    </style>
+
+    
+
+            <link rel="alternate" type="application/rss+xml" title="crossresults.com RSS Feed"
+            href="/wordpress/index.php?feed=rss2" />
+    
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js" type="text/javascript"></script>
+    <script src="https://www.crossresults.com/jquery.simplemodal.1.4.1.min.js?x=1" type="text/javascript"></script>
+    <script src="jquery.cookie.js" type="text/javascript"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+    <script type='text/javascript' src='/TableSorter/jquery.tablesorter.js'></script>
+    <script type="text/javascript" src="/js/responsive-nav.min.js"></script>
+    <link type="text/css" href="/TableSorter/themes/blue/style.css" rel="Stylesheet" />
+        
+    
+    <script defer data-strict-csp 
+        src="https://cdn-prod.securiti.ai/consent/cookie-consent-sdk-loader-strict-csp.js"
+        data-tenant-uuid="b9175515-2a76-4948-b708-5ea88d27483c" 
+        data-domain-uuid="54773b41-7973-4efa-82b1-ac18dac5a7ea"
+        data-backend-url="https://app.securiti.ai"
+        data-skip-css="false"   >
+        </script>
+
+
+    <script type="text/javascript">
+        var key = 'AmcWixq9TVG2GTEN7ylt-DSxqTZPhgu_MC1DJKKKrBMKIM6Cv0NtYZHoHdX91CUB';
+
+        $(document).ready(function () {
+
+            // show thge logo on scroll
+            $(document).bind('scroll', function () {
+                if ($(this).scrollTop() > 225) {
+                    $("#smalllogo").fadeIn('1000');
+                    $("#profilebar").addClass("scrolled");
+                } else {
+                    $("#smalllogo").hide();
+                    $("#profilebar").removeClass("scrolled");
+                }
+            });
+            $("#searchinput").autocomplete({
+                source: "autocomplete.php",
+                minLength: 3,
+                select: function (event, ui) {
+                    var url = ui.item.id;
+                    if (url != '#') {
+                        location.href = '/' + url;
+                    }
+                },
+                open: function (event, ui) {
+                    $(".ui-autocomplete").css("z-index", 1000);
+                }
+            });
+
+
+            $("#banner").click(
+                function (e) {
+                    if (e.target.id == "banner") {
+                        window.location = 'https://www.crossresults.com';
+                    }
+                }
+            );
+            $("#searchinput").click(
+                function () { return false; }
+            );
+
+            $("#searchform").submit(function () {
+                return $("#searchinput").val() != "";
+            });
+
+        });
+
+        if (!document.addEventListener) {
+            //IE8 fix
+            $(function () {
+                //DOM has loaded, put your code here
+                setupResponsiveNav();
+            });
+        }
+        else {
+            document.addEventListener("DOMContentLoaded", function () { setupResponsiveNav(); })
+        }
+
+
+        function setupResponsiveNav() {
+            $("#nav").show();
+
+            /* call responsive nav */
+            var navigation = responsiveNav("#nav", { // Selector: The ID of the wrapper
+                animate: true, // Boolean: Use CSS3 transitions, true or false
+                transition: 400, // Integer: Speed of the transition, in milliseconds
+                label: "menu", // String: Label for the navigation toggle
+                insert: "before", // String: Insert the toggle before or after the navigation
+                customToggle: "", // Selector: Specify the ID of a custom toggle
+                openPos: "relative", // String: Position of the opened nav, relative or static
+                jsClass: "js", // String: 'JS enabled' class which is added to <html> el
+                init: function () { }, // Function: Init callback
+                open: function () { }, // Function: Open callback
+                close: function () { } // Function: Close callback
+            });
+        }
+        function UpdateUpgrades() {
+            var cat = $("#category").val();
+            var region = $("#region").val();
+
+            $.cookie("upgradecategory", cat, { expires: 30 });
+            $.cookie("upgraderegion", region, { expires: 30 });
+
+            var ajaxMsg = "<div style=\"text-align:center;\"><img src=\"img/snake_transparent.gif\"/></div>";
+            $("#upgradeboard").html(ajaxMsg);
+
+            $("#upgradeboard").load("upgradeboard.php?cat=" + cat + "&region=" + region + "&sn=r");
+        }
+
+    </script>
+
+    <title>
+        Eli Keyes's Race History at crossresults.com    </title>
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@crossresults" />
+    <meta name="twitter:title" content="Eli Keyes's Race History at crossresults.com" />
+
+    <meta name="twitter:description" content="Every race Eli Keyes has ever participated in." />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+
+<body class=" crossresults">
+        <div id="profilebar" class="row-full utility no-print">
+        <div class="large-12">
+            <script type="text/javascript">
+$(document).ready(function(){ 
+	
+    $(".getRacersButton").click(function() {
+        var searchText = $("#searchText").val();
+		if(searchText.length > 0)
+		{
+			var url = "ajaxracers.php?s="+escape(searchText) + "&team=yes&confirm=1";
+			
+			$(".target").html("<img src='img/snake_transparent.gif'/>");
+			$(".target").load(url, function(response, status, xhr){			
+				});
+			$(".input").hide();
+			$("#profilesearchresults").show();
+		}
+		else
+		{
+			alert('Type your name in the box first, guy');
+			$("#searchText").val('THIS BOX!');
+			$("#searchText").focus();
+			$("#searchText").select();
+		}
+        });
+	$(".togglelogin").click(function(){
+		$("#loginform").modal({maxWidth: 600,overlayClose:true, maxHeight: 600 });
+		$("#CreateAccountButton").click(function(){
+            
+            var email = $("#newemail").val();
+            var pass = $("#newpass").val();
+            var racerID = $("#racerID").val();
+            var valid = true;
+            var error = "";
+            if(email.indexOf("@") == -1)
+            {
+                valid = false;
+                error = "Invalid email.";
+            }
+            if(pass.length == 0)
+            {
+                valid = false;
+                error = "No zero length passwords.";
+            }
+            if(valid)
+            {
+                          
+				
+                var data = { email: email, pass: pass, racerID:racerID };
+                $("#CreateAccountTarget").html("<div style=\"text-align: center\">Creating Account...</div>");                
+                $("#CreateAccountTarget").load("procNewAccount.php",data);
+            }
+            else
+            {
+                alert(error);
+            }
+            return false;
+        });
+		return false;
+	});
+	$("#SubmitButton").click(function(){
+            //var pass = $("#newpass").val();
+            //var hexpass = hex_md5(pass);  
+            //$("#newpass").val(hexpass);
+        });
+    $("#regiononly").click(function(){
+        var checked = ($("#regiononly").is(':checked'));
+        window.location = "setprofile.php?setregionpref="+checked;
+    });
+    $("a.togglebutton").click(function(){
+			
+            $(this).next().toggle("slow");
+            var expander = $(this).children().children("img");
+            if(expander.attr("src") == "img/minus.png")
+            {
+                expander.attr("src","img/plus.png");
+            }
+            else
+            {
+                expander.attr("src","img/minus.png");
+            }
+            return false;
+        });
+	    
+});
+function SetProfile(jQueryObj)
+{
+        var name = (jQueryObj.text());
+         var id = jQueryObj.children(".racerID").val();
+         window.location = "setprofile.php?id="+id;
+		 
+}
+
+</script>
+	<span style="float:right; padding-right: 10px; padding-left: 10px; font-size: smaller;">
+       <A href="/">
+                         <img src="/img/logosmall.png" id="smalllogo"/>
+        </A>
+			  <a href="#" class="togglelogin">Log In</a>
+		  
+		  <div id="loginform" style="display: none;">
+			
+
+<div style="padding: 5px">
+	<form method="post" action="procLogin.php">
+	<div style="margin-top: 0px" class="headerrow1"><h2 style="margin-top: 0px">Login or Create Account</h2></div>
+    <table class="datatable1" >
+                    
+                <tr>
+            <td>
+                Email Address
+            </td>
+            <td>
+                <input type="text" id="newemail" name="email"/></td>
+        </tr>
+        <tr>
+            <td>
+                Password:
+            </td>
+            <td>
+                <input type="password" id="newpass" name="newpass" /></td>
+        </tr>
+	</table>
+	<div style="text-align: center;font-size:smaller; padding: 4px; ">
+				<input type="checkbox" id="remember" name="remember" checked/> <label for="remember">Remember Me</label>
+	</div>
+    <div style="text-align: center;font-size: smaller;" class="">
+                       
+				<input type="hidden" name="return" value="/racer/134561"/>
+				<input type="hidden" id="racerID" name="racerID" value=""/>
+                <input type="Submit" class="button" value="Login" id="SubmitButton" style="padding: 2px;" />
+                <input type="Button" class="button" value="Create Account" style="padding: 2px;" id="CreateAccountButton" />
+				<br/>						
+				<a href="/?n=talk&sn=forgot" id="forgotpass">Forgot Password?</a>
+	</div>
+    </form>
+
+    <div id="CreateAccountTarget">
+    </div>
+	<div style="padding: 2px;" align="center" class="headerrow3">
+	  Or...
+	  		<a class='fb_button fb_button_medium' href="https://www.facebook.com/dialog/oauth?client_id=136755476866&amp;redirect_uri=http%3A%2F%2Fwww.crossresults.com%2Fracer%2F134561%3Flogin%3D1">
+		<span class='fb_button_text'>Log In With Facebook</span>
+        </a>
+			</div>
+</div>
+		  </div>
+	  			 
+	</span>
+</div>
+        </div>
+
+    </div>
+    <div style="clear: both;">
+    </div>
+    <!-- .wrap -->
+    </div>
+    
+            <div class="inside">
+            <div class="row-full fma">
+
+                <div id="navparent" >               
+                	<nav id="nav" style="display: none;">
+        <ul class="dropdown">
+            				
+		    <li>
+				<a href="?n=talk" class="dropdownarrow" onclick="javscript: return false;">Talk</a> 
+									
+					<ul><li>									<a href="/?n=talk&sn=news">News</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=talk&sn=f">FAQ</a>
+			                    			                    </li>
+			                    <li>										<a href="/contact">Report a Bug</a>
+													                    </li>
+			                    <li>									<a href="/?n=talk&sn=rac">Report Duplicate Racer</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=talk&sn=feat">Contact Us</a>
+			                    			                    </li>
+			                    					</ul>
+				            </li>
+     
+
+					
+		    <li>
+				<a href="?n=racers" class="dropdownarrow" onclick="javscript: return false;">Racers</a> 
+									
+					<ul><li>									<a href="/?n=racers&sn=find">Find Racers</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=racers&sn=r&rID=134561">Racer History</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=racers&sn=h2h">Head To Head</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=racers&sn=t&rID=134561">Team Names</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=racers&sn=rp&rID=134561">Racer Points</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=racers&sn=movers">Floaters and Sinkers</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=racers&sn=c">Report Duplicate Racers</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=racers&sn=pred">Race Predictor</a>
+			                    			                    </li>
+			                    <li>										<a href="/stalk">Stalk Racers</a>
+													                    </li>
+			                    					</ul>
+				            </li>
+     
+
+					
+		    <li>
+				<a href="?n=results" class="dropdownarrow" onclick="javscript: return false;">Results</a> 
+									
+					<ul><li>									<a href="/?n=results&sn=all">View All Races</a>
+			                    			                    </li>
+			                    <li>										<a href="/points/">Points List</a>
+													                    </li>
+			                    <li>									<a href="/?n=results&sn=ug">Upgrade Points</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=results&sn=rts">Top Rated</a>
+			                    			                    </li>
+			                    <li>										<a href="/upload">Upload Results</a>
+													                    </li>
+			                    					</ul>
+				            </li>
+     
+
+					
+		    <li>
+				<a href="?n=series" class="dropdownarrow" onclick="javscript: return false;">Series</a> 
+									
+					<ul><li>										<a href="/vNECXS">New England</a>
+										                                    <ul>
+                                    <li><a href="/vNECXS">NECXS</a></li><li><a href="/necxss">New England SSCX Series</a></li><li><a href="/ctcx">CT Series of CX</a></li><li><a href="/project-mayhem">Project Mayhem CX</a></li><li><a href="/rvcx">River Valley CX</a></li><li><a href="/nebracx">NEBRA Rankings</a></li>                                    </ul>
+                                    			                    </li>
+			                    <li>									<a href="/?n=series&sn=mida">Mid Atlantic</a>
+			                                                        <ul>
+                                    <li><a href="/dmvcx">DMV Junior CX Series</a></li><li><a href="/superseries">BikeReg Cyclocross Super Series</a></li><li><a href="/mac">MAC</a></li><li><a href="/sportif">MABRA Sportif Series</a></li><li><a href="/pacx">PACX</a></li>                                    </ul>
+                                    			                    </li>
+			                    <li>									<a href="/?n=series&sn=cnycx">CNY Cup</a>
+			                    			                    </li>
+			                    <li>										<a href="/CBRCX">CBRCX</a>
+													                    </li>
+			                    <li>										<a href="/vacx">VACX</a>
+													                    </li>
+			                    <li>									<a href="/?n=series&sn=bhbcx">BHB Cross Series</a>
+			                    			                    </li>
+			                    <li>										<a href="/utcx">UTCX</a>
+													                    </li>
+			                    <li>										<a href="/mscx">Mississippi</a>
+										                                    <ul>
+                                    <li><a href="/mscx">Mississippi CX Cup</a></li><li><a href="/?n=series&sn=ridge">Ridgeland CX Series</a></li>                                    </ul>
+                                    			                    </li>
+			                    <li>										<a href="/wicx">Wisconsin CX Series</a>
+													                    </li>
+			                    <li>										<a href="/atxcx">Texas</a>
+										                                    <ul>
+                                    <li><a href="/atxcx">ATX CX Cup</a></li><li><a href="/sxcx">SXCX</a></li>                                    </ul>
+                                    			                    </li>
+			                    <li>										<a href="/basp">BASP</a>
+													                    </li>
+			                    <li>										<a href="/Sweden/CXPokalen">Sweden</a>
+										                                    <ul>
+                                    <li><a href="/Sweden/CXPokalen">CX Pokalen</a></li><li><a href="/Sweden/SweCup ">SweCup</a></li>                                    </ul>
+                                    			                    </li>
+			                    					</ul>
+				            </li>
+     
+
+	
+        </ul>
+        <div style="clear: both;"></div>
+    </nav>
+	                </div>
+
+                <div style="float: right;">
+                    <a href="/">
+
+                                                <img src="/img/crossResultsLogo.png" id="logo" />
+                    </a>
+                    <div id="search" width="100%">
+                        <form method="get" action="/search" id="searchform">
+                            <button id="searchimage" title="Submit Search" style="display: none;"></button>
+                            <input id="searchinput" type="text" name="q" placeholder="search everything" />
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+                <div class="fullstyle maincontent">
+
+            
+            <div id="divWrap" class="wrap">
+                <!-- thinking here is wrap can be used within full width containers as well -->
+                <section class="main">
+                    <aside class="sidebar" id="adsidebar" runat="server" visible="false">
+                        <div class="ads side-ads">
+                                                            <!-- CrossResults-Sidebar-160x600 -->
+                                <div id='div-gpt-ad-1412617045810-0' style='width:160px; height:600px;'>
+                                    <script type='text/javascript'>
+                                        googletag.cmd.push(function () { googletag.display('div-gpt-ad-1412617045810-0'); }
+                                        );
+                                    </script>
+                                </div>
+                            
+                        </div>
+                    </aside>
+                    <article id="content">
+                        <style type="text/css">
+.popup{
+    z-index: 9999;
+}
+.racerdetails {
+    font-size: smaller; 
+}
+.rating:nth-child(odd)
+{
+    background-color: #eeeeee;
+}
+
+.detail
+{
+	max-width: 400px;
+	display: none;
+	position: absolute;
+    right: 0px;
+	border: 1px solid #8EB6FF;
+	background: #D8E2FF;
+	padding:5px;
+}
+</style>
+
+<script type="text/javascript" src="//www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(chartInitialize);
+    function chartInitialize() {
+        GraphDataService("/racerhistorygraph.php?racerID=134561&type=pct&subtype=pts&json=1",updateChart);
+    }
+
+      function GraphDataService(endpoint, onsuccess) {
+                
+                $.ajax({
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    url: endpoint,
+                    async: true,
+                    dataType: "json",
+                    success: function (data, status) {
+                        if(status == "success") {
+                            if (onsuccess != undefined) {
+                                onsuccess(data._data);
+                            }
+                        } else {
+                            $("#graphtarget").hide();
+                        }
+                    },
+                    error: function(data,status){
+                        $("#graphtarget").hide();
+                    }
+                });
+            }
+     function updateChart(data){
+              
+              var total = 0;
+              var compareTotal = 0;
+              if(data.length > 1){
+                  var graphData = new Array();
+                  var cols = data.length;
+                  
+                  graphData[0] = new Array();
+                  graphData[0][0] = 'Race';
+                  graphData[0][1] = 'Points';                  
+          
+                  var totalraces = data.length;
+                  var min = 9999;
+                  var max = 0;
+                  for(i = 0; i < data.length; i++)
+                  {
+                      graphData[i+1] = new Array();                           
+                                                   
+                      graphData[i+1][0] = data[i].X
+                      graphData[i+1][1] = data[i].Y;                   
+
+                      if(data[i].Y < min)
+                        min = data[i].Y;
+                      if(data[i].Y > max)
+                        max = data[i].Y;
+
+                  }
+                   
+                  if(max <= 1){
+                    max = 1;
+                    min = 0;
+                  } else { 
+                    min = min-50;
+                  }
+
+                  var options = {
+                     
+                      fontSize: 16,
+                      //fontName: '"Open Sans", "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif',
+                      hAxis: { titleTextStyle: {color: '#333'}, minValue: 0},
+                      vAxis: {minValue: min, maxValue: max,
+                        viewWindow: { min: min, max: max}
+                        },
+                      legend: { position: "bottom" },
+                      animation: {"startup": true,
+                          duration: 1000,
+                          easing: 'out'
+                      }, 
+                      chartArea: {
+                          left: 40,
+                          top: 20,
+                          width: '95%'
+                      },
+                      series: {
+                          0: { color: '#FC6719' },
+                          1: { color: '#C4C4C4' }
+                        }
+                    };
+                  $("#graphtarget").animate({height: "250px"}, 100,"swing",function(){
+                        var chart = new google.visualization.AreaChart(document.getElementById('graphtarget'));
+                        var dt = google.visualization.arrayToDataTable(graphData);
+                        chart.draw(dt, options);
+                  });
+                }
+            }
+
+    $(document).ready(function(){ 
+        $(".download").click(function(){ $(this).hide(); $(this).next().fadeToggle() });
+		$(".MetaDataSubmit").click(function(){
+			var url = $(this).prev().val();
+			var error = false;
+			if(url.trim() == "" || url.indexOf(".") == -1)
+			{
+				alert("You need to enter a url, dude.");
+				error = true;
+			}
+			return !error;
+		});
+        $('.showupgradepoints').click(function(){
+            $(".totalupgradepoints").toggle("fast");
+                    return false;
+        });
+			$(".togglechallenge").click(function(){ 
+			$(this).next().toggle(); 
+			$(this).hide(); 
+			$(this).prev().hide(); 
+			$(this).next().next().hide(); 
+			});
+		$(".challengesubmit").click(function(){
+			var data = $(this).parent().children(".challengeemail").val();
+			var target = $(this).attr("targetID");
+			var postthis = { email: data, targetid: target };
+			if(data)
+			{
+				$(this).parent().children(".challengesubmittarget").html("Challenging...");
+				$(this).parent().children(".challengesubmittarget").load("procNewChallenge.php",postthis);
+			}
+			else
+			{
+				alert('Enter an email, punk');
+			}
+		});
+		
+		$(".editteamsubmit").click(function(){
+			var newTeamName = $(this).parent().children("input").val();
+			
+			var resultID = $(this).parent().children("input").attr("rID");
+			 
+			$(this).parent().hide();
+			$(this).parent().next().show();
+			
+			$(this).parent().next().load("updateTeamName.php?rID="+resultID+"&team="+encodeURIComponent(newTeamName));
+		});
+		        $(".editteambutton").click(function(){
+			$(this).parent().hide();
+			$(this).parent().prev().show();
+		});
+        $("a.expandMonth").click(function(){
+        
+            $(this).next().toggle("slow");
+            var expander = $(this).children().children("img");
+            if(expander.attr("src") == "img/minus.png")
+            {
+                expander.attr("src","img/plus.png");
+            }
+            else
+            {
+                expander.attr("src","img/minus.png");
+            }
+            return false;
+        });
+		$("#head2headall").click(function(){
+			
+			$(".popup1").html("<Center><img src='img/snake_transparent.gif'></Center>");
+			$(".popup1").load("headtoheadall.php?racerID="+134561, function(){ $(".popup1").modal({overlayClose:true}); });
+		});
+		$(".addmeta").click(function(event){
+			
+			var theDiv = $(this).next()
+
+			//var tPosX = event.pageX;
+			//var tPosY = event.pageY+10;
+			//theDiv.css({top: tPosY, left: tPosX});
+			theDiv.toggle();
+			return false;
+		});
+		$(".selregion").change(function(){
+		
+			var region = $(this).val();
+			
+			$("input[type=checkbox][region='"+region+"']").prop("checked",$(this).is(":checked"));
+			
+		});
+        $(".showteamdetails").click(function(event) {
+			var expander = $(this).children("img");
+			var nemID = $(this).attr("arg1");
+			var victID = $(this).attr("arg2");
+			var months = $(this).attr("arg3");
+            if(expander.attr("src") == "img/minus.png")
+            {
+                expander.attr("src","img/plus.png");
+            }
+            else
+            {
+            // collapse all popupts
+				$(".popup").hide();
+                expander.attr("src","img/minus.png");
+            }
+		 
+			var theDiv = $(this).next();
+			var tPosX = event.pageX;
+			var tPosY = event.pageY+10;
+			theDiv.css({top: tPosY, left: tPosX});
+			theDiv.toggle();
+			//alert("nemesisdrilldown.php?nem="+nemID+"&vict="+victID+"&months="+months);
+			theDiv.load("nemesisdrilldown.php?nem="+nemID+"&vict="+victID+"&months="+months);
+			return false;
+			});
+		$("#pointsdetail").click(function(event) {
+			
+		 
+			var theDiv = $(this).next();
+			var tPosX = event.pageX-300;
+			var tPosY = event.pageY+10;
+			theDiv.css({top: tPosY, left: tPosX});
+			theDiv.toggle();
+			var racerID = $(this).attr("racerID");
+			var AsOfDate = escape($(this).attr("AsOfDate"));
+			theDiv.load("pointsdetail.php?racerID="+racerID+"&AsOfDate="+AsOfDate);
+			return false;
+			});
+		$(".durationradio").click(function(event) {
+				if($(this).val() == 'alltime')
+				{
+					$(".yearstat").hide();
+					$(".careerstat").show();
+				}
+				else
+				{
+					$(".yearstat").show();
+					$(".careerstat").hide();
+				}
+			});
+		$("#commonopponentheader").click(function(event) {
+				var expander = $(this).children(".toggler");
+				var otherexpander = $("#nemesesheader").children(".toggler");
+				
+				if(expander.attr("src") == "img/minus.png")
+				{
+					expander.attr("src","img/plus.png");
+					otherexpander.attr("src","img/minus.png");
+				}
+				else
+				{
+					expander.attr("src","img/minus.png");
+					otherexpander.attr("src","img/plus.png");
+				}
+				$("#commonopponents").toggle("slow");
+				$("#nemeses").toggle("slow");
+				return false;
+			});
+		$("#nemesesheader .toggler").click(function(event) {
+				var expander = $(this);
+				var otherexpander = $("#commonopponentheader").children("");
+				if(expander.attr("src") == "img/minus.png")
+				{
+					expander.attr("src","img/plus.png");
+					otherexpander.attr("src","img/minus.png");
+				}
+				else
+				{
+					expander.attr("src","img/minus.png");
+					otherexpander.attr("src","img/plus.png");
+				}
+				$("#commonopponents").toggle("slow");
+				$("#nemeses").toggle("slow");
+				return false;
+			});
+    });
+	
+    function showImages()
+    {
+        $("#frequencyfinish").attr("src",$("#frequencyfinish").attr("altsrc"));
+        $("#frequencyfinish2").attr("src",$("#frequencyfinish2").attr("altsrc"));
+        $("#frequencyfinish3").attr("src",$("#frequencyfinish3").attr("altsrc"));
+    }
+	var savedInterval = '1y';
+    function ChangeGraph(interval)
+    {
+		var selected = $("#graphchanger").val();
+		if(interval != '')
+			savedInterval = interval;
+		if(!savedInterval)
+			savedInterval = '1y';
+		
+		var titles = new Array('% Beat','Points List Rank','Points Scored','% Beat Histogram');
+		var urls= new Array('racerhistorygraph.php?racerID=134561&type=pct','racerhistorygraph.php?racerID=134561&type=ptslist&subtype=ptslist','racerhistorygraph.php?racerID=134561&type=pct&subtype=pts','racerhistorygraph.php?racerID=134561');
+		var intervalText = "All Time";
+		switch(savedInterval)
+		{
+			case '1m': intervalText = "Last Month"; break;
+			case '3m': intervalText = "Last 3 Months"; break;
+			case '1y': intervalText = "Last Year"; break;
+			case '3y': intervalText = "Last 3 Years"; break;
+		}
+		$('#graphtarget').html('<img src=\"img/snake_transparent.gif\"/>');
+		//$('#graphtarget').html("/" + urls[selected]+"&json=1&interval="+savedInterval);
+		GraphDataService("/" + urls[selected]+"&json=1&interval="+savedInterval,updateChart);
+		
+		$('#graphtitle').html(titles[selected]+ " - "+intervalText);
+		
+		/*for(var i = 0; i < 4; i++)
+		{
+			if(graphs[i]== selected)
+			{
+				$("#"+graphs[i]).show();
+				var url = urls[i] + "&interval="+savedInterval;
+				alert(url);
+				$("#"+graphs[i]+"img").attr('src',url);
+			}
+			else
+				$("#"+graphs[i]).hide();
+		}*/
+		return false;
+    }
+	
+</script>
+<style type="text/css">
+.ui-dialog .ui-dialog-content {
+    padding: 0;
+	font-size: inherit;
+}
+</style>
+<div class="popup1" style="display: none;">
+</div>
+<div id="racerhistory">
+        <div class="headerrow1 racer-header" >
+		<div class="racer-name">
+				
+				<h1>Eli Keyes</span></h1>
+				<span class="racerdetails">
+									Racing Age:  24										&bull; Category:  3								</div>
+                <div class="other-site-results">				    					
+										 					  
+					<div><a href="https://results.bikereg.com/?n=racers&sn=f&fname=Eli&lname=Keyes" tagret="_blank">Find this racer on results.bikereg.com</a> <img src="img/url_icon.gif" /></div>
+			    </div>
+		</div>
+	<div>	
+		
+	</div>
+	
+						
+    
+
+
+	<div style="max-width: 100%; overflow-x: auto; overflow-y: hidden; ">			
+	<table class="datatable1" width="100%" >
+	<tr>
+	    <td class="topdatacell">			
+			<div class="headerrow1 roundtop"><h2>Finish Breakdown</h2></div>
+			<div class="headerrow">
+				<input type="radio" name="duration" value="alltime" class="durationradio"/>Career
+				<input type="radio" name="duration" value="year" checked  class="durationradio"/>12 months
+			</div>
+			<table class="datatable1" width="100%" style="text-align: left; margin-top: 0px; border-top: 0px; border-bottom: 0px;">
+			<tr class="datarow2"><td>Wins</td><td>	<span class='careerstat' style='display: none;'>6</span>
+	<span class='yearstat'>0</span>
+	</td></tr>
+			<tr class="datarow1"><td>Top 5%</td><td>	<span class='careerstat' style='display: none;'>12</span>
+	<span class='yearstat'>0</span>
+	</td></tr>
+			<tr class="datarow2"><td>Top 10%</td><td>	<span class='careerstat' style='display: none;'>18</span>
+	<span class='yearstat'>0</span>
+	</td></tr>
+			<tr class="datarow1"><td>Top 25%</td><td>	<span class='careerstat' style='display: none;'>29</span>
+	<span class='yearstat'>0</span>
+	</td></tr>
+			<tr class="datarow2"><td>Top 50%</td><td>	<span class='careerstat' style='display: none;'>39</span>
+	<span class='yearstat'>0</span>
+	</td></tr>
+			<tr class="datarow1"><td>Bottom 50%</td><td>	<span class='careerstat' style='display: none;'>10</span>
+	<span class='yearstat'>0</span>
+	</td></tr>
+							<tr class="datarow2"><td>DNF</td><td>	<span class='careerstat' style='display: none;'>7</span>
+	<span class='yearstat'>0</span>
+	</td></tr>
+				<tr class="datarow2"><td>DQ</td><td>	<span class='careerstat' style='display: none;'>0</span>
+	<span class='yearstat'>0</span>
+	</td></tr>
+					</table>
+		
+		<div style="text-align: center; font-size: larger;">
+			<input id="head2headall" type="button" class="button" value="Career Head to Head"/>
+		</div>
+				
+		
+						<div class="careerstat">
+				<div class="headerrow1 roundtop">
+					Course Performance
+					&nbsp;<a href="?n=talk&sn=f#q18"><span class="faqlink">?</span></a>
+				</div>
+				<div class="graycontent">
+							<div class="techrating rating" title="This racer does much worse when the course is technical than when it's easy.">
+				<div class="ratingnumeral centered" id="rating">
+					-11.1				</div>
+		</div>
+				<div class="elevationrating rating" title="This racer does much worse when the course is hilly than when it's flat.">
+				<div class="ratingnumeral centered" id="rating">
+					-10				</div>
+		</div>
+				<div class="accelrating rating" title="This racer does worse when the course is lots of braking and sprinting than when it's steady pedaling.">
+				<div class="ratingnumeral centered" id="rating">
+					-3				</div>
+		</div>
+				<div class="moisturerating rating" title="This racer does better when the course is wet than when it's dry.">
+				<div class="ratingnumeral centered" id="rating">
+					+1.4				</div>
+		</div>
+						</div>
+				
+			</div>
+							
+		</td>
+		
+		<td class="topdatacell" width="45%">
+				<div class="headerrow1 roundtop" id="nemesesheader" style="text-align: left; cursor: pointer ;">
+        <div style="float: right; line-height: 18px;" class="h2hfaq">
+            <img border="0" src="img/h2h.png"/>
+		&nbsp;<a href="?n=talk&sn=f#q13"><span class="faqlink">?</span></a>
+        </div>
+		<h2 style="display: inline-block; "><img src="img/minus.png" class="toggler expanderimg" border="0"/> Top Nemeses</h2> 
+        
+	</div>
+	<div id="nemeses" style="display: block;">
+		<table class="fulldatatable" style="margin: 0px;"	 >
+		<tr class="headerrow2"><th>Nemeses</th><th>Wins</th><th>Losses</th><th>Win%</th><th>Margin</th></tr>
+					<tr class="footerrow1"><td colspan="5" align="right">
+			<form action="/" method="get">
+			<input type="hidden" name="n" value="racers" />
+			<input type="hidden" name="sn" value="r" />
+			<input type="hidden" name="rID" value="134561" />
+			from the last <input type="text" value="12" size="2" name="months" /> months
+			</form>
+			</td>   
+			</tr>
+		</table>
+		
+	</div>
+		
+		<div class="headerrow1" id="commonopponentheader" style="text-align: left; cursor: pointer ;" >
+			<img src="img/plus.png " class="toggler expanderimg"  border="0"/> Most Common Opponents
+		</div>
+	
+	<div id="commonopponents" style="display: none;">
+		<table class="fulldatatable" style="margin: 0px;">
+			<tr class="headerrow2"><td>Name</td><td>Races</td><td></td></tr>
+									<tr class="datarow1">
+							<td><a href="/racer/87813">Parker Mccoll</a></td>
+							<td>4</td>
+							<td><a href="/?n=racers&sn=h2h&months=24&rID0=134561&rID1=87813" title="Head to Head">h2h</a></td>
+						</tr>
+											<tr class="datarow2">
+							<td><a href="/racer/149232">Benjamin Lauer</a></td>
+							<td>4</td>
+							<td><a href="/?n=racers&sn=h2h&months=24&rID0=134561&rID1=149232" title="Head to Head">h2h</a></td>
+						</tr>
+											<tr class="datarow1">
+							<td><a href="/racer/159898">Ben Kowalczyk</a></td>
+							<td>4</td>
+							<td><a href="/?n=racers&sn=h2h&months=24&rID0=134561&rID1=159898" title="Head to Head">h2h</a></td>
+						</tr>
+											<tr class="datarow2">
+							<td><a href="/racer/208541">Keegan Mccluskey</a></td>
+							<td>4</td>
+							<td><a href="/?n=racers&sn=h2h&months=24&rID0=134561&rID1=208541" title="Head to Head">h2h</a></td>
+						</tr>
+											<tr class="datarow1">
+							<td><a href="/racer/64032">Jason Kozicki</a></td>
+							<td>3</td>
+							<td><a href="/?n=racers&sn=h2h&months=24&rID0=134561&rID1=64032" title="Head to Head">h2h</a></td>
+						</tr>
+								<tr class="footerrow1"><td colspan="5" align="right">
+			<form action="/" method="get">
+			<input type="hidden" name="n" value="racers" />
+			<input type="hidden" name="sn" value="r" />
+			<input type="hidden" name="rID" value="134561" />
+			from the last <input type="text" value="24" size="2" name="comm_months" /> months
+			</form>
+			</td>   
+			</tr>
+		</table>
+		
+	</div>
+
+	
+		</td>
+		<td class="topdatacell" width="30%" id="graphs">
+			
+				<div class="headerrow1 roundtop"><h2>Graphs o' Stuff</h2></div>
+				<div class="headerrow" style="text-align: right">
+					
+						Select: <select id="graphchanger" onchange="ChangeGraph('');">
+							<option value="2">Points Over Time</option>
+							<option value="1">Points List Over Time</option>
+							<option value="0">Percent Beat Over Time</option>
+							<option value="3">Percent Beat Histogram</option>
+							
+						</select>
+				</div>
+				<div class="headerrow3" style="text-align:right">
+					
+						<a href="#" onclick="ChangeGraph('All'); return false;">All</a>
+						<a href="#" onclick="ChangeGraph('3y');return false;">3y</a>
+						<a href="#" onclick="ChangeGraph('1y');return false;">1y</a>
+						<a href="#" onclick="ChangeGraph('3m');return false;">3m</a>
+						<a href="#" onclick="ChangeGraph('1m');return false;">1m</a>
+					</div>
+				<div>
+					<table class="datatable1" id="pointsovertime" >
+						<tr class="headerrow3"><td><span id="graphtitle">Points Scored - All Time</span></td><td align="center" valign="middle"><a href="?n=talk&sn=f#q3"><span class="faqlink">?</span></a></td></tr>
+						<tr><td align="center" colspan="2">
+							<div id="graphtarget">
+								<!--<img src="racerhistorygraph.php?racerID=134561&type=pct&subtype=pts"/>-->
+							</div>
+							<div id="debug">
+							</div>
+						</td></tr>
+					</table>
+					<table class="datatable1" id="pointslistovertime" style="display:none;" >
+						<tr class="headerrow3"><td>Points List Over Time</td>
+						<td align="center" valign="middle"><a href="?n=talk&sn=f#q3"><span class="faqlink">?</span></a></td></tr>
+						<tr><td align="center" colspan="2">
+						<img id="pointslistovertimeimg">
+						</td></table>
+					<table class="datatable1" id="pctbeathist" style="display:none;">
+						<tr class="headerrow3"><td>% beat Histogram </td><td align="center" valign="middle"><a href="?n=talk&sn=f#q3"><span class="faqlink">?</span></a></td></tr>
+						<tr><td align="center" colspan="2">
+							<img id="pctbeathistimg">
+						</td></tr>
+						<tr><td align="left"><-bad-</td><td align="right"> -good-></td></tr>
+					</table>
+					<table class="datatable1" id="pctbeattime" style="display:none;" >
+						<tr class="headerrow3"><td>% beaten over time</td><td align="center" valign="middle"><a href="?n=talk&sn=f#q3"><span class="faqlink">?</span></a></td></tr>
+						<tr><td align="center" colspan="2">
+						<img id="pctbeattimeimg" >
+						</td></tr>
+					</table>
+					</div>
+			
+		<div class="careerstat" width="100%" style="display: none; margin: 0px;">
+			<div class="headerrow1 roundtop"><h2>Regions</h2></div>
+            
+			<table width="100%" class="graycontent datatable1" style="text-align: left;">
+            <tr><th>Name</th><th>Races</th></tr>
+								<tr class="datarow2"><td>North Central</td><td>53</td></tr>
+								<tr class="datarow1"><td>Mountain West</td><td>1</td></tr>
+								<tr class="datarow2"><td>Mid Atlantic</td><td>2</td></tr>
+						</table>
+			
+		</div>
+		
+		<div class="yearstat" width="100%" style="margin: 0px;">
+			<div class="headerrow1 roundtop"><h2>Regions</h2></div>
+         
+			<table width="100%" class="graycontent datatable1">
+            <tr><th>Name</th><th>Races</th></tr>
+						</table>
+			
+		</div>
+		</td>
+		</tr>
+	</table>
+    </div>
+    
+    <h2>Race History
+        <i class="fa fa-download download" title="download"></i>
+        <span class="downloadoptions">
+            
+            <a href="downloadracer.php?rID=134561">
+                csv
+            </a>
+           |
+            <a href="downloadracer.php?rID=134561&json=1">
+                json
+            </a>
+            
+        </span>
+    </h2>
+    
+			    <a class="expandMonth" href="#">
+		        <div class="headerrow1" style="margin-top: 1em;" >
+		            <img src="img/plus.png" border="0" class="expanderimg"/>2015 - 3 races 
+		        </div>
+		        </a>
+		        <div class="monthContent" style="display: none;">
+                <div style=" max-width: 100%; overflow-x: auto; ">
+       
+		        <table class="datatable1" width="100%">
+		        <tr class="headerrow2">
+								
+				<th width="60px" class="hidemobile"></th><th width="300px">Race Name</th><th>Category</th><th width="200px">Team Name</th><th class="number">Place</th><th width="70px;" class="number">Racers</th><th class="number">Points</th><th width="70px;" class="number upgrades">Upg Pts*</th>
+		        		        
+		        </tr>
+		        			<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 7				                </td>
+                <td>
+										<a href="/race/5607#r134561">Estabrook Park Beer Garden Cyclocross presented by Cyclohaus</a>
+									</td>
+				<td>Men Junior 15-18</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1630486" size="40" value="">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/1238">
+												</a>
+										</div>
+				</td>
+				<td class="number">4 </td>
+                <td class="number">9</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">424.47</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 14				                </td>
+                <td>
+										<a href="/race/5663#r134561">Cam-Rock Cross</a>
+									</td>
+				<td>Men Junior 15-18</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1638083" size="40" value="">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/1238">
+												</a>
+										</div>
+				</td>
+				<td class="number">5 </td>
+                <td class="number">9</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">424.49</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 21				                </td>
+                <td>
+										<a href="/race/5726#r134561">Battle of Waterloo CX</a>
+									</td>
+				<td>Men Junior 15-18</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1659159" size="40" value="">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/1238">
+												</a>
+										</div>
+				</td>
+				<td class="number">7 </td>
+                <td class="number">10</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">440.95</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+			</table></div></div>			    <a class="expandMonth" href="#">
+		        <div class="headerrow1" style="margin-top: 1em;" >
+		            <img src="img/plus.png" border="0" class="expanderimg"/>2016 - 13 races 
+		        </div>
+		        </a>
+		        <div class="monthContent" style="display: none;">
+                <div style=" max-width: 100%; overflow-x: auto; ">
+       
+		        <table class="datatable1" width="100%">
+		        <tr class="headerrow2">
+								
+				<th width="60px" class="hidemobile"></th><th width="300px">Race Name</th><th>Category</th><th width="200px">Team Name</th><th class="number">Place</th><th width="70px;" class="number">Racers</th><th class="number">Points</th><th width="70px;" class="number upgrades">Upg Pts*</th>
+		        		        
+		        </tr>
+		        			<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 17				                </td>
+                <td>
+										<a href="/race/6146#r134561">Trek CXC Cup</a>
+									</td>
+				<td>Men Juniors 15-16 Open</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1776158" size="40" value="Team Velocause">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/23544">
+						Team Velocause						</a>
+										</div>
+				</td>
+				<td class="number">1 </td>
+                <td class="number">12</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">401.04</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+													<i>4</i>													                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Oct 1				                </td>
+                <td>
+										<a href="/race/6262#r134561">Flyover Silver Creek</a>
+									</td>
+				<td>Junior 15-18</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1811774" size="40" value="Team Velocause">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/23544">
+						Team Velocause						</a>
+										</div>
+				</td>
+				<td class="number">2 </td>
+                <td class="number">4</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; "></span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Oct 8				                </td>
+                <td>
+										<a href="/race/6332#r134561">Grafton PumpkinCross</a>
+									</td>
+				<td>Junior 15-18</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1838347" size="40" value="Team Velocause">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/23544">
+						Team Velocause						</a>
+										</div>
+				</td>
+				<td class="number">1 </td>
+                <td class="number">6</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">382.36</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+													<i>3</i>													                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Oct 15				                </td>
+                <td>
+										<a href="/race/6400#r134561">Humbolt Park Cyclocross</a>
+									</td>
+				<td>Junior 15-18</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1855704" size="40" value="Team Velocause">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/23544">
+						Team Velocause						</a>
+										</div>
+				</td>
+				<td class="number">3 </td>
+                <td class="number">3</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; "></span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Oct 15				                </td>
+                <td>
+										<a href="/race/6400#r134561">Humbolt Park Cyclocross</a>
+									</td>
+				<td>Elite Cat 4</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1855743" size="40" value="Team Velocause">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/23544">
+						Team Velocause						</a>
+										</div>
+				</td>
+				<td class="number">10 </td>
+                <td class="number">39</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">450.78</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 5				                </td>
+                <td>
+										<a href="/race/6612#r134561">Estabrook Park Beer Garden Classic p/b Cyclohaus</a>
+									</td>
+				<td> Cat 4</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1939313" size="40" value="Team Velocause">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/23544">
+						Team Velocause						</a>
+										</div>
+				</td>
+				<td class="number">7 </td>
+                <td class="number">51</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">402.48</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+													<i>1</i>													                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 13				                </td>
+                <td>
+										<a href="/race/6684#r134561">Battle of Waterloo CX</a>
+									</td>
+				<td>Junior 15-18</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1965949" size="40" value="Team Velocause">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/23544">
+						Team Velocause						</a>
+										</div>
+				</td>
+				<td class="number">2 </td>
+                <td class="number">8</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">379.07</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+													<i>2</i>													                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 13				                </td>
+                <td>
+										<a href="/race/6684#r134561">Battle of Waterloo CX</a>
+									</td>
+				<td>Elite Single Speed</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1965999" size="40" value="Team Velocause">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/23544">
+						Team Velocause						</a>
+										</div>
+				</td>
+				<td class="number">16 </td>
+                <td class="number">25</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">469.82</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 19				                </td>
+                <td>
+										<a href="/race/6764#r134561">Sijan Cross</a>
+									</td>
+				<td>Elite Single Speed</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1987598" size="40" value="Team Velocause">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/23544">
+						Team Velocause						</a>
+										</div>
+				</td>
+				<td class="number">DNF </td>
+                <td class="number">13</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">627.2</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 19				                </td>
+                <td>
+										<a href="/race/6764#r134561">Sijan Cross</a>
+									</td>
+				<td>Elite Cat 4</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1987600" size="40" value="Team Velocause">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/23544">
+						Team Velocause						</a>
+										</div>
+				</td>
+				<td class="number">2 </td>
+                <td class="number">29</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">364.17</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+													<i>4</i>													                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 20				                </td>
+                <td>
+										<a href="/race/6759#r134561">George Garner Sr. Memorial Race @ Melas</a>
+									</td>
+				<td>Men Cat 4</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1985814" size="40" value="Team Velocause">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/23544">
+						Team Velocause						</a>
+										</div>
+				</td>
+				<td class="number">2 </td>
+                <td class="number">68</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">330.69</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+													<i>8</i>													                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 20				                </td>
+                <td>
+										<a href="/race/6759#r134561">George Garner Sr. Memorial Race @ Melas</a>
+									</td>
+				<td>Open Junior 15-18</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1985957" size="40" value="Team Velocause">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/23544">
+						Team Velocause						</a>
+										</div>
+				</td>
+				<td class="number">2 </td>
+                <td class="number">33</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">335.8</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+													<i>4</i>													                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 3				                </td>
+                <td>
+										<a href="/race/6850#r134561">Wisconsin State Championships</a>
+									</td>
+				<td>Junior 15-18</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2008811" size="40" value="Team Velocause">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/23544">
+						Team Velocause						</a>
+										</div>
+				</td>
+				<td class="number">1 </td>
+                <td class="number">10</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">367.52</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+													<i>3</i>													                    </span>
+                   
+                </td>
+							</tr>
+			</table></div></div>			    <a class="expandMonth" href="#">
+		        <div class="headerrow1" style="margin-top: 1em;" >
+		            <img src="img/plus.png" border="0" class="expanderimg"/>2017 - 13 races 
+		        </div>
+		        </a>
+		        <div class="monthContent" style="display: none;">
+                <div style=" max-width: 100%; overflow-x: auto; ">
+       
+		        <table class="datatable1" width="100%">
+		        <tr class="headerrow2">
+								
+				<th width="60px" class="hidemobile"></th><th width="300px">Race Name</th><th>Category</th><th width="200px">Team Name</th><th class="number">Place</th><th width="70px;" class="number">Racers</th><th class="number">Points</th><th width="70px;" class="number upgrades">Upg Pts*</th>
+		        		        
+		        </tr>
+		        			<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 15				                </td>
+                <td>
+										<a href="/race/7194#r134561">Jingle Cross, Inc.</a>
+									</td>
+				<td>Men U35 Cat 3</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2081441" size="40" value="Velocause Centraal">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/53445">
+						Velocause Centraal						</a>
+										</div>
+				</td>
+				<td class="number">19 </td>
+                <td class="number">46</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">386.22</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 16				                </td>
+                <td>
+										<a href="/race/7195#r134561">Jingle Cross, Inc.</a>
+									</td>
+				<td>Men U35 Cat 3</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2082194" size="40" value="Velocause Centraal">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/53445">
+						Velocause Centraal						</a>
+										</div>
+				</td>
+				<td class="number">DNF </td>
+                <td class="number">46</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">492.33</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 23				                </td>
+                <td>
+										<a href="/race/7251#r134561">Trek CX Cup Day 2</a>
+									</td>
+				<td>Men  Cat 3</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2102833" size="40" value="Velocause Centraal Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/49076">
+						Velocause Centraal Cycling						</a>
+										</div>
+				</td>
+				<td class="number">13 </td>
+                <td class="number">89</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">320.22</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 24				                </td>
+                <td>
+										<a href="/race/7271#r134561">Trek CX Cup</a>
+									</td>
+				<td>Men  Cat 3</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2102158" size="40" value="Velocause Centraal Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/49076">
+						Velocause Centraal Cycling						</a>
+										</div>
+				</td>
+				<td class="number">14 </td>
+                <td class="number">77</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">318.52</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Oct 7				                </td>
+                <td>
+										<a href="/race/7384#r134561">Grafton PumpkinCross</a>
+									</td>
+				<td> Category 3</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2139310" size="40" value="Velocause Centraal Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/49076">
+						Velocause Centraal Cycling						</a>
+										</div>
+				</td>
+				<td class="number">3 </td>
+                <td class="number">21</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">339.87</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+													<i>3</i>													                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Oct 15				                </td>
+                <td>
+										<a href="/race/7429#r134561">Carpentersville Woodland School Cyclocross</a>
+									</td>
+				<td>Men Open Cat3</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2155236" size="40" value="Velocause Centraal Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/49076">
+						Velocause Centraal Cycling						</a>
+										</div>
+				</td>
+				<td class="number">22 </td>
+                <td class="number">49</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">374.34</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Oct 21				                </td>
+                <td>
+										<a href="/race/7499#r134561">GP Jo Vanderaffe</a>
+									</td>
+				<td>Men Junior 15-18</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2178165" size="40" value="Velocause Centraal Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/49076">
+						Velocause Centraal Cycling						</a>
+										</div>
+				</td>
+				<td class="number">1 </td>
+                <td class="number">2</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; "></span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 12				                </td>
+                <td>
+										<a href="/race/7735#r134561">Fat Kats Cross Race</a>
+									</td>
+				<td>Men Junior 15-18</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2257827" size="40" value="Velocause Centraal Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/49076">
+						Velocause Centraal Cycling						</a>
+										</div>
+				</td>
+				<td class="number">3 </td>
+                <td class="number">3</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; "></span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 2				                </td>
+                <td>
+										<a href="/race/7890#r134561">Wisconsin State Cyclocross Championships</a>
+									</td>
+				<td>Men Junior 15-18</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2296750" size="40" value="Velocause Centraal Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/49076">
+						Velocause Centraal Cycling						</a>
+										</div>
+				</td>
+				<td class="number">8 </td>
+                <td class="number">11</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">442.17</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 2				                </td>
+                <td>
+										<a href="/race/7890#r134561">Wisconsin State Cyclocross Championships</a>
+									</td>
+				<td> Category 3</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2296920" size="40" value="Velocause Centraal Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/49076">
+						Velocause Centraal Cycling						</a>
+										</div>
+				</td>
+				<td class="number">DNF </td>
+                <td class="number">35</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">494.98</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 3				                </td>
+                <td>
+										<a href="/race/7886#r134561">2017 Illinois State Cyclocross Championships</a>
+									</td>
+				<td>Open Junior 15-18</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2294054" size="40" value="Velocause Centraal Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/49076">
+						Velocause Centraal Cycling						</a>
+										</div>
+				</td>
+				<td class="number">7 </td>
+                <td class="number">32</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">380.22</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 9				                </td>
+                <td>
+										<a href="/race/7936#r134561">Midwest Cyclocross Regional Championship</a>
+									</td>
+				<td> Category 3</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2308256" size="40" value="Velocause Centraal Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/49076">
+						Velocause Centraal Cycling						</a>
+										</div>
+				</td>
+				<td class="number">17 </td>
+                <td class="number">23</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">433.53</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 17				                </td>
+                <td>
+										<a href="/race/7999#r134561">Afterglow - A Cyclocross Race</a>
+									</td>
+				<td>Men Cat 3</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2320911" size="40" value="Velocause Centraal Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/49076">
+						Velocause Centraal Cycling						</a>
+										</div>
+				</td>
+				<td class="number">5 </td>
+                <td class="number">24</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">348.15</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+													<i>1</i>													                    </span>
+                   
+                </td>
+							</tr>
+			</table></div></div>			    <a class="expandMonth" href="#">
+		        <div class="headerrow1" style="margin-top: 1em;" >
+		            <img src="img/plus.png" border="0" class="expanderimg"/>2018 - 13 races 
+		        </div>
+		        </a>
+		        <div class="monthContent" style="display: none;">
+                <div style=" max-width: 100%; overflow-x: auto; ">
+       
+		        <table class="datatable1" width="100%">
+		        <tr class="headerrow2">
+								
+				<th width="60px" class="hidemobile"></th><th width="300px">Race Name</th><th>Category</th><th width="200px">Team Name</th><th class="number">Place</th><th width="70px;" class="number">Racers</th><th class="number">Points</th><th width="70px;" class="number upgrades">Upg Pts*</th>
+		        		        
+		        </tr>
+		        			<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 22				                </td>
+                <td>
+										<a href="/race/8236#r134561">Trek CX Cup</a>
+									</td>
+				<td>Men Cat 3</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2379016" size="40" value="Velocause Centraal Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/49076">
+						Velocause Centraal Cycling						</a>
+										</div>
+				</td>
+				<td class="number">8 </td>
+                <td class="number">90</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">327.95</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+													<i>4</i>													                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 23				                </td>
+                <td>
+										<a href="/race/8237#r134561">Trek CX Cup</a>
+									</td>
+				<td>Men Cat 3</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2379958" size="40" value="Velocause Centraal Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/49076">
+						Velocause Centraal Cycling						</a>
+										</div>
+				</td>
+				<td class="number">8 </td>
+                <td class="number">80</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">315.76</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+													<i>2</i>													                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 28				                </td>
+                <td>
+										<a href="/race/8273#r134561">Jingle Cross Day 1</a>
+									</td>
+				<td>Men Open Cat3</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2394080" size="40" value="Velocause Centraal">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/53445">
+						Velocause Centraal						</a>
+										</div>
+				</td>
+				<td class="number">3 </td>
+                <td class="number">52</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">300.68</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+													<i>5</i>													                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 29				                </td>
+                <td>
+										<a href="/race/8274#r134561">Jingle Cross Day 2</a>
+									</td>
+				<td>Men Open Cat3</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2394795" size="40" value="Velocause Centraal">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/53445">
+						Velocause Centraal						</a>
+										</div>
+				</td>
+				<td class="number">DNF </td>
+                <td class="number">43</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">484.07</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 30				                </td>
+                <td>
+										<a href="/race/8275#r134561">Jingle Cross Day 3</a>
+									</td>
+				<td>Men Open Cat3</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2396981" size="40" value="Velocause Centraal">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/53445">
+						Velocause Centraal						</a>
+										</div>
+				</td>
+				<td class="number">6 </td>
+                <td class="number">41</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">309.92</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+													<i>2</i>													                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Oct 28				                </td>
+                <td>
+										<a href="/race/8535#r134561">Cincinnati UCI Cyclocross Weekend</a>
+									</td>
+				<td>Men UCI Elite Juniorrs</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2498359" size="40" value="Velocause Centraal">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/53445">
+						Velocause Centraal						</a>
+										</div>
+				</td>
+				<td class="number">DNF </td>
+                <td class="number">22</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">362.85</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 3				                </td>
+                <td>
+										<a href="/race/8608#r134561">Estabrook Park Beer Garden Cyclocross Classic</a>
+									</td>
+				<td>Elite Category 3</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2512350" size="40" value="Velocause Centraal Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/49076">
+						Velocause Centraal Cycling						</a>
+										</div>
+				</td>
+				<td class="number">1 </td>
+                <td class="number">24</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">320.89</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+													<i>5</i>													                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 11				                </td>
+                <td>
+										<a href="/race/8678#r134561">Wheeling Heritage CX</a>
+									</td>
+				<td>Men Cat 1/2/3</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2536676" size="40" value="Velocause Centraal Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/49076">
+						Velocause Centraal Cycling						</a>
+										</div>
+				</td>
+				<td class="number">15 </td>
+                <td class="number">35</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">300.43</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 17				                </td>
+                <td>
+										<a href="/race/8777#r134561">Major Taylor 'Cross Cup Day 1</a>
+									</td>
+				<td>Men UCI Junior</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2557796" size="40" value="Velocause Centraal">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/53445">
+						Velocause Centraal						</a>
+										</div>
+				</td>
+				<td class="number">12 </td>
+                <td class="number">17</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">362.76</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 18				                </td>
+                <td>
+										<a href="/race/8778#r134561">Major Taylor 'Cross Cup Day 2</a>
+									</td>
+				<td>Men UCI Elite Juniors</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2558222" size="40" value="Velocause Centraal">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/53445">
+						Velocause Centraal						</a>
+										</div>
+				</td>
+				<td class="number">11 </td>
+                <td class="number">17</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">355.66</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 1				                </td>
+                <td>
+										<a href="/race/8891#r134561">Wisconsin State Cyclocross Championships p/b Revolution Cycles Club </a>
+									</td>
+				<td>Elite Category 1/2/3</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2587573" size="40" value="Velocause Centraal Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/49076">
+						Velocause Centraal Cycling						</a>
+										</div>
+				</td>
+				<td class="number">11 </td>
+                <td class="number">16</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">303.69</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 8				                </td>
+                <td>
+										<a href="/race/8926#r134561">Midwest Cyclocross Regional Championship</a>
+									</td>
+				<td> Category 3</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2595732" size="40" value="Velocause Centraal Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/49076">
+						Velocause Centraal Cycling						</a>
+										</div>
+				</td>
+				<td class="number">DNF </td>
+                <td class="number">22</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">532.77</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 16				                </td>
+                <td>
+										<a href="/race/8944#r134561">2018 US Cyclocross Nationals 18.2 Day 6</a>
+									</td>
+				<td>Men Junior 17-18 Cat 1/2/3</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2599696" size="40" value="Velocause Centraal Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/49076">
+						Velocause Centraal Cycling						</a>
+										</div>
+				</td>
+				<td class="number">25 </td>
+                <td class="number">65</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">320.9</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+			</table></div></div>			    <a class="expandMonth" href="#">
+		        <div class="headerrow1" style="margin-top: 1em;" >
+		            <img src="img/plus.png" border="0" class="expanderimg"/>2019 - 6 races 
+		        </div>
+		        </a>
+		        <div class="monthContent" style="display: none;">
+                <div style=" max-width: 100%; overflow-x: auto; ">
+       
+		        <table class="datatable1" width="100%">
+		        <tr class="headerrow2">
+								
+				<th width="60px" class="hidemobile"></th><th width="300px">Race Name</th><th>Category</th><th width="200px">Team Name</th><th class="number">Place</th><th width="70px;" class="number">Racers</th><th class="number">Points</th><th width="70px;" class="number upgrades">Upg Pts*</th>
+		        		        
+		        </tr>
+		        			<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 21				                </td>
+                <td>
+										<a href="/race/9230#r134561">Trek CX Cup Day 2</a>
+									</td>
+				<td>Men Cat 3</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2721860" size="40" value="Velocause Centraal">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/53445">
+						Velocause Centraal						</a>
+										</div>
+				</td>
+				<td class="number">5 </td>
+                <td class="number">77</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">304.2</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+													<i>5</i>													                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 22				                </td>
+                <td>
+										<a href="/race/9231#r134561">Trek CX Cup Day 3</a>
+									</td>
+				<td>Men Cat 3</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2722617" size="40" value="Velocause Centraal">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/53445">
+						Velocause Centraal						</a>
+										</div>
+				</td>
+				<td class="number">3 </td>
+                <td class="number">56</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">295.92</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+													<i>5</i>													                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Oct 26				                </td>
+                <td>
+										<a href="/race/9572#r134561">Cincinnati UCI Cyclocross - Kings CX Day 1</a>
+									</td>
+				<td>Men  2 -  3   40+  U19  U23</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2772112" size="40" value="">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+																					</div>
+				</td>
+				<td class="number">15 </td>
+                <td class="number">87</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">286.37</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Oct 27				                </td>
+                <td>
+										<a href="/race/9573#r134561">Cincinnati UCI Cyclocross - Kings CX Day 2</a>
+									</td>
+				<td>Men  2 -  3   40+  U19  U23</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2772649" size="40" value="">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+																					</div>
+				</td>
+				<td class="number">16 </td>
+                <td class="number">81</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">305.72</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 8				                </td>
+                <td>
+										<a href="/race/9856#r134561">Montrose Beach - Chicago Cyclocross Cup #11 / Midwest Regional Cyclocr</a>
+									</td>
+				<td>Men Cat 3</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2851894" size="40" value="Velocause Centraal Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/49076">
+						Velocause Centraal Cycling						</a>
+										</div>
+				</td>
+				<td class="number">3 </td>
+                <td class="number">64</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">276.98</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+													<i>7</i>													                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 15				                </td>
+                <td>
+										<a href="/race/9918#r134561">Afterglow - A Cyclocross Race</a>
+									</td>
+				<td>Men Cat 3</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2860865" size="40" value="Velocause Centraal Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/49076">
+						Velocause Centraal Cycling						</a>
+										</div>
+				</td>
+				<td class="number">1 </td>
+                <td class="number">13</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">298.35</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+													<i>4</i>													                    </span>
+                   
+                </td>
+							</tr>
+			</table></div></div>			    <a class="expandMonth" href="#">
+		        <div class="headerrow1" style="margin-top: 1em;" >
+		            <img src="img/plus.png" border="0" class="expanderimg"/>2021 - 1 races 
+		        </div>
+		        </a>
+		        <div class="monthContent" style="display: none;">
+                <div style=" max-width: 100%; overflow-x: auto; ">
+       
+		        <table class="datatable1" width="100%">
+		        <tr class="headerrow2">
+								
+				<th width="60px" class="hidemobile"></th><th width="300px">Race Name</th><th>Category</th><th width="200px">Team Name</th><th class="number">Place</th><th width="70px;" class="number">Racers</th><th class="number">Points</th><th width="70px;" class="number upgrades">Upg Pts*</th>
+		        		        
+		        </tr>
+		        			<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Oct 9				                </td>
+                <td>
+										<a href="/race/10362#r134561">Trek CX Cup</a>
+									</td>
+				<td>Men Cat 3 Elite</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2959626" size="40" value="Adapt Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/63806">
+						Adapt Cycling						</a>
+										</div>
+				</td>
+				<td class="number">18 </td>
+                <td class="number">53</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">356.49</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+			</table></div></div>			    <a class="expandMonth" href="#">
+		        <div class="headerrow1" style="margin-top: 1em;" >
+		            <img src="img/minus.png" border="0" class="expanderimg"/>2023 - 7 races 
+		        </div>
+		        </a>
+		        <div class="monthContent" style="">
+                <div style=" max-width: 100%; overflow-x: auto; ">
+       
+		        <table class="datatable1" width="100%">
+		        <tr class="headerrow2">
+								
+				<th width="60px" class="hidemobile"></th><th width="300px">Race Name</th><th>Category</th><th width="200px">Team Name</th><th class="number">Place</th><th width="70px;" class="number">Racers</th><th class="number">Points</th><th width="70px;" class="number upgrades">Upg Pts*</th>
+		        		        
+		        </tr>
+		        			<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 9				                </td>
+                <td>
+										<a href="/race/11657#r134561">Flyover Silver Creek p/b Heavy Pedal Velo Club and Broken Spoke Bikes</a>
+									</td>
+				<td>Men Category 3/4 Elite</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="3403513" size="40" value="Adapt Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/63806">
+						Adapt Cycling						</a>
+										</div>
+				</td>
+				<td class="number">7 </td>
+                <td class="number">32</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">352.71</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 16				                </td>
+                <td>
+										<a href="/race/11682#r134561">Englewood CX p/b Brazen Dropouts</a>
+									</td>
+				<td>Men Category 1/2/3 Elite</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="3311534" size="40" value="Adapt Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/63806">
+						Adapt Cycling						</a>
+										</div>
+				</td>
+				<td class="number">11 </td>
+                <td class="number">14</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">358.72</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 23				                </td>
+                <td>
+										<a href="/race/11705#r134561">Sheboygan County Cycling Classic</a>
+									</td>
+				<td>Men Category 3/4 Elite</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="3334434" size="40" value="Adapt Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/63806">
+						Adapt Cycling						</a>
+										</div>
+				</td>
+				<td class="number">3 </td>
+                <td class="number">23</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">313.69</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+													3													                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 24				                </td>
+                <td>
+										<a href="/race/11711#r134561">Battle of Waterloo CX p/b Trek Midwest Team</a>
+									</td>
+				<td>Men Category 3/4 Elite</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="3345981" size="40" value="Adapt Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/63806">
+						Adapt Cycling						</a>
+										</div>
+				</td>
+				<td class="number">DNF </td>
+                <td class="number">30</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">504.47</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Oct 7				                </td>
+                <td>
+										<a href="/race/11798#r134561">Diablo Sunnyview Cross</a>
+									</td>
+				<td>Men Category 3/4 Elite</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="3350315" size="40" value="Adapt Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/63806">
+						Adapt Cycling						</a>
+										</div>
+				</td>
+				<td class="number">4 </td>
+                <td class="number">31</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">322.4</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+													2													                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Oct 7				                </td>
+                <td>
+										<a href="/race/11821#r134561">CCC #2 - Jackson Park CX</a>
+									</td>
+				<td>Men Cat 1/2/3</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="3354036" size="40" value="Adapt Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/63806">
+						Adapt Cycling						</a>
+										</div>
+				</td>
+				<td class="number">9 </td>
+                <td class="number">28</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">296.81</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Oct 14				                </td>
+                <td>
+										<a href="/race/11864#r134561">2023 Trek CX Cup</a>
+									</td>
+				<td>Men Cat 3 Elite</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="3381716" size="40" value="Adapt Cycling">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/63806">
+						Adapt Cycling						</a>
+										</div>
+				</td>
+				<td class="number">13 </td>
+                <td class="number">48</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; font-weight: bold;  color: green;">327.08</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+			<tr class="headerrow2 historyfooter">
+	<td colspan="5" align="right">
+		<b>Points</b> (Oct 12 2024):
+	
+        </td>
+    <td align="center">
+
+		 
+			<span style="font-style:italic" title="These points have expired and this racer will not appear on the current points lists">
+				327.08*
+			</span>
+		
+		<!--a href="#" id="pointsdetail" racerID="134561" AsOfDate="Oct 12 2024"><span class="faqlink">?</span></a-->
+		<div class="popup" style="position:absolute; display:none; border: 1px solid black; background: white; padding: 5px;">
+			<img src="img\snake_transparent.gif"/>
+		</div>
+        	</td>
+	<td ></td>
+    <td align="center">
+        <div class="upgrades">Upgrade Points: 
+            <a href="#" class="showupgradepoints">[show]</a>
+            <div class="totalupgradepoints detail" style="display:none; position: absolute; ">
+                <b>Estimated USAC Upgrade points</b>:<br/>
+                <span style="font-size: smaller">(Assuming every race they've done was USAC-sanctioned,
+                 and everyone they raced was in their category -- i.e. this is a high estimate)</span><br/>
+                <i>Voluntary Upgrade Points (last 36 months)</i>: <b>5</b><br/>
+                <i>Mandatory Upgrade Points (last 12 months)</i>: <b>0</b><br/>
+            </div>
+        </div>
+    </td>
+	    </table>
+<div class="ageinfo" id="pointsexp">
+    <p>
+		<strong>Points in bold</strong> are being considered for the current points. <br/>
+		<em>Points in italics</em> are being ignored because they were your second race that day.</em><br/>
+		<span style="color: green;"> Green points</span> are the <b>best five races in the last 12 months</b> -- the average of these are your current points.
+    </p>
+</div
+
+<br/>
+
+
+<div class="ageinfo upgrades"  style="font-size: smaller;">
+* - Upgrade points make some assumptions about what category the race was (different categories have different minimum racer requirements and point structures).  
+Points are based off of information found <a href="https://usacycling.org/about-us/governance/policy-viii?gad_source=1&gclid=Cj0KCQjw8pKxBhD_ARIsAPrG45kD6m4eBF7g5avZzjGDLD19vS2gVvi_C8Oun8YeJby6HtJI_BfEXgEaAoa1EALw_wcB">here</a>.  As with any other metadata on this site, this information should be used as
+a guide, not a definitive source -- for upgrade questions, please contact your local USA Cycling representative.  Upgrade points from more than three years ago appear in italics and are excluded from calculations.
+</div>
+
+</div>
+
+<div id="habitat">
+
+ <style type="text/css">
+      html, body, #myMap {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+	  .customInfoBox-previewArea
+	  {
+		margin-bottom: -25px;
+	  }
+    </style>
+</script>
+<script type="text/javascript" src="ts/habitat.js"/>
+<script type="text/javascript">
+	var map = new mapboxgl.Map({
+		container: 'myMap',
+		style: 'https://tilecdn.pinkbike.org/styles/trailforks-imperial/style.json',
+		center: [-11.84664, 40.783726],
+		zoom: 4
+	  });
+
+
+	var map;
+    var lat;
+	var lon;
+	var geocoder = null;	
+	var racesOnMap = new Array(); 
+	
+	function mapsLoaded() {	
+         if(document.getElementById("myMap")) {
+          var uluru = {lat: -25.363, lng: 131.044};
+                var mapOptions = {
+                    zoomControl: true,
+                    zoomControlOptions: {
+                        style: google.maps.ZoomControlStyle.SMALL
+                        },
+                   
+                    mapTypeControl: false,
+                    streetViewControl: false,
+                    zoom: 9,
+                    center: uluru,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+            map = new google.maps.Map(document.getElementById("myMap"), mapOptions);
+       }
+                
+       
+		//add races
+		var race = new Object();
+							race.RaceLat = 43.041809082031;
+					race.RaceLon = -87.906837463379;
+					race.RaceName = 'Estabrook Park Beer Garden Cyclocross presented by Cyclohaus';
+					race.RaceID = 5607;
+					race.RaceDate = new Date('2015-11-7');
+					race.RaceDateDisplay = '11/7/2015';
+					AddMarker(race);
+										race.RaceLat = 43.00373840332;
+					race.RaceLon = -89.017501831055;
+					race.RaceName = 'Cam-Rock Cross';
+					race.RaceID = 5663;
+					race.RaceDate = new Date('2015-11-14');
+					race.RaceDateDisplay = '11/14/2015';
+					AddMarker(race);
+										race.RaceLat = 43.18383026123;
+					race.RaceLon = -88.990112304688;
+					race.RaceName = 'Battle of Waterloo CX';
+					race.RaceID = 5726;
+					race.RaceDate = new Date('2015-11-21');
+					race.RaceDateDisplay = '11/21/2015';
+					AddMarker(race);
+										race.RaceLat = 43.18383026123;
+					race.RaceLon = -88.990112304688;
+					race.RaceName = 'Trek CXC Cup';
+					race.RaceID = 6146;
+					race.RaceDate = new Date('2016-09-17');
+					race.RaceDateDisplay = '09/17/2016';
+					AddMarker(race);
+										race.RaceLat = 44.107570648193;
+					race.RaceLon = -87.661720275879;
+					race.RaceName = 'Flyover Silver Creek';
+					race.RaceID = 6262;
+					race.RaceDate = new Date('2016-10-1');
+					race.RaceDateDisplay = '10/1/2016';
+					AddMarker(race);
+										race.RaceLat = 43.331569671631;
+					race.RaceLon = -87.9345703125;
+					race.RaceName = 'Grafton PumpkinCross';
+					race.RaceID = 6332;
+					race.RaceDate = new Date('2016-10-8');
+					race.RaceDateDisplay = '10/8/2016';
+					AddMarker(race);
+										race.RaceLat = 43.041809082031;
+					race.RaceLon = -87.906837463379;
+					race.RaceName = 'Humbolt Park Cyclocross';
+					race.RaceID = 6400;
+					race.RaceDate = new Date('2016-10-15');
+					race.RaceDateDisplay = '10/15/2016';
+					AddMarker(race);
+										race.RaceLat = 43.041809082031;
+					race.RaceLon = -87.906837463379;
+					race.RaceName = 'Humbolt Park Cyclocross';
+					race.RaceID = 6400;
+					race.RaceDate = new Date('2016-10-15');
+					race.RaceDateDisplay = '10/15/2016';
+					AddMarker(race);
+										race.RaceLat = 43.088691711426;
+					race.RaceLon = -87.884971618652;
+					race.RaceName = 'Estabrook Park Beer Garden Classic p/b Cyclohaus';
+					race.RaceID = 6612;
+					race.RaceDate = new Date('2016-11-5');
+					race.RaceDateDisplay = '11/5/2016';
+					AddMarker(race);
+										race.RaceLat = 43.18383026123;
+					race.RaceLon = -88.990112304688;
+					race.RaceName = 'Battle of Waterloo CX';
+					race.RaceID = 6684;
+					race.RaceDate = new Date('2016-11-13');
+					race.RaceDateDisplay = '11/13/2016';
+					AddMarker(race);
+										race.RaceLat = 43.18383026123;
+					race.RaceLon = -88.990112304688;
+					race.RaceName = 'Battle of Waterloo CX';
+					race.RaceID = 6684;
+					race.RaceDate = new Date('2016-11-13');
+					race.RaceDateDisplay = '11/13/2016';
+					AddMarker(race);
+										race.RaceLat = 43.041809082031;
+					race.RaceLon = -87.906837463379;
+					race.RaceName = 'Sijan Cross';
+					race.RaceID = 6764;
+					race.RaceDate = new Date('2016-11-19');
+					race.RaceDateDisplay = '11/19/2016';
+					AddMarker(race);
+										race.RaceLat = 43.041809082031;
+					race.RaceLon = -87.906837463379;
+					race.RaceName = 'Sijan Cross';
+					race.RaceID = 6764;
+					race.RaceDate = new Date('2016-11-19');
+					race.RaceDateDisplay = '11/19/2016';
+					AddMarker(race);
+										race.RaceLat = 42.065380096435;
+					race.RaceLon = -87.93537902832;
+					race.RaceName = 'George Garner Sr. Memorial Race @ Melas';
+					race.RaceID = 6759;
+					race.RaceDate = new Date('2016-11-20');
+					race.RaceDateDisplay = '11/20/2016';
+					AddMarker(race);
+										race.RaceLat = 42.065380096435;
+					race.RaceLon = -87.93537902832;
+					race.RaceName = 'George Garner Sr. Memorial Race @ Melas';
+					race.RaceID = 6759;
+					race.RaceDate = new Date('2016-11-20');
+					race.RaceDateDisplay = '11/20/2016';
+					AddMarker(race);
+										race.RaceLat = 43.18383026123;
+					race.RaceLon = -88.990112304688;
+					race.RaceName = 'Wisconsin State Championships';
+					race.RaceID = 6850;
+					race.RaceDate = new Date('2016-12-3');
+					race.RaceDateDisplay = '12/3/2016';
+					AddMarker(race);
+										race.RaceLat = 41.657821655273;
+					race.RaceLon = -91.526527404785;
+					race.RaceName = 'Jingle Cross, Inc.';
+					race.RaceID = 7194;
+					race.RaceDate = new Date('2017-09-15');
+					race.RaceDateDisplay = '09/15/2017';
+					AddMarker(race);
+										race.RaceLat = 41.657821655273;
+					race.RaceLon = -91.526527404785;
+					race.RaceName = 'Jingle Cross, Inc.';
+					race.RaceID = 7195;
+					race.RaceDate = new Date('2017-09-16');
+					race.RaceDateDisplay = '09/16/2017';
+					AddMarker(race);
+										race.RaceLat = 43.18383026123;
+					race.RaceLon = -88.990112304688;
+					race.RaceName = 'Trek CX Cup Day 2';
+					race.RaceID = 7251;
+					race.RaceDate = new Date('2017-09-23');
+					race.RaceDateDisplay = '09/23/2017';
+					AddMarker(race);
+										race.RaceLat = 43.18383026123;
+					race.RaceLon = -88.990112304688;
+					race.RaceName = 'Trek CX Cup';
+					race.RaceID = 7271;
+					race.RaceDate = new Date('2017-09-24');
+					race.RaceDateDisplay = '09/24/2017';
+					AddMarker(race);
+										race.RaceLat = 43.320159912109;
+					race.RaceLon = -87.937828063965;
+					race.RaceName = 'Grafton PumpkinCross';
+					race.RaceID = 7384;
+					race.RaceDate = new Date('2017-10-7');
+					race.RaceDateDisplay = '10/7/2017';
+					AddMarker(race);
+										race.RaceLat = 42.118228912354;
+					race.RaceLon = -88.264518737793;
+					race.RaceName = 'Carpentersville Woodland School Cyclocross';
+					race.RaceID = 7429;
+					race.RaceDate = new Date('2017-10-15');
+					race.RaceDateDisplay = '10/15/2017';
+					AddMarker(race);
+										race.RaceLat = 43.041999816895;
+					race.RaceLon = -87.906867980957;
+					race.RaceName = 'GP Jo Vanderaffe';
+					race.RaceID = 7499;
+					race.RaceDate = new Date('2017-10-21');
+					race.RaceDateDisplay = '10/21/2017';
+					AddMarker(race);
+										race.RaceLat = 43.728691101074;
+					race.RaceLon = -87.811973571777;
+					race.RaceName = 'Fat Kats Cross Race';
+					race.RaceID = 7735;
+					race.RaceDate = new Date('2017-11-12');
+					race.RaceDateDisplay = '11/12/2017';
+					AddMarker(race);
+										race.RaceLat = 43.18383026123;
+					race.RaceLon = -88.990112304688;
+					race.RaceName = 'Wisconsin State Cyclocross Championships';
+					race.RaceID = 7890;
+					race.RaceDate = new Date('2017-12-2');
+					race.RaceDateDisplay = '12/2/2017';
+					AddMarker(race);
+										race.RaceLat = 43.18383026123;
+					race.RaceLon = -88.990112304688;
+					race.RaceName = 'Wisconsin State Cyclocross Championships';
+					race.RaceID = 7890;
+					race.RaceDate = new Date('2017-12-2');
+					race.RaceDateDisplay = '12/2/2017';
+					AddMarker(race);
+										race.RaceLat = 41.884250640869;
+					race.RaceLon = -87.632446289062;
+					race.RaceName = '2017 Illinois State Cyclocross Championships';
+					race.RaceID = 7886;
+					race.RaceDate = new Date('2017-12-3');
+					race.RaceDateDisplay = '12/3/2017';
+					AddMarker(race);
+										race.RaceLat = 43.182960510254;
+					race.RaceLon = -89.210731506348;
+					race.RaceName = 'Midwest Cyclocross Regional Championship';
+					race.RaceID = 7936;
+					race.RaceDate = new Date('2017-12-9');
+					race.RaceDateDisplay = '12/9/2017';
+					AddMarker(race);
+										race.RaceLat = 41.884250640869;
+					race.RaceLon = -87.632446289062;
+					race.RaceName = 'Afterglow - A Cyclocross Race';
+					race.RaceID = 7999;
+					race.RaceDate = new Date('2017-12-17');
+					race.RaceDateDisplay = '12/17/2017';
+					AddMarker(race);
+										race.RaceLat = 43.18383026123;
+					race.RaceLon = -88.990112304688;
+					race.RaceName = 'Trek CX Cup';
+					race.RaceID = 8236;
+					race.RaceDate = new Date('2018-09-22');
+					race.RaceDateDisplay = '09/22/2018';
+					AddMarker(race);
+										race.RaceLat = 43.18383026123;
+					race.RaceLon = -88.990112304688;
+					race.RaceName = 'Trek CX Cup';
+					race.RaceID = 8237;
+					race.RaceDate = new Date('2018-09-23');
+					race.RaceDateDisplay = '09/23/2018';
+					AddMarker(race);
+										race.RaceLat = 41.657821655273;
+					race.RaceLon = -91.526527404785;
+					race.RaceName = 'Jingle Cross Day 1';
+					race.RaceID = 8273;
+					race.RaceDate = new Date('2018-09-28');
+					race.RaceDateDisplay = '09/28/2018';
+					AddMarker(race);
+										race.RaceLat = 41.657821655273;
+					race.RaceLon = -91.526527404785;
+					race.RaceName = 'Jingle Cross Day 2';
+					race.RaceID = 8274;
+					race.RaceDate = new Date('2018-09-29');
+					race.RaceDateDisplay = '09/29/2018';
+					AddMarker(race);
+										race.RaceLat = 41.657821655273;
+					race.RaceLon = -91.526527404785;
+					race.RaceName = 'Jingle Cross Day 3';
+					race.RaceID = 8275;
+					race.RaceDate = new Date('2018-09-30');
+					race.RaceDateDisplay = '09/30/2018';
+					AddMarker(race);
+										race.RaceLat = 39.356971740723;
+					race.RaceLon = -84.297622680664;
+					race.RaceName = 'Cincinnati UCI Cyclocross Weekend';
+					race.RaceID = 8535;
+					race.RaceDate = new Date('2018-10-28');
+					race.RaceDateDisplay = '10/28/2018';
+					AddMarker(race);
+										race.RaceLat = 43.041999816895;
+					race.RaceLon = -87.906867980957;
+					race.RaceName = 'Estabrook Park Beer Garden Cyclocross Classic';
+					race.RaceID = 8608;
+					race.RaceDate = new Date('2018-11-3');
+					race.RaceDateDisplay = '11/3/2018';
+					AddMarker(race);
+										race.RaceLat = 42.139541625977;
+					race.RaceLon = -87.916168212891;
+					race.RaceName = 'Wheeling Heritage CX';
+					race.RaceID = 8678;
+					race.RaceDate = new Date('2018-11-11');
+					race.RaceDateDisplay = '11/11/2018';
+					AddMarker(race);
+										race.RaceLat = 39.766910552979;
+					race.RaceLon = -86.149963378906;
+					race.RaceName = 'Major Taylor \'Cross Cup Day 1';
+					race.RaceID = 8777;
+					race.RaceDate = new Date('2018-11-17');
+					race.RaceDateDisplay = '11/17/2018';
+					AddMarker(race);
+										race.RaceLat = 39.766910552979;
+					race.RaceLon = -86.149963378906;
+					race.RaceName = 'Major Taylor \'Cross Cup Day 2';
+					race.RaceID = 8778;
+					race.RaceDate = new Date('2018-11-18');
+					race.RaceDateDisplay = '11/18/2018';
+					AddMarker(race);
+										race.RaceLat = 43.18383026123;
+					race.RaceLon = -88.990112304688;
+					race.RaceName = 'Wisconsin State Cyclocross Championships p/b Revolution Cycles Club ';
+					race.RaceID = 8891;
+					race.RaceDate = new Date('2018-12-1');
+					race.RaceDateDisplay = '12/1/2018';
+					AddMarker(race);
+										race.RaceLat = 43.182960510254;
+					race.RaceLon = -89.210731506348;
+					race.RaceName = 'Midwest Cyclocross Regional Championship';
+					race.RaceID = 8926;
+					race.RaceDate = new Date('2018-12-8');
+					race.RaceDateDisplay = '12/8/2018';
+					AddMarker(race);
+										race.RaceLat = 38.254890441895;
+					race.RaceLon = -85.766662597656;
+					race.RaceName = '2018 US Cyclocross Nationals 18.2 Day 6';
+					race.RaceID = 8944;
+					race.RaceDate = new Date('2018-12-16');
+					race.RaceDateDisplay = '12/16/2018';
+					AddMarker(race);
+										race.RaceLat = 43.18383026123;
+					race.RaceLon = -88.990112304688;
+					race.RaceName = 'Trek CX Cup Day 2';
+					race.RaceID = 9230;
+					race.RaceDate = new Date('2019-09-21');
+					race.RaceDateDisplay = '09/21/2019';
+					AddMarker(race);
+										race.RaceLat = 43.18383026123;
+					race.RaceLon = -88.990112304688;
+					race.RaceName = 'Trek CX Cup Day 3';
+					race.RaceID = 9231;
+					race.RaceDate = new Date('2019-09-22');
+					race.RaceDateDisplay = '09/22/2019';
+					AddMarker(race);
+										race.RaceLat = 39.356971740723;
+					race.RaceLon = -84.297622680664;
+					race.RaceName = 'Cincinnati UCI Cyclocross - Kings CX Day 1';
+					race.RaceID = 9572;
+					race.RaceDate = new Date('2019-10-26');
+					race.RaceDateDisplay = '10/26/2019';
+					AddMarker(race);
+										race.RaceLat = 39.356971740723;
+					race.RaceLon = -84.297622680664;
+					race.RaceName = 'Cincinnati UCI Cyclocross - Kings CX Day 2';
+					race.RaceID = 9573;
+					race.RaceDate = new Date('2019-10-27');
+					race.RaceDateDisplay = '10/27/2019';
+					AddMarker(race);
+										race.RaceLat = 41.884250640869;
+					race.RaceLon = -87.632446289062;
+					race.RaceName = 'Montrose Beach - Chicago Cyclocross Cup #11 / Midwest Regional Cyclocr';
+					race.RaceID = 9856;
+					race.RaceDate = new Date('2019-12-8');
+					race.RaceDateDisplay = '12/8/2019';
+					AddMarker(race);
+										race.RaceLat = 41.884250640869;
+					race.RaceLon = -87.632446289062;
+					race.RaceName = 'Afterglow - A Cyclocross Race';
+					race.RaceID = 9918;
+					race.RaceDate = new Date('2019-12-15');
+					race.RaceDateDisplay = '12/15/2019';
+					AddMarker(race);
+										race.RaceLat = 43.183818817139;
+					race.RaceLon = -88.990432739258;
+					race.RaceName = 'Trek CX Cup';
+					race.RaceID = 10362;
+					race.RaceDate = new Date('2021-10-9');
+					race.RaceDateDisplay = '10/9/2021';
+					AddMarker(race);
+										race.RaceLat = 44.0888443;
+					race.RaceLon = -87.65779877;
+					race.RaceName = 'Flyover Silver Creek p/b Heavy Pedal Velo Club and Broken Spoke Bikes';
+					race.RaceID = 11657;
+					race.RaceDate = new Date('2023-09-9');
+					race.RaceDateDisplay = '09/9/2023';
+					AddMarker(race);
+										race.RaceLat = 43.38696289;
+					race.RaceLon = -89.04775238;
+					race.RaceName = 'Englewood CX p/b Brazen Dropouts';
+					race.RaceID = 11682;
+					race.RaceDate = new Date('2023-09-16');
+					race.RaceDateDisplay = '09/16/2023';
+					AddMarker(race);
+										race.RaceLat = 43.7508812;
+					race.RaceLon = -87.71290588;
+					race.RaceName = 'Sheboygan County Cycling Classic';
+					race.RaceID = 11705;
+					race.RaceDate = new Date('2023-09-23');
+					race.RaceDateDisplay = '09/23/2023';
+					AddMarker(race);
+										race.RaceLat = 43.18381882;
+					race.RaceLon = -88.99043274;
+					race.RaceName = 'Battle of Waterloo CX p/b Trek Midwest Team';
+					race.RaceID = 11711;
+					race.RaceDate = new Date('2023-09-24');
+					race.RaceDateDisplay = '09/24/2023';
+					AddMarker(race);
+										race.RaceLat = 44.02079773;
+					race.RaceLon = -88.54001617;
+					race.RaceName = 'Diablo Sunnyview Cross';
+					race.RaceID = 11798;
+					race.RaceDate = new Date('2023-10-7');
+					race.RaceDateDisplay = '10/7/2023';
+					AddMarker(race);
+										race.RaceLat = 41.8832283;
+					race.RaceLon = -87.63240051;
+					race.RaceName = 'CCC #2 - Jackson Park CX';
+					race.RaceID = 11821;
+					race.RaceDate = new Date('2023-10-7');
+					race.RaceDateDisplay = '10/7/2023';
+					AddMarker(race);
+										race.RaceLat = 43.18381882;
+					race.RaceLon = -88.99043274;
+					race.RaceName = '2023 Trek CX Cup';
+					race.RaceID = 11864;
+					race.RaceDate = new Date('2023-10-14');
+					race.RaceDateDisplay = '10/14/2023';
+					AddMarker(race);
+										//var rect = Microsoft.Maps.LocationRect.fromCorners(new Microsoft.Maps.Location(38.254890441895,-91.526527404785),new Microsoft.Maps.Location(44.107570648193,-84.297622680664));
+					var rect= new google.maps.LatLngBounds({lat:38.254890441895,lng:-91.526527404785},{lat:44.107570648193,lng:-84.297622680664});
+					map.fitBounds(rect);
+				   //  map.setCenter(rect.getCenter());
+						}
+	
+    function PlaceMarker(map, marker,latLng, centerMap,color,caption) {
+        if (marker != null) {
+            marker.setMap(null);
+        }
+        if(centerMap)
+            map.setCenter(latLng);
+        marker = new google.maps.Marker({
+            map: map,
+            position: latLng,
+            title: caption//,
+
+            //icon: '/Images/orange.png'
+        });
+        if (caption)
+            marker.setTitle(caption);
+        if (color)
+            marker.setIcon("http://maps.google.com/mapfiles/ms/icons/"+color+"-dot.png")
+        return marker;
+    }
+
+	function AddMarker(race)
+	{
+		//var latLong = new Microsoft.Maps.Location(race.RaceLat, race.RaceLon);
+        var latlong = {lat: race.RaceLat,lng:race.RaceLon};
+		
+       
+		
+		
+		var today = new Date();
+		today.setFullYear(today.getFullYear()-1);
+		
+		if(race.RaceDate > today)
+			var src='/img/wheelicon2.png';
+		else
+			var src='/img/wheelicon3.png';
+		
+	 var marker = new google.maps.Marker({
+          position: latlong,
+          map: map,
+          title: race.RaceName,
+          icon: src
+        });
+	}
+
+</script>
+<div class="headerrow1">
+<div style="float: right; text-align: right; ">
+		<img src="img/wheelicon2.png" style="vertical-align: middle;"/>- Last 12 months 
+		<img src="img/wheelicon3.png" style="vertical-align: middle;"/> - Older</div>
+	
+	<h2>Natural Habitat</h2>
+	</div>
+<div style="position: relative; width: 100%;	height: 400px; border 1px solid black;" id="myMap">
+</div>
+</div>
+                    </article>
+                </section>
+            </div>
+        </div>
+
+
+
+                    <div class="row-full footer no-print">
+                <div class="row" style="text-align: left">
+                    <p>
+                                                    crossresults.com is a division of <a href="http://athleteReg.com">athleteReg.com</a>, the best
+                            event registration website in the world. If you like
+                            crossresults.com, you should use <A href="http://www.bikereg.com">BikeReg.com</a>.
+                                            </p>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <div class="race">
+                            <p>
+                                <span>Register with</span> <a href="https://www.bikereg.com" target="new">
+                                    <img src="/img/footer-br.png"></a> <a href="https://www.runreg.com" target="new">
+                                    <img src="/img/footer-rr.png"></a> <a href="http://www.trireg.com" target="new">
+                                    <img src="/img/footer-tr.png"></a> <a href="https://www.skireg.com" target="new">
+                                    <img src="/img/footer-sr.png"></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row-full footer-bottom no-print">
+                <div class="row" style="display: flex; align-items:center;">
+
+                    <img src="https://d36gb93zszu20a.cloudfront.net/i/outside/outside.svg" data-src="/i/outside/outside.svg"
+                        alt="Outside Logo" class="outside-logo" style="max-width:125px;" />
+
+                    <div class="legal" style="margin-left: auto; color: #aaa;">
+                        &copy;
+                        2024 Outside Interactive, Inc.
+                    </div>
+                    <img src="https://d36gb93zszu20a.cloudfront.net/i/outside/O-color.svg" data-src="/i/outside/O-color.svg"
+                        alt="Outside Logo" class="o-logo" style="max-width:31px; margin-left: 0.5em;">
+                </div>
+                <div style="text-align: right" class="row">
+                    <a href="https://www.outsideinc.com/privacy-policy/" target="_blank">Privacy Policy</a> |
+                    <a href="https://www.outsideinc.com/terms-of-use/" target="_blank">Terms of Use</a> |
+                    <a href="javascript: void(0)" class="cmp-revoke-consent" style="position: relative; top: 0; left:0; padding: 0">Manage
+                        Cookie Preferences</a>
+                </div>
+            </div>
+
+                        <div id="fb-root"></div>
+            <script src="//connect.facebook.net/en_US/all.js"></script>
+            <script src="https://use.fontawesome.com/3c6a782759.js"></script>
+            <script>
+
+                FB.init({ appId: '136755476866', status: true, cookie: true, xfbml: true, oauth: true });
+                FB.Event.subscribe('auth.sessionChange', function (response) {
+                    if (response.session) {
+
+                        var user_id = FB.getSession().uid;
+                        var query = FB.Data.query('select name, uid from user where uid={0}', user_id);
+                        query.wait(function (rows) {
+                            var name = rows[0].name;
+                            jQuery.post("taguser.php", { uid: user_id, name: name });
+                        });
+                    } else {
+                        // The user has logged out, and the cookie has been cleared
+                    }
+                });
+            </script>
+            <script type="text/javascript">
+                var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+                document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+            </script>
+            <script type="text/javascript">
+                try {
+                    var pageTracker = _gat._getTracker("UA-2467733-1");
+                    pageTracker._trackPageview();
+                } catch (err) { }
+            </script>
+                          <script type="text/javascript" charset="UTF-8">!function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)
+                    window.console&&console.error&&console.error("MetaRouter snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink"
+                    ,"trackForm","pageview","identify","reset","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){
+                    var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];
+                    analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;
+                    e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.metarouter.io/outside/v2/cross_results_prod.js.gz";var n=document.getElementsByTagName("script")[0];
+                    n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.1.0";
+                    analytics.load("cross_results_prod");            
+                    analytics.page({"domain":"crossresults"});
+                }}();</script>
+    </body>
+    </html>

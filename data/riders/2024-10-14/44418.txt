@@ -1,0 +1,3883 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml"  class="no-js" lang="en">
+
+<head>
+            <link rel="icon" type="image/png" href="/img/crskull.png">
+    
+    <base href="https://www.crossresults.com/" />
+            <script type='text/javascript'>
+            var googletag = googletag || {};
+            googletag.cmd = googletag.cmd || [];
+            (function () { var gads = document.createElement('script'); gads.async = true; gads.type = 'text/javascript'; var useSSL = 'https:' == document.location.protocol; gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js'; var node = document.getElementsByTagName('script')[0]; node.parentNode.insertBefore(gads, node); }
+            )();
+        </script>
+        <script type='text/javascript'>
+            googletag.cmd.push(function () { googletag.defineSlot('/6664979/CrossResults-Sidebar-160x600', [160, 600], 'div-gpt-ad-1412617045810-0').addService(googletag.pubads()); googletag.pubads().enableSingleRequest(); googletag.enableServices(); }
+            );
+        </script>
+    
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" value="A pile of race results, neatly arranged for effortless obsession" />
+
+    <link rel="stylesheet" type="text/css"
+        href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/ui-darkness/jquery-ui.min.css" />
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700" rel="stylesheet"
+        type="text/css" />
+
+    <link href="redesign.css" type="text/css" rel="stylesheet" />
+    <link href="css/foundation.css" type="text/css" rel="stylesheet" />
+    <link href="css/crossresults.css" type="text/css" rel="stylesheet" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
+
+    <style type="text/css">
+        .fma {
+                        background: url(/img/fma8.jpg) center top no-repeat;
+
+
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            max-height: 700px;
+
+            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/fmafma8.jpg', sizingMethod='scale');
+            -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/fmafma8.jpg', sizingMethod='scale')";
+        }
+    </style>
+
+    
+
+            <link rel="alternate" type="application/rss+xml" title="crossresults.com RSS Feed"
+            href="/wordpress/index.php?feed=rss2" />
+    
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js" type="text/javascript"></script>
+    <script src="https://www.crossresults.com/jquery.simplemodal.1.4.1.min.js?x=1" type="text/javascript"></script>
+    <script src="jquery.cookie.js" type="text/javascript"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+    <script type='text/javascript' src='/TableSorter/jquery.tablesorter.js'></script>
+    <script type="text/javascript" src="/js/responsive-nav.min.js"></script>
+    <link type="text/css" href="/TableSorter/themes/blue/style.css" rel="Stylesheet" />
+        
+    
+    <script defer data-strict-csp 
+        src="https://cdn-prod.securiti.ai/consent/cookie-consent-sdk-loader-strict-csp.js"
+        data-tenant-uuid="b9175515-2a76-4948-b708-5ea88d27483c" 
+        data-domain-uuid="54773b41-7973-4efa-82b1-ac18dac5a7ea"
+        data-backend-url="https://app.securiti.ai"
+        data-skip-css="false"   >
+        </script>
+
+
+    <script type="text/javascript">
+        var key = 'AmcWixq9TVG2GTEN7ylt-DSxqTZPhgu_MC1DJKKKrBMKIM6Cv0NtYZHoHdX91CUB';
+
+        $(document).ready(function () {
+
+            // show thge logo on scroll
+            $(document).bind('scroll', function () {
+                if ($(this).scrollTop() > 225) {
+                    $("#smalllogo").fadeIn('1000');
+                    $("#profilebar").addClass("scrolled");
+                } else {
+                    $("#smalllogo").hide();
+                    $("#profilebar").removeClass("scrolled");
+                }
+            });
+            $("#searchinput").autocomplete({
+                source: "autocomplete.php",
+                minLength: 3,
+                select: function (event, ui) {
+                    var url = ui.item.id;
+                    if (url != '#') {
+                        location.href = '/' + url;
+                    }
+                },
+                open: function (event, ui) {
+                    $(".ui-autocomplete").css("z-index", 1000);
+                }
+            });
+
+
+            $("#banner").click(
+                function (e) {
+                    if (e.target.id == "banner") {
+                        window.location = 'https://www.crossresults.com';
+                    }
+                }
+            );
+            $("#searchinput").click(
+                function () { return false; }
+            );
+
+            $("#searchform").submit(function () {
+                return $("#searchinput").val() != "";
+            });
+
+        });
+
+        if (!document.addEventListener) {
+            //IE8 fix
+            $(function () {
+                //DOM has loaded, put your code here
+                setupResponsiveNav();
+            });
+        }
+        else {
+            document.addEventListener("DOMContentLoaded", function () { setupResponsiveNav(); })
+        }
+
+
+        function setupResponsiveNav() {
+            $("#nav").show();
+
+            /* call responsive nav */
+            var navigation = responsiveNav("#nav", { // Selector: The ID of the wrapper
+                animate: true, // Boolean: Use CSS3 transitions, true or false
+                transition: 400, // Integer: Speed of the transition, in milliseconds
+                label: "menu", // String: Label for the navigation toggle
+                insert: "before", // String: Insert the toggle before or after the navigation
+                customToggle: "", // Selector: Specify the ID of a custom toggle
+                openPos: "relative", // String: Position of the opened nav, relative or static
+                jsClass: "js", // String: 'JS enabled' class which is added to <html> el
+                init: function () { }, // Function: Init callback
+                open: function () { }, // Function: Open callback
+                close: function () { } // Function: Close callback
+            });
+        }
+        function UpdateUpgrades() {
+            var cat = $("#category").val();
+            var region = $("#region").val();
+
+            $.cookie("upgradecategory", cat, { expires: 30 });
+            $.cookie("upgraderegion", region, { expires: 30 });
+
+            var ajaxMsg = "<div style=\"text-align:center;\"><img src=\"img/snake_transparent.gif\"/></div>";
+            $("#upgradeboard").html(ajaxMsg);
+
+            $("#upgradeboard").load("upgradeboard.php?cat=" + cat + "&region=" + region + "&sn=r");
+        }
+
+    </script>
+
+    <title>
+        Thomas Nevills's Race History at crossresults.com    </title>
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@crossresults" />
+    <meta name="twitter:title" content="Thomas Nevills's Race History at crossresults.com" />
+
+    <meta name="twitter:description" content="Every race Thomas Nevills has ever participated in." />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+
+<body class=" crossresults">
+        <div id="profilebar" class="row-full utility no-print">
+        <div class="large-12">
+            <script type="text/javascript">
+$(document).ready(function(){ 
+	
+    $(".getRacersButton").click(function() {
+        var searchText = $("#searchText").val();
+		if(searchText.length > 0)
+		{
+			var url = "ajaxracers.php?s="+escape(searchText) + "&team=yes&confirm=1";
+			
+			$(".target").html("<img src='img/snake_transparent.gif'/>");
+			$(".target").load(url, function(response, status, xhr){			
+				});
+			$(".input").hide();
+			$("#profilesearchresults").show();
+		}
+		else
+		{
+			alert('Type your name in the box first, guy');
+			$("#searchText").val('THIS BOX!');
+			$("#searchText").focus();
+			$("#searchText").select();
+		}
+        });
+	$(".togglelogin").click(function(){
+		$("#loginform").modal({maxWidth: 600,overlayClose:true, maxHeight: 600 });
+		$("#CreateAccountButton").click(function(){
+            
+            var email = $("#newemail").val();
+            var pass = $("#newpass").val();
+            var racerID = $("#racerID").val();
+            var valid = true;
+            var error = "";
+            if(email.indexOf("@") == -1)
+            {
+                valid = false;
+                error = "Invalid email.";
+            }
+            if(pass.length == 0)
+            {
+                valid = false;
+                error = "No zero length passwords.";
+            }
+            if(valid)
+            {
+                          
+				
+                var data = { email: email, pass: pass, racerID:racerID };
+                $("#CreateAccountTarget").html("<div style=\"text-align: center\">Creating Account...</div>");                
+                $("#CreateAccountTarget").load("procNewAccount.php",data);
+            }
+            else
+            {
+                alert(error);
+            }
+            return false;
+        });
+		return false;
+	});
+	$("#SubmitButton").click(function(){
+            //var pass = $("#newpass").val();
+            //var hexpass = hex_md5(pass);  
+            //$("#newpass").val(hexpass);
+        });
+    $("#regiononly").click(function(){
+        var checked = ($("#regiononly").is(':checked'));
+        window.location = "setprofile.php?setregionpref="+checked;
+    });
+    $("a.togglebutton").click(function(){
+			
+            $(this).next().toggle("slow");
+            var expander = $(this).children().children("img");
+            if(expander.attr("src") == "img/minus.png")
+            {
+                expander.attr("src","img/plus.png");
+            }
+            else
+            {
+                expander.attr("src","img/minus.png");
+            }
+            return false;
+        });
+	    
+});
+function SetProfile(jQueryObj)
+{
+        var name = (jQueryObj.text());
+         var id = jQueryObj.children(".racerID").val();
+         window.location = "setprofile.php?id="+id;
+		 
+}
+
+</script>
+	<span style="float:right; padding-right: 10px; padding-left: 10px; font-size: smaller;">
+       <A href="/">
+                         <img src="/img/logosmall.png" id="smalllogo"/>
+        </A>
+			  <a href="#" class="togglelogin">Log In</a>
+		  
+		  <div id="loginform" style="display: none;">
+			
+
+<div style="padding: 5px">
+	<form method="post" action="procLogin.php">
+	<div style="margin-top: 0px" class="headerrow1"><h2 style="margin-top: 0px">Login or Create Account</h2></div>
+    <table class="datatable1" >
+                    
+                <tr>
+            <td>
+                Email Address
+            </td>
+            <td>
+                <input type="text" id="newemail" name="email"/></td>
+        </tr>
+        <tr>
+            <td>
+                Password:
+            </td>
+            <td>
+                <input type="password" id="newpass" name="newpass" /></td>
+        </tr>
+	</table>
+	<div style="text-align: center;font-size:smaller; padding: 4px; ">
+				<input type="checkbox" id="remember" name="remember" checked/> <label for="remember">Remember Me</label>
+	</div>
+    <div style="text-align: center;font-size: smaller;" class="">
+                       
+				<input type="hidden" name="return" value="/racer/44418"/>
+				<input type="hidden" id="racerID" name="racerID" value=""/>
+                <input type="Submit" class="button" value="Login" id="SubmitButton" style="padding: 2px;" />
+                <input type="Button" class="button" value="Create Account" style="padding: 2px;" id="CreateAccountButton" />
+				<br/>						
+				<a href="/?n=talk&sn=forgot" id="forgotpass">Forgot Password?</a>
+	</div>
+    </form>
+
+    <div id="CreateAccountTarget">
+    </div>
+	<div style="padding: 2px;" align="center" class="headerrow3">
+	  Or...
+	  		<a class='fb_button fb_button_medium' href="https://www.facebook.com/dialog/oauth?client_id=136755476866&amp;redirect_uri=http%3A%2F%2Fwww.crossresults.com%2Fracer%2F44418%3Flogin%3D1">
+		<span class='fb_button_text'>Log In With Facebook</span>
+        </a>
+			</div>
+</div>
+		  </div>
+	  			 
+	</span>
+</div>
+        </div>
+
+    </div>
+    <div style="clear: both;">
+    </div>
+    <!-- .wrap -->
+    </div>
+    
+            <div class="inside">
+            <div class="row-full fma">
+
+                <div id="navparent" >               
+                	<nav id="nav" style="display: none;">
+        <ul class="dropdown">
+            				
+		    <li>
+				<a href="?n=talk" class="dropdownarrow" onclick="javscript: return false;">Talk</a> 
+									
+					<ul><li>									<a href="/?n=talk&sn=news">News</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=talk&sn=f">FAQ</a>
+			                    			                    </li>
+			                    <li>										<a href="/contact">Report a Bug</a>
+													                    </li>
+			                    <li>									<a href="/?n=talk&sn=rac">Report Duplicate Racer</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=talk&sn=feat">Contact Us</a>
+			                    			                    </li>
+			                    					</ul>
+				            </li>
+     
+
+					
+		    <li>
+				<a href="?n=racers" class="dropdownarrow" onclick="javscript: return false;">Racers</a> 
+									
+					<ul><li>									<a href="/?n=racers&sn=find">Find Racers</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=racers&sn=r&rID=44418">Racer History</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=racers&sn=h2h">Head To Head</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=racers&sn=t&rID=44418">Team Names</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=racers&sn=rp&rID=44418">Racer Points</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=racers&sn=movers">Floaters and Sinkers</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=racers&sn=c">Report Duplicate Racers</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=racers&sn=pred">Race Predictor</a>
+			                    			                    </li>
+			                    <li>										<a href="/stalk">Stalk Racers</a>
+													                    </li>
+			                    					</ul>
+				            </li>
+     
+
+					
+		    <li>
+				<a href="?n=results" class="dropdownarrow" onclick="javscript: return false;">Results</a> 
+									
+					<ul><li>									<a href="/?n=results&sn=all">View All Races</a>
+			                    			                    </li>
+			                    <li>										<a href="/points/">Points List</a>
+													                    </li>
+			                    <li>									<a href="/?n=results&sn=ug">Upgrade Points</a>
+			                    			                    </li>
+			                    <li>									<a href="/?n=results&sn=rts">Top Rated</a>
+			                    			                    </li>
+			                    <li>										<a href="/upload">Upload Results</a>
+													                    </li>
+			                    					</ul>
+				            </li>
+     
+
+					
+		    <li>
+				<a href="?n=series" class="dropdownarrow" onclick="javscript: return false;">Series</a> 
+									
+					<ul><li>										<a href="/vNECXS">New England</a>
+										                                    <ul>
+                                    <li><a href="/vNECXS">NECXS</a></li><li><a href="/necxss">New England SSCX Series</a></li><li><a href="/ctcx">CT Series of CX</a></li><li><a href="/project-mayhem">Project Mayhem CX</a></li><li><a href="/rvcx">River Valley CX</a></li><li><a href="/nebracx">NEBRA Rankings</a></li>                                    </ul>
+                                    			                    </li>
+			                    <li>									<a href="/?n=series&sn=mida">Mid Atlantic</a>
+			                                                        <ul>
+                                    <li><a href="/dmvcx">DMV Junior CX Series</a></li><li><a href="/superseries">BikeReg Cyclocross Super Series</a></li><li><a href="/mac">MAC</a></li><li><a href="/sportif">MABRA Sportif Series</a></li><li><a href="/pacx">PACX</a></li>                                    </ul>
+                                    			                    </li>
+			                    <li>									<a href="/?n=series&sn=cnycx">CNY Cup</a>
+			                    			                    </li>
+			                    <li>										<a href="/CBRCX">CBRCX</a>
+													                    </li>
+			                    <li>										<a href="/vacx">VACX</a>
+													                    </li>
+			                    <li>									<a href="/?n=series&sn=bhbcx">BHB Cross Series</a>
+			                    			                    </li>
+			                    <li>										<a href="/utcx">UTCX</a>
+													                    </li>
+			                    <li>										<a href="/mscx">Mississippi</a>
+										                                    <ul>
+                                    <li><a href="/mscx">Mississippi CX Cup</a></li><li><a href="/?n=series&sn=ridge">Ridgeland CX Series</a></li>                                    </ul>
+                                    			                    </li>
+			                    <li>										<a href="/wicx">Wisconsin CX Series</a>
+													                    </li>
+			                    <li>										<a href="/atxcx">Texas</a>
+										                                    <ul>
+                                    <li><a href="/atxcx">ATX CX Cup</a></li><li><a href="/sxcx">SXCX</a></li>                                    </ul>
+                                    			                    </li>
+			                    <li>										<a href="/basp">BASP</a>
+													                    </li>
+			                    <li>										<a href="/Sweden/CXPokalen">Sweden</a>
+										                                    <ul>
+                                    <li><a href="/Sweden/CXPokalen">CX Pokalen</a></li><li><a href="/Sweden/SweCup ">SweCup</a></li>                                    </ul>
+                                    			                    </li>
+			                    					</ul>
+				            </li>
+     
+
+	
+        </ul>
+        <div style="clear: both;"></div>
+    </nav>
+	                </div>
+
+                <div style="float: right;">
+                    <a href="/">
+
+                                                <img src="/img/crossResultsLogo.png" id="logo" />
+                    </a>
+                    <div id="search" width="100%">
+                        <form method="get" action="/search" id="searchform">
+                            <button id="searchimage" title="Submit Search" style="display: none;"></button>
+                            <input id="searchinput" type="text" name="q" placeholder="search everything" />
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+                <div class="fullstyle maincontent">
+
+            
+            <div id="divWrap" class="wrap">
+                <!-- thinking here is wrap can be used within full width containers as well -->
+                <section class="main">
+                    <aside class="sidebar" id="adsidebar" runat="server" visible="false">
+                        <div class="ads side-ads">
+                                                            <!-- CrossResults-Sidebar-160x600 -->
+                                <div id='div-gpt-ad-1412617045810-0' style='width:160px; height:600px;'>
+                                    <script type='text/javascript'>
+                                        googletag.cmd.push(function () { googletag.display('div-gpt-ad-1412617045810-0'); }
+                                        );
+                                    </script>
+                                </div>
+                            
+                        </div>
+                    </aside>
+                    <article id="content">
+                        <style type="text/css">
+.popup{
+    z-index: 9999;
+}
+.racerdetails {
+    font-size: smaller; 
+}
+.rating:nth-child(odd)
+{
+    background-color: #eeeeee;
+}
+
+.detail
+{
+	max-width: 400px;
+	display: none;
+	position: absolute;
+    right: 0px;
+	border: 1px solid #8EB6FF;
+	background: #D8E2FF;
+	padding:5px;
+}
+</style>
+
+<script type="text/javascript" src="//www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(chartInitialize);
+    function chartInitialize() {
+        GraphDataService("/racerhistorygraph.php?racerID=44418&type=pct&subtype=pts&json=1",updateChart);
+    }
+
+      function GraphDataService(endpoint, onsuccess) {
+                
+                $.ajax({
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    url: endpoint,
+                    async: true,
+                    dataType: "json",
+                    success: function (data, status) {
+                        if(status == "success") {
+                            if (onsuccess != undefined) {
+                                onsuccess(data._data);
+                            }
+                        } else {
+                            $("#graphtarget").hide();
+                        }
+                    },
+                    error: function(data,status){
+                        $("#graphtarget").hide();
+                    }
+                });
+            }
+     function updateChart(data){
+              
+              var total = 0;
+              var compareTotal = 0;
+              if(data.length > 1){
+                  var graphData = new Array();
+                  var cols = data.length;
+                  
+                  graphData[0] = new Array();
+                  graphData[0][0] = 'Race';
+                  graphData[0][1] = 'Points';                  
+          
+                  var totalraces = data.length;
+                  var min = 9999;
+                  var max = 0;
+                  for(i = 0; i < data.length; i++)
+                  {
+                      graphData[i+1] = new Array();                           
+                                                   
+                      graphData[i+1][0] = data[i].X
+                      graphData[i+1][1] = data[i].Y;                   
+
+                      if(data[i].Y < min)
+                        min = data[i].Y;
+                      if(data[i].Y > max)
+                        max = data[i].Y;
+
+                  }
+                   
+                  if(max <= 1){
+                    max = 1;
+                    min = 0;
+                  } else { 
+                    min = min-50;
+                  }
+
+                  var options = {
+                     
+                      fontSize: 16,
+                      //fontName: '"Open Sans", "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif',
+                      hAxis: { titleTextStyle: {color: '#333'}, minValue: 0},
+                      vAxis: {minValue: min, maxValue: max,
+                        viewWindow: { min: min, max: max}
+                        },
+                      legend: { position: "bottom" },
+                      animation: {"startup": true,
+                          duration: 1000,
+                          easing: 'out'
+                      }, 
+                      chartArea: {
+                          left: 40,
+                          top: 20,
+                          width: '95%'
+                      },
+                      series: {
+                          0: { color: '#FC6719' },
+                          1: { color: '#C4C4C4' }
+                        }
+                    };
+                  $("#graphtarget").animate({height: "250px"}, 100,"swing",function(){
+                        var chart = new google.visualization.AreaChart(document.getElementById('graphtarget'));
+                        var dt = google.visualization.arrayToDataTable(graphData);
+                        chart.draw(dt, options);
+                  });
+                }
+            }
+
+    $(document).ready(function(){ 
+        $(".download").click(function(){ $(this).hide(); $(this).next().fadeToggle() });
+		$(".MetaDataSubmit").click(function(){
+			var url = $(this).prev().val();
+			var error = false;
+			if(url.trim() == "" || url.indexOf(".") == -1)
+			{
+				alert("You need to enter a url, dude.");
+				error = true;
+			}
+			return !error;
+		});
+        $('.showupgradepoints').click(function(){
+            $(".totalupgradepoints").toggle("fast");
+                    return false;
+        });
+			$(".togglechallenge").click(function(){ 
+			$(this).next().toggle(); 
+			$(this).hide(); 
+			$(this).prev().hide(); 
+			$(this).next().next().hide(); 
+			});
+		$(".challengesubmit").click(function(){
+			var data = $(this).parent().children(".challengeemail").val();
+			var target = $(this).attr("targetID");
+			var postthis = { email: data, targetid: target };
+			if(data)
+			{
+				$(this).parent().children(".challengesubmittarget").html("Challenging...");
+				$(this).parent().children(".challengesubmittarget").load("procNewChallenge.php",postthis);
+			}
+			else
+			{
+				alert('Enter an email, punk');
+			}
+		});
+		
+		$(".editteamsubmit").click(function(){
+			var newTeamName = $(this).parent().children("input").val();
+			
+			var resultID = $(this).parent().children("input").attr("rID");
+			 
+			$(this).parent().hide();
+			$(this).parent().next().show();
+			
+			$(this).parent().next().load("updateTeamName.php?rID="+resultID+"&team="+encodeURIComponent(newTeamName));
+		});
+		        $(".editteambutton").click(function(){
+			$(this).parent().hide();
+			$(this).parent().prev().show();
+		});
+        $("a.expandMonth").click(function(){
+        
+            $(this).next().toggle("slow");
+            var expander = $(this).children().children("img");
+            if(expander.attr("src") == "img/minus.png")
+            {
+                expander.attr("src","img/plus.png");
+            }
+            else
+            {
+                expander.attr("src","img/minus.png");
+            }
+            return false;
+        });
+		$("#head2headall").click(function(){
+			
+			$(".popup1").html("<Center><img src='img/snake_transparent.gif'></Center>");
+			$(".popup1").load("headtoheadall.php?racerID="+44418, function(){ $(".popup1").modal({overlayClose:true}); });
+		});
+		$(".addmeta").click(function(event){
+			
+			var theDiv = $(this).next()
+
+			//var tPosX = event.pageX;
+			//var tPosY = event.pageY+10;
+			//theDiv.css({top: tPosY, left: tPosX});
+			theDiv.toggle();
+			return false;
+		});
+		$(".selregion").change(function(){
+		
+			var region = $(this).val();
+			
+			$("input[type=checkbox][region='"+region+"']").prop("checked",$(this).is(":checked"));
+			
+		});
+        $(".showteamdetails").click(function(event) {
+			var expander = $(this).children("img");
+			var nemID = $(this).attr("arg1");
+			var victID = $(this).attr("arg2");
+			var months = $(this).attr("arg3");
+            if(expander.attr("src") == "img/minus.png")
+            {
+                expander.attr("src","img/plus.png");
+            }
+            else
+            {
+            // collapse all popupts
+				$(".popup").hide();
+                expander.attr("src","img/minus.png");
+            }
+		 
+			var theDiv = $(this).next();
+			var tPosX = event.pageX;
+			var tPosY = event.pageY+10;
+			theDiv.css({top: tPosY, left: tPosX});
+			theDiv.toggle();
+			//alert("nemesisdrilldown.php?nem="+nemID+"&vict="+victID+"&months="+months);
+			theDiv.load("nemesisdrilldown.php?nem="+nemID+"&vict="+victID+"&months="+months);
+			return false;
+			});
+		$("#pointsdetail").click(function(event) {
+			
+		 
+			var theDiv = $(this).next();
+			var tPosX = event.pageX-300;
+			var tPosY = event.pageY+10;
+			theDiv.css({top: tPosY, left: tPosX});
+			theDiv.toggle();
+			var racerID = $(this).attr("racerID");
+			var AsOfDate = escape($(this).attr("AsOfDate"));
+			theDiv.load("pointsdetail.php?racerID="+racerID+"&AsOfDate="+AsOfDate);
+			return false;
+			});
+		$(".durationradio").click(function(event) {
+				if($(this).val() == 'alltime')
+				{
+					$(".yearstat").hide();
+					$(".careerstat").show();
+				}
+				else
+				{
+					$(".yearstat").show();
+					$(".careerstat").hide();
+				}
+			});
+		$("#commonopponentheader").click(function(event) {
+				var expander = $(this).children(".toggler");
+				var otherexpander = $("#nemesesheader").children(".toggler");
+				
+				if(expander.attr("src") == "img/minus.png")
+				{
+					expander.attr("src","img/plus.png");
+					otherexpander.attr("src","img/minus.png");
+				}
+				else
+				{
+					expander.attr("src","img/minus.png");
+					otherexpander.attr("src","img/plus.png");
+				}
+				$("#commonopponents").toggle("slow");
+				$("#nemeses").toggle("slow");
+				return false;
+			});
+		$("#nemesesheader .toggler").click(function(event) {
+				var expander = $(this);
+				var otherexpander = $("#commonopponentheader").children("");
+				if(expander.attr("src") == "img/minus.png")
+				{
+					expander.attr("src","img/plus.png");
+					otherexpander.attr("src","img/minus.png");
+				}
+				else
+				{
+					expander.attr("src","img/minus.png");
+					otherexpander.attr("src","img/plus.png");
+				}
+				$("#commonopponents").toggle("slow");
+				$("#nemeses").toggle("slow");
+				return false;
+			});
+    });
+	
+    function showImages()
+    {
+        $("#frequencyfinish").attr("src",$("#frequencyfinish").attr("altsrc"));
+        $("#frequencyfinish2").attr("src",$("#frequencyfinish2").attr("altsrc"));
+        $("#frequencyfinish3").attr("src",$("#frequencyfinish3").attr("altsrc"));
+    }
+	var savedInterval = '1y';
+    function ChangeGraph(interval)
+    {
+		var selected = $("#graphchanger").val();
+		if(interval != '')
+			savedInterval = interval;
+		if(!savedInterval)
+			savedInterval = '1y';
+		
+		var titles = new Array('% Beat','Points List Rank','Points Scored','% Beat Histogram');
+		var urls= new Array('racerhistorygraph.php?racerID=44418&type=pct','racerhistorygraph.php?racerID=44418&type=ptslist&subtype=ptslist','racerhistorygraph.php?racerID=44418&type=pct&subtype=pts','racerhistorygraph.php?racerID=44418');
+		var intervalText = "All Time";
+		switch(savedInterval)
+		{
+			case '1m': intervalText = "Last Month"; break;
+			case '3m': intervalText = "Last 3 Months"; break;
+			case '1y': intervalText = "Last Year"; break;
+			case '3y': intervalText = "Last 3 Years"; break;
+		}
+		$('#graphtarget').html('<img src=\"img/snake_transparent.gif\"/>');
+		//$('#graphtarget').html("/" + urls[selected]+"&json=1&interval="+savedInterval);
+		GraphDataService("/" + urls[selected]+"&json=1&interval="+savedInterval,updateChart);
+		
+		$('#graphtitle').html(titles[selected]+ " - "+intervalText);
+		
+		/*for(var i = 0; i < 4; i++)
+		{
+			if(graphs[i]== selected)
+			{
+				$("#"+graphs[i]).show();
+				var url = urls[i] + "&interval="+savedInterval;
+				alert(url);
+				$("#"+graphs[i]+"img").attr('src',url);
+			}
+			else
+				$("#"+graphs[i]).hide();
+		}*/
+		return false;
+    }
+	
+</script>
+<style type="text/css">
+.ui-dialog .ui-dialog-content {
+    padding: 0;
+	font-size: inherit;
+}
+</style>
+<div class="popup1" style="display: none;">
+</div>
+<div id="racerhistory">
+        <div class="headerrow1 racer-header" >
+		<div class="racer-name">
+				
+				<h1>Thomas Nevills</span></h1>
+				<span class="racerdetails">
+									Racing Age:  63										&bull; Category:  4								</div>
+                <div class="other-site-results">				    					
+										 					  
+					<div><a href="https://results.bikereg.com/?n=racers&sn=f&fname=Thomas&lname=Nevills" tagret="_blank">Find this racer on results.bikereg.com</a> <img src="img/url_icon.gif" /></div>
+			    </div>
+		</div>
+	<div>	
+		
+	</div>
+	
+						
+    
+
+
+	<div style="max-width: 100%; overflow-x: auto; overflow-y: hidden; ">			
+	<table class="datatable1" width="100%" >
+	<tr>
+	    <td class="topdatacell">			
+			<div class="headerrow1 roundtop"><h2>Finish Breakdown</h2></div>
+			<div class="headerrow">
+				<input type="radio" name="duration" value="alltime" class="durationradio"/>Career
+				<input type="radio" name="duration" value="year" checked  class="durationradio"/>12 months
+			</div>
+			<table class="datatable1" width="100%" style="text-align: left; margin-top: 0px; border-top: 0px; border-bottom: 0px;">
+			<tr class="datarow2"><td>Wins</td><td>	<span class='careerstat' style='display: none;'>1</span>
+	<span class='yearstat'>0</span>
+	</td></tr>
+			<tr class="datarow1"><td>Top 5%</td><td>	<span class='careerstat' style='display: none;'>1</span>
+	<span class='yearstat'>0</span>
+	</td></tr>
+			<tr class="datarow2"><td>Top 10%</td><td>	<span class='careerstat' style='display: none;'>1</span>
+	<span class='yearstat'>0</span>
+	</td></tr>
+			<tr class="datarow1"><td>Top 25%</td><td>	<span class='careerstat' style='display: none;'>3</span>
+	<span class='yearstat'>0</span>
+	</td></tr>
+			<tr class="datarow2"><td>Top 50%</td><td>	<span class='careerstat' style='display: none;'>20</span>
+	<span class='yearstat'>0</span>
+	</td></tr>
+			<tr class="datarow1"><td>Bottom 50%</td><td>	<span class='careerstat' style='display: none;'>35</span>
+	<span class='yearstat'>2</span>
+	</td></tr>
+							<tr class="datarow2"><td>DNF</td><td>	<span class='careerstat' style='display: none;'>1</span>
+	<span class='yearstat'>0</span>
+	</td></tr>
+				<tr class="datarow2"><td>DQ</td><td>	<span class='careerstat' style='display: none;'>0</span>
+	<span class='yearstat'>0</span>
+	</td></tr>
+					</table>
+		
+		<div style="text-align: center; font-size: larger;">
+			<input id="head2headall" type="button" class="button" value="Career Head to Head"/>
+		</div>
+				
+		
+						<div class="careerstat">
+				<div class="headerrow1 roundtop">
+					Course Performance
+					&nbsp;<a href="?n=talk&sn=f#q18"><span class="faqlink">?</span></a>
+				</div>
+				<div class="graycontent">
+							<div class="techrating rating" title="This racer does worse when the course is technical than when it's easy.">
+				<div class="ratingnumeral centered" id="rating">
+					-1.7				</div>
+		</div>
+				<div class="elevationrating rating" title="This racer does much better when the course is hilly than when it's flat.">
+				<div class="ratingnumeral centered" id="rating">
+					+14.9				</div>
+		</div>
+				<div class="accelrating rating" title="This racer does better when the course is lots of braking and sprinting than when it's steady pedaling.">
+				<div class="ratingnumeral centered" id="rating">
+					+2.2				</div>
+		</div>
+				<div class="moisturerating rating" title="This racer does much better when the course is wet than when it's dry.">
+				<div class="ratingnumeral centered" id="rating">
+					+19.5				</div>
+		</div>
+						</div>
+				
+			</div>
+							
+		</td>
+		
+		<td class="topdatacell" width="45%">
+				<div class="headerrow1 roundtop" id="nemesesheader" style="text-align: left; cursor: pointer ;">
+        <div style="float: right; line-height: 18px;" class="h2hfaq">
+            <img border="0" src="img/h2h.png"/>
+		&nbsp;<a href="?n=talk&sn=f#q13"><span class="faqlink">?</span></a>
+        </div>
+		<h2 style="display: inline-block; "><img src="img/minus.png" class="toggler expanderimg" border="0"/> Top Nemeses</h2> 
+        
+	</div>
+	<div id="nemeses" style="display: block;">
+		<table class="fulldatatable" style="margin: 0px;"	 >
+		<tr class="headerrow2"><th>Nemeses</th><th>Wins</th><th>Losses</th><th>Win%</th><th>Margin</th></tr>
+						<tr class="datarow1">
+					<td>
+                        <a href="" class="showteamdetails" arg1="147826" arg2="44418" arg3="12">
+                            <img src="img/plus.png" border="0" class="expanderimg"/>
+                         </a>  
+                         <div class="popup ageinfo" style="position:absolute; display:none; border: 1px solid black; background: white; padding: 5px; font-size: larger;">
+						    <img src="img\snake_transparent.gif"/>
+					    </div>
+                        <a href="racer/147826">Mark Misicko</a>					
+					
+				
+					</td>
+					<td align="center">
+						0					</td>
+					<td align="center">
+						2					</td>
+					<td align="center">
+						0					</td>
+				
+					<td align="center">
+						7.5					</td>
+				</tr>
+								<tr class="datarow2">
+					<td>
+                        <a href="" class="showteamdetails" arg1="147801" arg2="44418" arg3="12">
+                            <img src="img/plus.png" border="0" class="expanderimg"/>
+                         </a>  
+                         <div class="popup ageinfo" style="position:absolute; display:none; border: 1px solid black; background: white; padding: 5px; font-size: larger;">
+						    <img src="img\snake_transparent.gif"/>
+					    </div>
+                        <a href="racer/147801">Chris Brown</a>					
+					
+				
+					</td>
+					<td align="center">
+						0					</td>
+					<td align="center">
+						2					</td>
+					<td align="center">
+						0					</td>
+				
+					<td align="center">
+						7					</td>
+				</tr>
+								<tr class="datarow1">
+					<td>
+                        <a href="" class="showteamdetails" arg1="33850" arg2="44418" arg3="12">
+                            <img src="img/plus.png" border="0" class="expanderimg"/>
+                         </a>  
+                         <div class="popup ageinfo" style="position:absolute; display:none; border: 1px solid black; background: white; padding: 5px; font-size: larger;">
+						    <img src="img\snake_transparent.gif"/>
+					    </div>
+                        <a href="racer/33850">Robert Berg</a>					
+					
+				
+					</td>
+					<td align="center">
+						1					</td>
+					<td align="center">
+						1					</td>
+					<td align="center">
+						50					</td>
+				
+					<td align="center">
+						7.5					</td>
+				</tr>
+								<tr class="datarow2">
+					<td>
+                        <a href="" class="showteamdetails" arg1="20580" arg2="44418" arg3="12">
+                            <img src="img/plus.png" border="0" class="expanderimg"/>
+                         </a>  
+                         <div class="popup ageinfo" style="position:absolute; display:none; border: 1px solid black; background: white; padding: 5px; font-size: larger;">
+						    <img src="img\snake_transparent.gif"/>
+					    </div>
+                        <a href="racer/20580">George Lambros</a>					
+					
+				
+					</td>
+					<td align="center">
+						1					</td>
+					<td align="center">
+						1					</td>
+					<td align="center">
+						50					</td>
+				
+					<td align="center">
+						4					</td>
+				</tr>
+								<tr class="datarow1">
+					<td>
+                        <a href="" class="showteamdetails" arg1="48201" arg2="44418" arg3="12">
+                            <img src="img/plus.png" border="0" class="expanderimg"/>
+                         </a>  
+                         <div class="popup ageinfo" style="position:absolute; display:none; border: 1px solid black; background: white; padding: 5px; font-size: larger;">
+						    <img src="img\snake_transparent.gif"/>
+					    </div>
+                        <a href="racer/48201">Randy Koren</a>					
+					
+				
+					</td>
+					<td align="center">
+						1					</td>
+					<td align="center">
+						1					</td>
+					<td align="center">
+						50					</td>
+				
+					<td align="center">
+						3					</td>
+				</tr>
+								<tr class="datarow2">
+					<td>
+                        <a href="" class="showteamdetails" arg1="171890" arg2="44418" arg3="12">
+                            <img src="img/plus.png" border="0" class="expanderimg"/>
+                         </a>  
+                         <div class="popup ageinfo" style="position:absolute; display:none; border: 1px solid black; background: white; padding: 5px; font-size: larger;">
+						    <img src="img\snake_transparent.gif"/>
+					    </div>
+                        <a href="racer/171890">Mike Chica</a>					
+					
+				
+					</td>
+					<td align="center">
+						1					</td>
+					<td align="center">
+						1					</td>
+					<td align="center">
+						50					</td>
+				
+					<td align="center">
+						3					</td>
+				</tr>
+								<tr class="datarow1">
+					<td>
+                        <a href="" class="showteamdetails" arg1="80545" arg2="44418" arg3="12">
+                            <img src="img/plus.png" border="0" class="expanderimg"/>
+                         </a>  
+                         <div class="popup ageinfo" style="position:absolute; display:none; border: 1px solid black; background: white; padding: 5px; font-size: larger;">
+						    <img src="img\snake_transparent.gif"/>
+					    </div>
+                        <a href="racer/80545">Barry Batson</a>					
+					
+				
+					</td>
+					<td align="center">
+						1					</td>
+					<td align="center">
+						1					</td>
+					<td align="center">
+						50					</td>
+				
+					<td align="center">
+						2.5					</td>
+				</tr>
+				                    
+					<tr class="headerrow1" ><td colspan="5" style="height: 35px; vertical-align: bottom; padding-bottom: 2px;">
+                       
+                            <div style="float: right; line-height: 18px;" class="h2hfaq">
+                                <img border="0" src="img/h2h.png"/>
+		                    &nbsp;<a href="?n=talk&sn=f#q13"><span class="faqlink">?</span></a>
+                            </div>
+		                    <h2 style="display: inline-block; "><img src="img/minus.png" class="toggler expanderimg" border="0"/> Top Victims</h2> 
+        
+	                   
+                    </td></tr>
+					<tr class="headerrow2"><th>Victims</th><th>Wins</th><th>Losses</th><th>Win%</th><th>Margin</th></tr>
+								<tr class="datarow2">
+					<td>
+                        <a href="" class="showteamdetails" arg1="86174" arg2="44418" arg3="12">
+                            <img src="img/plus.png" border="0" class="expanderimg"/>
+                         </a>  
+                         <div class="popup ageinfo" style="position:absolute; display:none; border: 1px solid black; background: white; padding: 5px; font-size: larger;">
+						    <img src="img\snake_transparent.gif"/>
+					    </div>
+                        <a href="racer/86174">Voytek Glinkowski</a>					
+					
+				
+					</td>
+					<td align="center">
+						2					</td>
+					<td align="center">
+						0					</td>
+					<td align="center">
+						100					</td>
+				
+					<td align="center">
+						2.5					</td>
+				</tr>
+								<tr class="datarow1">
+					<td>
+                        <a href="" class="showteamdetails" arg1="44426" arg2="44418" arg3="12">
+                            <img src="img/plus.png" border="0" class="expanderimg"/>
+                         </a>  
+                         <div class="popup ageinfo" style="position:absolute; display:none; border: 1px solid black; background: white; padding: 5px; font-size: larger;">
+						    <img src="img\snake_transparent.gif"/>
+					    </div>
+                        <a href="racer/44426">Justice Leppanen</a>					
+					
+				
+					</td>
+					<td align="center">
+						2					</td>
+					<td align="center">
+						0					</td>
+					<td align="center">
+						100					</td>
+				
+					<td align="center">
+						6					</td>
+				</tr>
+							<tr class="footerrow1"><td colspan="5" align="right">
+			<form action="/" method="get">
+			<input type="hidden" name="n" value="racers" />
+			<input type="hidden" name="sn" value="r" />
+			<input type="hidden" name="rID" value="44418" />
+			from the last <input type="text" value="12" size="2" name="months" /> months
+			</form>
+			</td>   
+			</tr>
+		</table>
+		
+	</div>
+		
+		<div class="headerrow1" id="commonopponentheader" style="text-align: left; cursor: pointer ;" >
+			<img src="img/plus.png " class="toggler expanderimg"  border="0"/> Most Common Opponents
+		</div>
+	
+	<div id="commonopponents" style="display: none;">
+		<table class="fulldatatable" style="margin: 0px;">
+			<tr class="headerrow2"><td>Name</td><td>Races</td><td></td></tr>
+									<tr class="datarow2">
+							<td><a href="/racer/33850">Robert Berg</a></td>
+							<td>3</td>
+							<td><a href="/?n=racers&sn=h2h&months=24&rID0=44418&rID1=33850" title="Head to Head">h2h</a></td>
+						</tr>
+											<tr class="datarow1">
+							<td><a href="/racer/20580">George Lambros</a></td>
+							<td>3</td>
+							<td><a href="/?n=racers&sn=h2h&months=24&rID0=44418&rID1=20580" title="Head to Head">h2h</a></td>
+						</tr>
+											<tr class="datarow2">
+							<td><a href="/racer/147452">Stephen Farr</a></td>
+							<td>3</td>
+							<td><a href="/?n=racers&sn=h2h&months=24&rID0=44418&rID1=147452" title="Head to Head">h2h</a></td>
+						</tr>
+											<tr class="datarow1">
+							<td><a href="/racer/147801">Chris Brown</a></td>
+							<td>3</td>
+							<td><a href="/?n=racers&sn=h2h&months=24&rID0=44418&rID1=147801" title="Head to Head">h2h</a></td>
+						</tr>
+											<tr class="datarow2">
+							<td><a href="/racer/48201">Randy Koren</a></td>
+							<td>2</td>
+							<td><a href="/?n=racers&sn=h2h&months=24&rID0=44418&rID1=48201" title="Head to Head">h2h</a></td>
+						</tr>
+								<tr class="footerrow1"><td colspan="5" align="right">
+			<form action="/" method="get">
+			<input type="hidden" name="n" value="racers" />
+			<input type="hidden" name="sn" value="r" />
+			<input type="hidden" name="rID" value="44418" />
+			from the last <input type="text" value="24" size="2" name="comm_months" /> months
+			</form>
+			</td>   
+			</tr>
+		</table>
+		
+	</div>
+
+	
+		</td>
+		<td class="topdatacell" width="30%" id="graphs">
+			
+				<div class="headerrow1 roundtop"><h2>Graphs o' Stuff</h2></div>
+				<div class="headerrow" style="text-align: right">
+					
+						Select: <select id="graphchanger" onchange="ChangeGraph('');">
+							<option value="2">Points Over Time</option>
+							<option value="1">Points List Over Time</option>
+							<option value="0">Percent Beat Over Time</option>
+							<option value="3">Percent Beat Histogram</option>
+							
+						</select>
+				</div>
+				<div class="headerrow3" style="text-align:right">
+					
+						<a href="#" onclick="ChangeGraph('All'); return false;">All</a>
+						<a href="#" onclick="ChangeGraph('3y');return false;">3y</a>
+						<a href="#" onclick="ChangeGraph('1y');return false;">1y</a>
+						<a href="#" onclick="ChangeGraph('3m');return false;">3m</a>
+						<a href="#" onclick="ChangeGraph('1m');return false;">1m</a>
+					</div>
+				<div>
+					<table class="datatable1" id="pointsovertime" >
+						<tr class="headerrow3"><td><span id="graphtitle">Points Scored - All Time</span></td><td align="center" valign="middle"><a href="?n=talk&sn=f#q3"><span class="faqlink">?</span></a></td></tr>
+						<tr><td align="center" colspan="2">
+							<div id="graphtarget">
+								<!--<img src="racerhistorygraph.php?racerID=44418&type=pct&subtype=pts"/>-->
+							</div>
+							<div id="debug">
+							</div>
+						</td></tr>
+					</table>
+					<table class="datatable1" id="pointslistovertime" style="display:none;" >
+						<tr class="headerrow3"><td>Points List Over Time</td>
+						<td align="center" valign="middle"><a href="?n=talk&sn=f#q3"><span class="faqlink">?</span></a></td></tr>
+						<tr><td align="center" colspan="2">
+						<img id="pointslistovertimeimg">
+						</td></table>
+					<table class="datatable1" id="pctbeathist" style="display:none;">
+						<tr class="headerrow3"><td>% beat Histogram </td><td align="center" valign="middle"><a href="?n=talk&sn=f#q3"><span class="faqlink">?</span></a></td></tr>
+						<tr><td align="center" colspan="2">
+							<img id="pctbeathistimg">
+						</td></tr>
+						<tr><td align="left"><-bad-</td><td align="right"> -good-></td></tr>
+					</table>
+					<table class="datatable1" id="pctbeattime" style="display:none;" >
+						<tr class="headerrow3"><td>% beaten over time</td><td align="center" valign="middle"><a href="?n=talk&sn=f#q3"><span class="faqlink">?</span></a></td></tr>
+						<tr><td align="center" colspan="2">
+						<img id="pctbeattimeimg" >
+						</td></tr>
+					</table>
+					</div>
+			
+		<div class="careerstat" width="100%" style="display: none; margin: 0px;">
+			<div class="headerrow1 roundtop"><h2>Regions</h2></div>
+            
+			<table width="100%" class="graycontent datatable1" style="text-align: left;">
+            <tr><th>Name</th><th>Races</th></tr>
+								<tr class="datarow1"><td>North Central</td><td>55</td></tr>
+								<tr class="datarow2"><td>Mountain West</td><td>1</td></tr>
+						</table>
+			
+		</div>
+		
+		<div class="yearstat" width="100%" style="margin: 0px;">
+			<div class="headerrow1 roundtop"><h2>Regions</h2></div>
+         
+			<table width="100%" class="graycontent datatable1">
+            <tr><th>Name</th><th>Races</th></tr>
+								<tr class="datarow1"><td>North Central</td><td>2</td></tr>
+						</table>
+			
+		</div>
+		</td>
+		</tr>
+	</table>
+    </div>
+    
+    <h2>Race History
+        <i class="fa fa-download download" title="download"></i>
+        <span class="downloadoptions">
+            
+            <a href="downloadracer.php?rID=44418">
+                csv
+            </a>
+           |
+            <a href="downloadracer.php?rID=44418&json=1">
+                json
+            </a>
+            
+        </span>
+    </h2>
+    
+			    <a class="expandMonth" href="#">
+		        <div class="headerrow1" style="margin-top: 1em;" >
+		            <img src="img/plus.png" border="0" class="expanderimg"/>2010 - 3 races 
+		        </div>
+		        </a>
+		        <div class="monthContent" style="display: none;">
+                <div style=" max-width: 100%; overflow-x: auto; ">
+       
+		        <table class="datatable1" width="100%">
+		        <tr class="headerrow2">
+								
+				<th width="60px" class="hidemobile"></th><th width="300px">Race Name</th><th>Category</th><th width="200px">Team Name</th><th class="number">Place</th><th width="70px;" class="number">Racers</th><th class="number">Points</th><th width="70px;" class="number upgrades">Upg Pts*</th>
+		        		        
+		        </tr>
+		        			<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 19				                </td>
+                <td>
+										<a href="/race/1155#r44418">Chi Cross Cup #1 - Jackson Park</a>
+									</td>
+				<td>Men Masters  40-99 </td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="265315" size="40" value="Unattached">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/10">
+						Unattached						</a>
+										</div>
+				</td>
+				<td class="number">47 </td>
+                <td class="number">71</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">462.66</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 21				                </td>
+                <td>
+										<a href="/race/1581#r44418">Northbrook Swan Song</a>
+									</td>
+				<td>Men Masters  40-99 </td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="383755" size="40" value="">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/1238">
+												</a>
+										</div>
+				</td>
+				<td class="number">43 </td>
+                <td class="number">53</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">517.89</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 5				                </td>
+                <td>
+										<a href="/race/1600#r44418">Illinois Cyclocross Championships</a>
+									</td>
+				<td>Men Cat 4B   </td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="388044" size="40" value="">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/1238">
+												</a>
+										</div>
+				</td>
+				<td class="number">63 </td>
+                <td class="number">87</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">639.05</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+			</table></div></div>			    <a class="expandMonth" href="#">
+		        <div class="headerrow1" style="margin-top: 1em;" >
+		            <img src="img/plus.png" border="0" class="expanderimg"/>2011 - 3 races 
+		        </div>
+		        </a>
+		        <div class="monthContent" style="display: none;">
+                <div style=" max-width: 100%; overflow-x: auto; ">
+       
+		        <table class="datatable1" width="100%">
+		        <tr class="headerrow2">
+								
+				<th width="60px" class="hidemobile"></th><th width="300px">Race Name</th><th>Category</th><th width="200px">Team Name</th><th class="number">Place</th><th width="70px;" class="number">Racers</th><th class="number">Points</th><th width="70px;" class="number upgrades">Upg Pts*</th>
+		        		        
+		        </tr>
+		        			<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 18				                </td>
+                <td>
+										<a href="/race/1778#r44418">Jackson Park Cyclocross</a>
+									</td>
+				<td>Men Cat 1/2/3/4 Masters 40-99</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="424258" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">45 </td>
+                <td class="number">69</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">451.46</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 6				                </td>
+                <td>
+										<a href="/race/2089#r44418">PSI-clocross for Life</a>
+									</td>
+				<td>Men Cat 1/2/3/4 Masters 40-99</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="521987" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">37 </td>
+                <td class="number">50</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">468.04</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 4				                </td>
+                <td>
+										<a href="/race/2272#r44418">Illinois Cyclocross Championships</a>
+									</td>
+				<td>Men Cat 1/2/3/4 Masters 40-99</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="566232" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">54 </td>
+                <td class="number">67</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">515.07</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+			</table></div></div>			    <a class="expandMonth" href="#">
+		        <div class="headerrow1" style="margin-top: 1em;" >
+		            <img src="img/plus.png" border="0" class="expanderimg"/>2012 - 3 races 
+		        </div>
+		        </a>
+		        <div class="monthContent" style="display: none;">
+                <div style=" max-width: 100%; overflow-x: auto; ">
+       
+		        <table class="datatable1" width="100%">
+		        <tr class="headerrow2">
+								
+				<th width="60px" class="hidemobile"></th><th width="300px">Race Name</th><th>Category</th><th width="200px">Team Name</th><th class="number">Place</th><th width="70px;" class="number">Racers</th><th class="number">Points</th><th width="70px;" class="number upgrades">Upg Pts*</th>
+		        		        
+		        </tr>
+		        			<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 15				                </td>
+                <td>
+										<a href="/race/2427#r44418">Chicago Cross Cup - Jackson Park</a>
+									</td>
+				<td>Men Cat 1/2/3/4 Masters 40-99</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="607766" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">64 </td>
+                <td class="number">80</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">514.59</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Oct 7				                </td>
+                <td>
+										<a href="/race/2566#r44418">Beverly Bike VeePak - Dan Ryan Woods CCC#3</a>
+									</td>
+				<td>Men Cat 1/2/3/4 Masters 40-99</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="650151" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">65 </td>
+                <td class="number">79</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">572.35</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 2				                </td>
+                <td>
+										<a href="/race/3040#r44418">Illinois State Cyclocross Championships</a>
+									</td>
+				<td>Men Cat 1/2/3/4 Masters 50+</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="771703" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">28 </td>
+                <td class="number">40</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">552.48</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+			</table></div></div>			    <a class="expandMonth" href="#">
+		        <div class="headerrow1" style="margin-top: 1em;" >
+		            <img src="img/plus.png" border="0" class="expanderimg"/>2013 - 6 races 
+		        </div>
+		        </a>
+		        <div class="monthContent" style="display: none;">
+                <div style=" max-width: 100%; overflow-x: auto; ">
+       
+		        <table class="datatable1" width="100%">
+		        <tr class="headerrow2">
+								
+				<th width="60px" class="hidemobile"></th><th width="300px">Race Name</th><th>Category</th><th width="200px">Team Name</th><th class="number">Place</th><th width="70px;" class="number">Racers</th><th class="number">Points</th><th width="70px;" class="number upgrades">Upg Pts*</th>
+		        		        
+		        </tr>
+		        			<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 7				                </td>
+                <td>
+										<a href="/race/3240#r44418">Patriot Cx</a>
+									</td>
+				<td>Men Cat 1/2/3/4/5 Masters 50+</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="809947" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">4 </td>
+                <td class="number">7</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">496.37</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 29				                </td>
+                <td>
+										<a href="/race/3347#r44418">xXx Racing-Athletico Jackson Park CX CCC</a>
+									</td>
+				<td>Men Cat 1/2/3/4/5 Masters 50+</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="856712" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">38 </td>
+                <td class="number">59</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">548.42</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Oct 13				                </td>
+                <td>
+										<a href="/race/3448#r44418">Beverly Bike VeePak - Dan Ryan Woods CCC#3</a>
+									</td>
+				<td>Cat 1/2/3/4/5 Masters 50+</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="912419" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">28 </td>
+                <td class="number">58</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">494.6</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 24				                </td>
+                <td>
+										<a href="/race/3849#r44418">Melas CX- Basin Racin' p/b Garner Cyclery</a>
+									</td>
+				<td>Men Cat 1/2/3/4/5 Masters 50+</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1039278" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">39 </td>
+                <td class="number">47</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">704.07</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 8				                </td>
+                <td>
+										<a href="/race/3922#r44418">Illinois State Cyclocross Championships Day 2</a>
+									</td>
+				<td>Men Cat 1/2/3/4/5 Masters 40+</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1069657" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">68 </td>
+                <td class="number">78</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">574.45</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 15				                </td>
+                <td>
+										<a href="/race/3986#r44418">Miller Chill CX</a>
+									</td>
+				<td>Men Cat 4/5</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1075101" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">18 </td>
+                <td class="number">38</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">530.76</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+			</table></div></div>			    <a class="expandMonth" href="#">
+		        <div class="headerrow1" style="margin-top: 1em;" >
+		            <img src="img/plus.png" border="0" class="expanderimg"/>2014 - 6 races 
+		        </div>
+		        </a>
+		        <div class="monthContent" style="display: none;">
+                <div style=" max-width: 100%; overflow-x: auto; ">
+       
+		        <table class="datatable1" width="100%">
+		        <tr class="headerrow2">
+								
+				<th width="60px" class="hidemobile"></th><th width="300px">Race Name</th><th>Category</th><th width="200px">Team Name</th><th class="number">Place</th><th width="70px;" class="number">Racers</th><th class="number">Points</th><th width="70px;" class="number upgrades">Upg Pts*</th>
+		        		        
+		        </tr>
+		        			<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 14				                </td>
+                <td>
+										<a href="/race/4201#r44418">Patriot CX</a>
+									</td>
+				<td>Men Masters 50+</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1124039" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">1 </td>
+                <td class="number">5</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; "></span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+													<i>3</i>													                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 17				                </td>
+                <td>
+										<a href="/race/4702#r44418">Indian Lakes Resort CX Race - Sunday</a>
+									</td>
+				<td>Men Masters 45+</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1307977" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">40 </td>
+                <td class="number">50</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">589.5</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 7				                </td>
+                <td>
+										<a href="/race/4861#r44418">2014 Illinois State Cyclocross Championships</a>
+									</td>
+				<td>Men Masters 45+</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1367921" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">46 </td>
+                <td class="number">66</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">535.35</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 14				                </td>
+                <td>
+										<a href="/race/4927#r44418">Miller Chill CX</a>
+									</td>
+				<td>Men Open 18+ Cat 4/5</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1375398" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">12 </td>
+                <td class="number">38</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">483.36</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 14				                </td>
+                <td>
+										<a href="/race/4927#r44418">Miller Chill CX</a>
+									</td>
+				<td>Men Masters 40+</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1375457" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">9 </td>
+                <td class="number">14</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">512.67</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 20				                </td>
+                <td>
+										<a href="/race/4952#r44418">Afterglow - A Cyclocross Race</a>
+									</td>
+				<td>Men Masters 40+</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1380070" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">27 </td>
+                <td class="number">37</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">586.87</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+			</table></div></div>			    <a class="expandMonth" href="#">
+		        <div class="headerrow1" style="margin-top: 1em;" >
+		            <img src="img/plus.png" border="0" class="expanderimg"/>2015 - 6 races 
+		        </div>
+		        </a>
+		        <div class="monthContent" style="display: none;">
+                <div style=" max-width: 100%; overflow-x: auto; ">
+       
+		        <table class="datatable1" width="100%">
+		        <tr class="headerrow2">
+								
+				<th width="60px" class="hidemobile"></th><th width="300px">Race Name</th><th>Category</th><th width="200px">Team Name</th><th class="number">Place</th><th width="70px;" class="number">Racers</th><th class="number">Points</th><th width="70px;" class="number upgrades">Upg Pts*</th>
+		        		        
+		        </tr>
+		        			<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 13				                </td>
+                <td>
+										<a href="/race/5107#r44418">Patriot CX</a>
+									</td>
+				<td>Men Cat 4</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1434149" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">2 </td>
+                <td class="number">10</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">467.66</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+													<i>2</i>													                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Oct 31				                </td>
+                <td>
+										<a href="/race/5518#r44418">Wildlife Spooky CX</a>
+									</td>
+				<td>Men Senior 19-29 Cat3/4/5</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1586438" size="40" value="">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+																					</div>
+				</td>
+				<td class="number">11 </td>
+                <td class="number">14</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">558.67</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 21				                </td>
+                <td>
+										<a href="/race/5760#r44418">Furrow Euro XC+CX</a>
+									</td>
+				<td>Men Cat 4/5</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1670024" size="40" value="">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/1238">
+												</a>
+										</div>
+				</td>
+				<td class="number">11 </td>
+                <td class="number">24</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">540</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 6				                </td>
+                <td>
+										<a href="/race/5840#r44418">2015 Illinois State Cyclocross Championships</a>
+									</td>
+				<td>Men Masters 45+</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1706680" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">52 </td>
+                <td class="number">78</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">499.1</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 13				                </td>
+                <td>
+										<a href="/race/5888#r44418">Miller Chill CX</a>
+									</td>
+				<td>Cat 3/4</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1709360" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">19 </td>
+                <td class="number">26</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">482.77</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 19				                </td>
+                <td>
+										<a href="/race/5973#r44418">Afterglow - A Cyclocross Race</a>
+									</td>
+				<td>Men Masters 40+</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1728582" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">22 </td>
+                <td class="number">41</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">530.58</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+			</table></div></div>			    <a class="expandMonth" href="#">
+		        <div class="headerrow1" style="margin-top: 1em;" >
+		            <img src="img/plus.png" border="0" class="expanderimg"/>2016 - 5 races 
+		        </div>
+		        </a>
+		        <div class="monthContent" style="display: none;">
+                <div style=" max-width: 100%; overflow-x: auto; ">
+       
+		        <table class="datatable1" width="100%">
+		        <tr class="headerrow2">
+								
+				<th width="60px" class="hidemobile"></th><th width="300px">Race Name</th><th>Category</th><th width="200px">Team Name</th><th class="number">Place</th><th width="70px;" class="number">Racers</th><th class="number">Points</th><th width="70px;" class="number upgrades">Upg Pts*</th>
+		        		        
+		        </tr>
+		        			<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 18				                </td>
+                <td>
+										<a href="/race/6317#r44418">Patriot CX 16</a>
+									</td>
+				<td>Men Cat 4</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1843347" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">6 </td>
+                <td class="number">19</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">486.2</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 5				                </td>
+                <td>
+										<a href="/race/6622#r44418">Wildlife Spooky CX</a>
+									</td>
+				<td>Men Senior 19-29 Cat 4</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="1936063" size="40" value="">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+																					</div>
+				</td>
+				<td class="number">6 </td>
+                <td class="number">15</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">474.62</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 19				                </td>
+                <td>
+										<a href="/race/6940#r44418">Furrow Euro (HICX #4)</a>
+									</td>
+				<td>Men Cat 4/5</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2026417" size="40" value="">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+																					</div>
+				</td>
+				<td class="number">17 </td>
+                <td class="number">39</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">493.79</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 4				                </td>
+                <td>
+										<a href="/race/6853#r44418">2016 Illinois State Cyclocross Championships</a>
+									</td>
+				<td>Men Masters 45+</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2010712" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">49 </td>
+                <td class="number">66</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">545.94</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 11				                </td>
+                <td>
+										<a href="/race/6914#r44418">Miller Chill CX</a>
+									</td>
+				<td>Men Cat 3/4</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2021971" size="40" value="">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+																					</div>
+				</td>
+				<td class="number">16 </td>
+                <td class="number">20</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">485.31</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+			</table></div></div>			    <a class="expandMonth" href="#">
+		        <div class="headerrow1" style="margin-top: 1em;" >
+		            <img src="img/plus.png" border="0" class="expanderimg"/>2017 - 8 races 
+		        </div>
+		        </a>
+		        <div class="monthContent" style="display: none;">
+                <div style=" max-width: 100%; overflow-x: auto; ">
+       
+		        <table class="datatable1" width="100%">
+		        <tr class="headerrow2">
+								
+				<th width="60px" class="hidemobile"></th><th width="300px">Race Name</th><th>Category</th><th width="200px">Team Name</th><th class="number">Place</th><th width="70px;" class="number">Racers</th><th class="number">Points</th><th width="70px;" class="number upgrades">Upg Pts*</th>
+		        		        
+		        </tr>
+		        			<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                May 7				                </td>
+                <td>
+										<a href="/race/7404#r44418">Another Dam Cross Race</a>
+									</td>
+				<td>MEN MASTERS 55+</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2146637" size="40" value="BLOOMINGTON CYCLE RACING TEAM">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						BLOOMINGTON CYCLE RACING TEAM						</a>
+										</div>
+				</td>
+				<td class="number">2 </td>
+                <td class="number">3</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; "></span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 17				                </td>
+                <td>
+										<a href="/race/7198#r44418">Patriot CX17</a>
+									</td>
+				<td>Men Cat 4</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2083469" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">9 </td>
+                <td class="number">14</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">549.59</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 4				                </td>
+                <td>
+										<a href="/race/7656#r44418">Wildlife Spooky CX</a>
+									</td>
+				<td>Men Senior 19-29 Cat 3/4</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2228534" size="40" value="">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+																					</div>
+				</td>
+				<td class="number">12 </td>
+                <td class="number">15</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">544.07</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 18				                </td>
+                <td>
+										<a href="/race/7824#r44418">Furrow Euro</a>
+									</td>
+				<td>Men Cat 3/4</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2278266" size="40" value="Bloomington Cycle & Fitness Race Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/56075">
+						Bloomington Cycle & Fitness Race Team						</a>
+										</div>
+				</td>
+				<td class="number">7 </td>
+                <td class="number">10</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">487.41</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 24				                </td>
+                <td>
+										<a href="/race/7860#r44418">Friends of Big Marsh: Black Friday Cyclocross Race</a>
+									</td>
+				<td>Men Cat 4/5</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2287063" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">20 </td>
+                <td class="number">54</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">518.42</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 26				                </td>
+                <td>
+										<a href="/race/7867#r44418">Region Riot Cross</a>
+									</td>
+				<td>Men Masters 55+</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2288179" size="40" value="">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+																					</div>
+				</td>
+				<td class="number">8 </td>
+                <td class="number">17</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">517.96</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 3				                </td>
+                <td>
+										<a href="/race/7886#r44418">2017 Illinois State Cyclocross Championships</a>
+									</td>
+				<td>Men Masters 55+</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2294635" size="40" value="">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/1238">
+												</a>
+										</div>
+				</td>
+				<td class="number">28 </td>
+                <td class="number">52</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">525.03</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 10				                </td>
+                <td>
+										<a href="/race/7932#r44418">Miller Chill CX</a>
+									</td>
+				<td>Men Cat 3/4</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2307818" size="40" value="">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+																					</div>
+				</td>
+				<td class="number">13 </td>
+                <td class="number">18</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">496.54</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+			</table></div></div>			    <a class="expandMonth" href="#">
+		        <div class="headerrow1" style="margin-top: 1em;" >
+		            <img src="img/plus.png" border="0" class="expanderimg"/>2018 - 6 races 
+		        </div>
+		        </a>
+		        <div class="monthContent" style="display: none;">
+                <div style=" max-width: 100%; overflow-x: auto; ">
+       
+		        <table class="datatable1" width="100%">
+		        <tr class="headerrow2">
+								
+				<th width="60px" class="hidemobile"></th><th width="300px">Race Name</th><th>Category</th><th width="200px">Team Name</th><th class="number">Place</th><th width="70px;" class="number">Racers</th><th class="number">Points</th><th width="70px;" class="number upgrades">Upg Pts*</th>
+		        		        
+		        </tr>
+		        			<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Jan 27				                </td>
+                <td>
+										<a href="/race/8081#r44418">Corn Cross</a>
+									</td>
+				<td>Men Cat 3/4/5</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2333015" size="40" value="">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+																					</div>
+				</td>
+				<td class="number">7 </td>
+                <td class="number">14</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">448.78</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 16				                </td>
+                <td>
+										<a href="/race/8302#r44418">Patriot Cx</a>
+									</td>
+				<td>Men cat 4</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2404524" size="40" value="">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+																					</div>
+				</td>
+				<td class="number">7 </td>
+                <td class="number">14</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">458.25</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Oct 21				                </td>
+                <td>
+										<a href="/race/8463#r44418">ABD Sunrise Park Cyclocross</a>
+									</td>
+				<td>Men Masters 35+</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2476028" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">34 </td>
+                <td class="number">42</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">504.74</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Oct 28				                </td>
+                <td>
+										<a href="/race/8701#r44418">Candy Cross CX</a>
+									</td>
+				<td>Men Senior  Cat 3/4</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2541105" size="40" value="">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+																					</div>
+				</td>
+				<td class="number">5 </td>
+                <td class="number">7</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">479.66</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 25				                </td>
+                <td>
+										<a href="/race/8840#r44418">Region Riot Cross</a>
+									</td>
+				<td>Men Master 55+ OPEN</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2573412" size="40" value="Bloomington Cycle Racing team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing team						</a>
+										</div>
+				</td>
+				<td class="number">6 </td>
+                <td class="number">14</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">525.33</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 8				                </td>
+                <td>
+										<a href="/race/8925#r44418">Furrow Euro CX, a HICX Series Event</a>
+									</td>
+				<td>Men Cat 3/4</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2595537" size="40" value="">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+																					</div>
+				</td>
+				<td class="number">10 </td>
+                <td class="number">13</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">541.48</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+			</table></div></div>			    <a class="expandMonth" href="#">
+		        <div class="headerrow1" style="margin-top: 1em;" >
+		            <img src="img/plus.png" border="0" class="expanderimg"/>2019 - 4 races 
+		        </div>
+		        </a>
+		        <div class="monthContent" style="display: none;">
+                <div style=" max-width: 100%; overflow-x: auto; ">
+       
+		        <table class="datatable1" width="100%">
+		        <tr class="headerrow2">
+								
+				<th width="60px" class="hidemobile"></th><th width="300px">Race Name</th><th>Category</th><th width="200px">Team Name</th><th class="number">Place</th><th width="70px;" class="number">Racers</th><th class="number">Points</th><th width="70px;" class="number upgrades">Upg Pts*</th>
+		        		        
+		        </tr>
+		        			<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 15				                </td>
+                <td>
+										<a href="/race/9204#r44418">Half Acre Cycling's CX Eliminator</a>
+									</td>
+				<td>Cat 'C' Open</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2697968" size="40" value="">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/1238">
+												</a>
+										</div>
+				</td>
+				<td class="number">6 </td>
+                <td class="number">26</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">490.15</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Oct 6				                </td>
+                <td>
+										<a href="/race/9316#r44418">Hopkins Park CX</a>
+									</td>
+				<td>Men Masters 55+</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2694335" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">18 </td>
+                <td class="number">38</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">477.22</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 24				                </td>
+                <td>
+										<a href="/race/9789#r44418">Pheasant Run Resort CX Race Day 2</a>
+									</td>
+				<td>Men Masters 55+</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2836209" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">27 </td>
+                <td class="number">36</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">657.53</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Dec 1				                </td>
+                <td>
+										<a href="/race/9819#r44418">Region Riot Cyclocross</a>
+									</td>
+				<td>Men Masters 55+</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2842269" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">DNF </td>
+                <td class="number">7</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">554.04</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+			</table></div></div>			    <a class="expandMonth" href="#">
+		        <div class="headerrow1" style="margin-top: 1em;" >
+		            <img src="img/plus.png" border="0" class="expanderimg"/>2021 - 2 races 
+		        </div>
+		        </a>
+		        <div class="monthContent" style="display: none;">
+                <div style=" max-width: 100%; overflow-x: auto; ">
+       
+		        <table class="datatable1" width="100%">
+		        <tr class="headerrow2">
+								
+				<th width="60px" class="hidemobile"></th><th width="300px">Race Name</th><th>Category</th><th width="200px">Team Name</th><th class="number">Place</th><th width="70px;" class="number">Racers</th><th class="number">Points</th><th width="70px;" class="number upgrades">Upg Pts*</th>
+		        		        
+		        </tr>
+		        			<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Oct 17				                </td>
+                <td>
+										<a href="/race/10435#r44418">Glenwood Academy CX</a>
+									</td>
+				<td>Men Masters 55+</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="2977551" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">19 </td>
+                <td class="number">25</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">618.53</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 28				                </td>
+                <td>
+										<a href="/race/10755#r44418">Region Riot Cyclocross</a>
+									</td>
+				<td>Men Masters 55+ Cat 4/5</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="3066925" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">6 </td>
+                <td class="number">13</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">565.1</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+			</table></div></div>			    <a class="expandMonth" href="#">
+		        <div class="headerrow1" style="margin-top: 1em;" >
+		            <img src="img/plus.png" border="0" class="expanderimg"/>2022 - 2 races 
+		        </div>
+		        </a>
+		        <div class="monthContent" style="display: none;">
+                <div style=" max-width: 100%; overflow-x: auto; ">
+       
+		        <table class="datatable1" width="100%">
+		        <tr class="headerrow2">
+								
+				<th width="60px" class="hidemobile"></th><th width="300px">Race Name</th><th>Category</th><th width="200px">Team Name</th><th class="number">Place</th><th width="70px;" class="number">Racers</th><th class="number">Points</th><th width="70px;" class="number upgrades">Upg Pts*</th>
+		        		        
+		        </tr>
+		        			<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Oct 2				                </td>
+                <td>
+										<a href="/race/11014#r44418">CCC #1 - Schiller Woods CX</a>
+									</td>
+				<td>Men Masters 55+</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="3133714" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">23 </td>
+                <td class="number">41</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">513.07</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+						<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 27				                </td>
+                <td>
+										<a href="/race/11426#r44418">Region Riot Cyclocross</a>
+									</td>
+				<td>Men Masters 55+ Cat 4/5</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="3256930" size="40" value="Bloomington Cycle Racing Team">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/16719">
+						Bloomington Cycle Racing Team						</a>
+										</div>
+				</td>
+				<td class="number">6 </td>
+                <td class="number">11</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; ">530.34</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+			</table></div></div>			    <a class="expandMonth" href="#">
+		        <div class="headerrow1" style="margin-top: 1em;" >
+		            <img src="img/plus.png" border="0" class="expanderimg"/>2023 - 1 races 
+		        </div>
+		        </a>
+		        <div class="monthContent" style="display: none;">
+                <div style=" max-width: 100%; overflow-x: auto; ">
+       
+		        <table class="datatable1" width="100%">
+		        <tr class="headerrow2">
+								
+				<th width="60px" class="hidemobile"></th><th width="300px">Race Name</th><th>Category</th><th width="200px">Team Name</th><th class="number">Place</th><th width="70px;" class="number">Racers</th><th class="number">Points</th><th width="70px;" class="number upgrades">Upg Pts*</th>
+		        		        
+		        </tr>
+		        			<tr class="datarow2">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Nov 19				                </td>
+                <td>
+										<a href="/race/12152#r44418">Quarry Cross At The Forge</a>
+									</td>
+				<td>Men Masters 55+</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="3463127" size="40" value="">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/1238">
+												</a>
+										</div>
+				</td>
+				<td class="number">22 </td>
+                <td class="number">29</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; font-weight: bold;  color: green;">592.6</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+			</table></div></div>			    <a class="expandMonth" href="#">
+		        <div class="headerrow1" style="margin-top: 1em;" >
+		            <img src="img/minus.png" border="0" class="expanderimg"/>2024 - 1 races 
+		        </div>
+		        </a>
+		        <div class="monthContent" style="">
+                <div style=" max-width: 100%; overflow-x: auto; ">
+       
+		        <table class="datatable1" width="100%">
+		        <tr class="headerrow2">
+								
+				<th width="60px" class="hidemobile"></th><th width="300px">Race Name</th><th>Category</th><th width="200px">Team Name</th><th class="number">Place</th><th width="70px;" class="number">Racers</th><th class="number">Points</th><th width="70px;" class="number upgrades">Upg Pts*</th>
+		        		        
+		        </tr>
+		        			<tr class="datarow1">
+				
+				<td class="hidemobile" style="font-size: 12px;">
+                Sep 29				                </td>
+                <td>
+										<a href="/race/12471#r44418">Glenwood Academy CX</a>
+									</td>
+				<td>Men Masters 55+</td>
+				<td>
+					<div style="display:none" class="editteam">
+						<input type="text" class="teamname" rID="3541490" size="40" value="">
+						<input type="button" value="Done" class="editteamsubmit">
+					</div>
+					<div class="displayteam">
+											<a href="/team/1238">
+												</a>
+										</div>
+				</td>
+				<td class="number">21 </td>
+                <td class="number">38</td>
+				<td class="number">
+				                <span title="" style="font-size:smaller; font-weight: bold;  color: green;">521.34</span>
+				
+				</td>
+				
+								<td class="number" title="">
+                   
+                    <span class="upgrades">
+						                    </span>
+                   
+                </td>
+							</tr>
+			<tr class="headerrow2 historyfooter">
+	<td colspan="5" align="right">
+		<b>Points</b> (Oct 14 2024):
+	
+        </td>
+    <td align="center">
+
+					556.97		
+		<!--a href="#" id="pointsdetail" racerID="44418" AsOfDate="Oct 14 2024"><span class="faqlink">?</span></a-->
+		<div class="popup" style="position:absolute; display:none; border: 1px solid black; background: white; padding: 5px;">
+			<img src="img\snake_transparent.gif"/>
+		</div>
+        	</td>
+	<td ></td>
+    <td align="center">
+        <div class="upgrades">Upgrade Points: 
+            <a href="#" class="showupgradepoints">[show]</a>
+            <div class="totalupgradepoints detail" style="display:none; position: absolute; ">
+                <b>Estimated USAC Upgrade points</b>:<br/>
+                <span style="font-size: smaller">(Assuming every race they've done was USAC-sanctioned,
+                 and everyone they raced was in their category -- i.e. this is a high estimate)</span><br/>
+                <i>Voluntary Upgrade Points (last 36 months)</i>: <b>0</b><br/>
+                <i>Mandatory Upgrade Points (last 12 months)</i>: <b>0</b><br/>
+            </div>
+        </div>
+    </td>
+	    </table>
+<div class="ageinfo" id="pointsexp">
+    <p>
+		<strong>Points in bold</strong> are being considered for the current points. <br/>
+		<em>Points in italics</em> are being ignored because they were your second race that day.</em><br/>
+		<span style="color: green;"> Green points</span> are the <b>best five races in the last 12 months</b> -- the average of these are your current points.
+    </p>
+</div
+
+<br/>
+
+
+<div class="ageinfo upgrades"  style="font-size: smaller;">
+* - Upgrade points make some assumptions about what category the race was (different categories have different minimum racer requirements and point structures).  
+Points are based off of information found <a href="https://usacycling.org/about-us/governance/policy-viii?gad_source=1&gclid=Cj0KCQjw8pKxBhD_ARIsAPrG45kD6m4eBF7g5avZzjGDLD19vS2gVvi_C8Oun8YeJby6HtJI_BfEXgEaAoa1EALw_wcB">here</a>.  As with any other metadata on this site, this information should be used as
+a guide, not a definitive source -- for upgrade questions, please contact your local USA Cycling representative.  Upgrade points from more than three years ago appear in italics and are excluded from calculations.
+</div>
+
+</div>
+
+<div id="habitat">
+
+ <style type="text/css">
+      html, body, #myMap {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+	  .customInfoBox-previewArea
+	  {
+		margin-bottom: -25px;
+	  }
+    </style>
+</script>
+<script type="text/javascript" src="ts/habitat.js"/>
+<script type="text/javascript">
+	var map = new mapboxgl.Map({
+		container: 'myMap',
+		style: 'https://tilecdn.pinkbike.org/styles/trailforks-imperial/style.json',
+		center: [-11.84664, 40.783726],
+		zoom: 4
+	  });
+
+
+	var map;
+    var lat;
+	var lon;
+	var geocoder = null;	
+	var racesOnMap = new Array(); 
+	
+	function mapsLoaded() {	
+         if(document.getElementById("myMap")) {
+          var uluru = {lat: -25.363, lng: 131.044};
+                var mapOptions = {
+                    zoomControl: true,
+                    zoomControlOptions: {
+                        style: google.maps.ZoomControlStyle.SMALL
+                        },
+                   
+                    mapTypeControl: false,
+                    streetViewControl: false,
+                    zoom: 9,
+                    center: uluru,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+            map = new google.maps.Map(document.getElementById("myMap"), mapOptions);
+       }
+                
+       
+		//add races
+		var race = new Object();
+							race.RaceLat = 41.8781136;
+					race.RaceLon = -87.6297982;
+					race.RaceName = 'Jackson Park Cyclocross';
+					race.RaceID = 1778;
+					race.RaceDate = new Date('2011-09-18');
+					race.RaceDateDisplay = '09/18/2011';
+					AddMarker(race);
+										race.RaceLat = 42.3147436;
+					race.RaceLon = -88.4487021;
+					race.RaceName = 'PSI-clocross for Life';
+					race.RaceID = 2089;
+					race.RaceDate = new Date('2011-11-6');
+					race.RaceDateDisplay = '11/6/2011';
+					AddMarker(race);
+										race.RaceLat = 41.8781136;
+					race.RaceLon = -87.6297982;
+					race.RaceName = 'Illinois Cyclocross Championships';
+					race.RaceID = 2272;
+					race.RaceDate = new Date('2011-12-4');
+					race.RaceDateDisplay = '12/4/2011';
+					AddMarker(race);
+										race.RaceLat = 41.8781136;
+					race.RaceLon = -87.6297982;
+					race.RaceName = 'Chicago Cross Cup - Jackson Park';
+					race.RaceID = 2427;
+					race.RaceDate = new Date('2012-09-15');
+					race.RaceDateDisplay = '09/15/2012';
+					AddMarker(race);
+										race.RaceLat = 41.8781136;
+					race.RaceLon = -87.6297982;
+					race.RaceName = 'Beverly Bike VeePak - Dan Ryan Woods CCC#3';
+					race.RaceID = 2566;
+					race.RaceDate = new Date('2012-10-7');
+					race.RaceDateDisplay = '10/7/2012';
+					AddMarker(race);
+										race.RaceLat = 41.8781136;
+					race.RaceLon = -87.6297982;
+					race.RaceName = 'Illinois State Cyclocross Championships';
+					race.RaceID = 3040;
+					race.RaceDate = new Date('2012-12-2');
+					race.RaceDateDisplay = '12/2/2012';
+					AddMarker(race);
+										race.RaceLat = 40.308498382568;
+					race.RaceLon = -88.146217346191;
+					race.RaceName = 'Patriot Cx';
+					race.RaceID = 3240;
+					race.RaceDate = new Date('2013-09-7');
+					race.RaceDateDisplay = '09/7/2013';
+					AddMarker(race);
+										race.RaceLat = 41.88415145874;
+					race.RaceLon = -87.63240814209;
+					race.RaceName = 'xXx Racing-Athletico Jackson Park CX CCC';
+					race.RaceID = 3347;
+					race.RaceDate = new Date('2013-09-29');
+					race.RaceDateDisplay = '09/29/2013';
+					AddMarker(race);
+										race.RaceLat = 41.884250640869;
+					race.RaceLon = -87.632446289062;
+					race.RaceName = 'Beverly Bike VeePak - Dan Ryan Woods CCC#3';
+					race.RaceID = 3448;
+					race.RaceDate = new Date('2013-10-13');
+					race.RaceDateDisplay = '10/13/2013';
+					AddMarker(race);
+										race.RaceLat = 42.065380096435;
+					race.RaceLon = -87.93537902832;
+					race.RaceName = 'Melas CX- Basin Racin\' p/b Garner Cyclery';
+					race.RaceID = 3849;
+					race.RaceDate = new Date('2013-11-24');
+					race.RaceDateDisplay = '11/24/2013';
+					AddMarker(race);
+										race.RaceLat = 41.884250640869;
+					race.RaceLon = -87.632446289062;
+					race.RaceName = 'Illinois State Cyclocross Championships Day 2';
+					race.RaceID = 3922;
+					race.RaceDate = new Date('2013-12-8');
+					race.RaceDateDisplay = '12/8/2013';
+					AddMarker(race);
+										race.RaceLat = 40.485008239746;
+					race.RaceLon = -88.997711181641;
+					race.RaceName = 'Miller Chill CX';
+					race.RaceID = 3986;
+					race.RaceDate = new Date('2013-12-15');
+					race.RaceDateDisplay = '12/15/2013';
+					AddMarker(race);
+										race.RaceLat = 40.308498382568;
+					race.RaceLon = -88.146217346191;
+					race.RaceName = 'Patriot CX';
+					race.RaceID = 4201;
+					race.RaceDate = new Date('2014-09-14');
+					race.RaceDateDisplay = '09/14/2014';
+					AddMarker(race);
+										race.RaceLat = 41.94958114624;
+					race.RaceLon = -88.08080291748;
+					race.RaceName = 'Indian Lakes Resort CX Race - Sunday';
+					race.RaceID = 4702;
+					race.RaceDate = new Date('2014-11-17');
+					race.RaceDateDisplay = '11/17/2014';
+					AddMarker(race);
+										race.RaceLat = 41.884250640869;
+					race.RaceLon = -87.632446289062;
+					race.RaceName = '2014 Illinois State Cyclocross Championships';
+					race.RaceID = 4861;
+					race.RaceDate = new Date('2014-12-7');
+					race.RaceDateDisplay = '12/7/2014';
+					AddMarker(race);
+										race.RaceLat = 40.485008239746;
+					race.RaceLon = -88.997711181641;
+					race.RaceName = 'Miller Chill CX';
+					race.RaceID = 4927;
+					race.RaceDate = new Date('2014-12-14');
+					race.RaceDateDisplay = '12/14/2014';
+					AddMarker(race);
+										race.RaceLat = 40.485008239746;
+					race.RaceLon = -88.997711181641;
+					race.RaceName = 'Miller Chill CX';
+					race.RaceID = 4927;
+					race.RaceDate = new Date('2014-12-14');
+					race.RaceDateDisplay = '12/14/2014';
+					AddMarker(race);
+										race.RaceLat = 41.884250640869;
+					race.RaceLon = -87.632446289062;
+					race.RaceName = 'Afterglow - A Cyclocross Race';
+					race.RaceID = 4952;
+					race.RaceDate = new Date('2014-12-20');
+					race.RaceDateDisplay = '12/20/2014';
+					AddMarker(race);
+										race.RaceLat = 40.308498382568;
+					race.RaceLon = -88.146217346191;
+					race.RaceName = 'Patriot CX';
+					race.RaceID = 5107;
+					race.RaceDate = new Date('2015-09-13');
+					race.RaceDateDisplay = '09/13/2015';
+					AddMarker(race);
+										race.RaceLat = 40.691711425781;
+					race.RaceLon = -89.792861938477;
+					race.RaceName = 'Wildlife Spooky CX';
+					race.RaceID = 5518;
+					race.RaceDate = new Date('2015-10-31');
+					race.RaceDateDisplay = '10/31/2015';
+					AddMarker(race);
+										race.RaceLat = 40.737228393555;
+					race.RaceLon = -89.015342712402;
+					race.RaceName = 'Furrow Euro XC+CX';
+					race.RaceID = 5760;
+					race.RaceDate = new Date('2015-11-21');
+					race.RaceDateDisplay = '11/21/2015';
+					AddMarker(race);
+										race.RaceLat = 41.884250640869;
+					race.RaceLon = -87.632446289062;
+					race.RaceName = '2015 Illinois State Cyclocross Championships';
+					race.RaceID = 5840;
+					race.RaceDate = new Date('2015-12-6');
+					race.RaceDateDisplay = '12/6/2015';
+					AddMarker(race);
+										race.RaceLat = 40.485008239746;
+					race.RaceLon = -88.997711181641;
+					race.RaceName = 'Miller Chill CX';
+					race.RaceID = 5888;
+					race.RaceDate = new Date('2015-12-13');
+					race.RaceDateDisplay = '12/13/2015';
+					AddMarker(race);
+										race.RaceLat = 41.884250640869;
+					race.RaceLon = -87.632446289062;
+					race.RaceName = 'Afterglow - A Cyclocross Race';
+					race.RaceID = 5973;
+					race.RaceDate = new Date('2015-12-19');
+					race.RaceDateDisplay = '12/19/2015';
+					AddMarker(race);
+										race.RaceLat = 40.308498382568;
+					race.RaceLon = -88.146217346191;
+					race.RaceName = 'Patriot CX 16';
+					race.RaceID = 6317;
+					race.RaceDate = new Date('2016-09-18');
+					race.RaceDateDisplay = '09/18/2016';
+					AddMarker(race);
+										race.RaceLat = 40.691711425781;
+					race.RaceLon = -89.792861938477;
+					race.RaceName = 'Wildlife Spooky CX';
+					race.RaceID = 6622;
+					race.RaceDate = new Date('2016-11-5');
+					race.RaceDateDisplay = '11/5/2016';
+					AddMarker(race);
+										race.RaceLat = 40.737228393555;
+					race.RaceLon = -89.015342712402;
+					race.RaceName = 'Furrow Euro (HICX #4)';
+					race.RaceID = 6940;
+					race.RaceDate = new Date('2016-11-19');
+					race.RaceDateDisplay = '11/19/2016';
+					AddMarker(race);
+										race.RaceLat = 41.884250640869;
+					race.RaceLon = -87.632446289062;
+					race.RaceName = '2016 Illinois State Cyclocross Championships';
+					race.RaceID = 6853;
+					race.RaceDate = new Date('2016-12-4');
+					race.RaceDateDisplay = '12/4/2016';
+					AddMarker(race);
+										race.RaceLat = 40.485008239746;
+					race.RaceLon = -88.997711181641;
+					race.RaceName = 'Miller Chill CX';
+					race.RaceID = 6914;
+					race.RaceDate = new Date('2016-12-11');
+					race.RaceDateDisplay = '12/11/2016';
+					AddMarker(race);
+										race.RaceLat = 42.266899108887;
+					race.RaceLon = -89.078056335449;
+					race.RaceName = 'Another Dam Cross Race';
+					race.RaceID = 7404;
+					race.RaceDate = new Date('2017-05-7');
+					race.RaceDateDisplay = '05/7/2017';
+					AddMarker(race);
+										race.RaceLat = 40.308498382568;
+					race.RaceLon = -88.146217346191;
+					race.RaceName = 'Patriot CX17';
+					race.RaceID = 7198;
+					race.RaceDate = new Date('2017-09-17');
+					race.RaceDateDisplay = '09/17/2017';
+					AddMarker(race);
+										race.RaceLat = 40.691711425781;
+					race.RaceLon = -89.792861938477;
+					race.RaceName = 'Wildlife Spooky CX';
+					race.RaceID = 7656;
+					race.RaceDate = new Date('2017-11-4');
+					race.RaceDateDisplay = '11/4/2017';
+					AddMarker(race);
+										race.RaceLat = 40.737228393555;
+					race.RaceLon = -89.015342712402;
+					race.RaceName = 'Furrow Euro';
+					race.RaceID = 7824;
+					race.RaceDate = new Date('2017-11-18');
+					race.RaceDateDisplay = '11/18/2017';
+					AddMarker(race);
+										race.RaceLat = 41.884250640869;
+					race.RaceLon = -87.632446289062;
+					race.RaceName = 'Friends of Big Marsh: Black Friday Cyclocross Race';
+					race.RaceID = 7860;
+					race.RaceDate = new Date('2017-11-24');
+					race.RaceDateDisplay = '11/24/2017';
+					AddMarker(race);
+										race.RaceLat = 41.41854095459;
+					race.RaceLon = -87.363166809082;
+					race.RaceName = 'Region Riot Cross';
+					race.RaceID = 7867;
+					race.RaceDate = new Date('2017-11-26');
+					race.RaceDateDisplay = '11/26/2017';
+					AddMarker(race);
+										race.RaceLat = 41.884250640869;
+					race.RaceLon = -87.632446289062;
+					race.RaceName = '2017 Illinois State Cyclocross Championships';
+					race.RaceID = 7886;
+					race.RaceDate = new Date('2017-12-3');
+					race.RaceDateDisplay = '12/3/2017';
+					AddMarker(race);
+										race.RaceLat = 40.4853515625;
+					race.RaceLon = -88.997718811035;
+					race.RaceName = 'Miller Chill CX';
+					race.RaceID = 7932;
+					race.RaceDate = new Date('2017-12-10');
+					race.RaceDateDisplay = '12/10/2017';
+					AddMarker(race);
+										race.RaceLat = 40.117378234863;
+					race.RaceLon = -88.204429626465;
+					race.RaceName = 'Corn Cross';
+					race.RaceID = 8081;
+					race.RaceDate = new Date('2018-01-27');
+					race.RaceDateDisplay = '01/27/2018';
+					AddMarker(race);
+										race.RaceLat = 40.308498382568;
+					race.RaceLon = -88.146217346191;
+					race.RaceName = 'Patriot Cx';
+					race.RaceID = 8302;
+					race.RaceDate = new Date('2018-09-16');
+					race.RaceDateDisplay = '09/16/2018';
+					AddMarker(race);
+										race.RaceLat = 41.991821289062;
+					race.RaceLon = -88.184593200684;
+					race.RaceName = 'ABD Sunrise Park Cyclocross';
+					race.RaceID = 8463;
+					race.RaceDate = new Date('2018-10-21');
+					race.RaceDateDisplay = '10/21/2018';
+					AddMarker(race);
+										race.RaceLat = 39.495971679688;
+					race.RaceLon = -88.176307678223;
+					race.RaceName = 'Candy Cross CX';
+					race.RaceID = 8701;
+					race.RaceDate = new Date('2018-10-28');
+					race.RaceDateDisplay = '10/28/2018';
+					AddMarker(race);
+										race.RaceLat = 41.41854095459;
+					race.RaceLon = -87.363166809082;
+					race.RaceName = 'Region Riot Cross';
+					race.RaceID = 8840;
+					race.RaceDate = new Date('2018-11-25');
+					race.RaceDateDisplay = '11/25/2018';
+					AddMarker(race);
+										race.RaceLat = 40.737228393555;
+					race.RaceLon = -89.015342712402;
+					race.RaceName = 'Furrow Euro CX, a HICX Series Event';
+					race.RaceID = 8925;
+					race.RaceDate = new Date('2018-12-8');
+					race.RaceDateDisplay = '12/8/2018';
+					AddMarker(race);
+										race.RaceLat = 41.884250640869;
+					race.RaceLon = -87.632446289062;
+					race.RaceName = 'Half Acre Cycling\'s CX Eliminator';
+					race.RaceID = 9204;
+					race.RaceDate = new Date('2019-09-15');
+					race.RaceDateDisplay = '09/15/2019';
+					AddMarker(race);
+										race.RaceLat = 41.950141906738;
+					race.RaceLon = -88.080833435059;
+					race.RaceName = 'Hopkins Park CX';
+					race.RaceID = 9316;
+					race.RaceDate = new Date('2019-10-6');
+					race.RaceDateDisplay = '10/6/2019';
+					AddMarker(race);
+										race.RaceLat = 41.91376876831;
+					race.RaceLon = -88.312767028809;
+					race.RaceName = 'Pheasant Run Resort CX Race Day 2';
+					race.RaceID = 9789;
+					race.RaceDate = new Date('2019-11-24');
+					race.RaceDateDisplay = '11/24/2019';
+					AddMarker(race);
+										race.RaceLat = 41.41854095459;
+					race.RaceLon = -87.363166809082;
+					race.RaceName = 'Region Riot Cyclocross';
+					race.RaceID = 9819;
+					race.RaceDate = new Date('2019-12-1');
+					race.RaceDateDisplay = '12/1/2019';
+					AddMarker(race);
+										race.RaceLat = 41.543762207031;
+					race.RaceLon = -87.612289428711;
+					race.RaceName = 'Glenwood Academy CX';
+					race.RaceID = 10435;
+					race.RaceDate = new Date('2021-10-17');
+					race.RaceDateDisplay = '10/17/2021';
+					AddMarker(race);
+										race.RaceLat = 41.417945861816;
+					race.RaceLon = -87.364326477051;
+					race.RaceName = 'Region Riot Cyclocross';
+					race.RaceID = 10755;
+					race.RaceDate = new Date('2021-11-28');
+					race.RaceDateDisplay = '11/28/2021';
+					AddMarker(race);
+										race.RaceLat = 41.8832283;
+					race.RaceLon = -87.63240051;
+					race.RaceName = 'CCC #1 - Schiller Woods CX';
+					race.RaceID = 11014;
+					race.RaceDate = new Date('2022-10-2');
+					race.RaceDateDisplay = '10/2/2022';
+					AddMarker(race);
+										race.RaceLat = 41.41794586;
+					race.RaceLon = -87.36432648;
+					race.RaceName = 'Region Riot Cyclocross';
+					race.RaceID = 11426;
+					race.RaceDate = new Date('2022-11-27');
+					race.RaceDateDisplay = '11/27/2022';
+					AddMarker(race);
+										race.RaceLat = 41.67408752;
+					race.RaceLon = -88.00018311;
+					race.RaceName = 'Quarry Cross At The Forge';
+					race.RaceID = 12152;
+					race.RaceDate = new Date('2023-11-19');
+					race.RaceDateDisplay = '11/19/2023';
+					AddMarker(race);
+										race.RaceLat = 41.54376221;
+					race.RaceLon = -87.61228943;
+					race.RaceName = 'Glenwood Academy CX';
+					race.RaceID = 12471;
+					race.RaceDate = new Date('2024-09-29');
+					race.RaceDateDisplay = '09/29/2024';
+					AddMarker(race);
+										//var rect = Microsoft.Maps.LocationRect.fromCorners(new Microsoft.Maps.Location(39.495971679688,-89.792861938477),new Microsoft.Maps.Location(42.3147436,-87.363166809082));
+					var rect= new google.maps.LatLngBounds({lat:39.495971679688,lng:-89.792861938477},{lat:42.3147436,lng:-87.363166809082});
+					map.fitBounds(rect);
+				   //  map.setCenter(rect.getCenter());
+						}
+	
+    function PlaceMarker(map, marker,latLng, centerMap,color,caption) {
+        if (marker != null) {
+            marker.setMap(null);
+        }
+        if(centerMap)
+            map.setCenter(latLng);
+        marker = new google.maps.Marker({
+            map: map,
+            position: latLng,
+            title: caption//,
+
+            //icon: '/Images/orange.png'
+        });
+        if (caption)
+            marker.setTitle(caption);
+        if (color)
+            marker.setIcon("http://maps.google.com/mapfiles/ms/icons/"+color+"-dot.png")
+        return marker;
+    }
+
+	function AddMarker(race)
+	{
+		//var latLong = new Microsoft.Maps.Location(race.RaceLat, race.RaceLon);
+        var latlong = {lat: race.RaceLat,lng:race.RaceLon};
+		
+       
+		
+		
+		var today = new Date();
+		today.setFullYear(today.getFullYear()-1);
+		
+		if(race.RaceDate > today)
+			var src='/img/wheelicon2.png';
+		else
+			var src='/img/wheelicon3.png';
+		
+	 var marker = new google.maps.Marker({
+          position: latlong,
+          map: map,
+          title: race.RaceName,
+          icon: src
+        });
+	}
+
+</script>
+<div class="headerrow1">
+<div style="float: right; text-align: right; ">
+		<img src="img/wheelicon2.png" style="vertical-align: middle;"/>- Last 12 months 
+		<img src="img/wheelicon3.png" style="vertical-align: middle;"/> - Older</div>
+	
+	<h2>Natural Habitat</h2>
+	</div>
+<div style="position: relative; width: 100%;	height: 400px; border 1px solid black;" id="myMap">
+</div>
+</div>
+                    </article>
+                </section>
+            </div>
+        </div>
+
+
+
+                    <div class="row-full footer no-print">
+                <div class="row" style="text-align: left">
+                    <p>
+                                                    crossresults.com is a division of <a href="http://athleteReg.com">athleteReg.com</a>, the best
+                            event registration website in the world. If you like
+                            crossresults.com, you should use <A href="http://www.bikereg.com">BikeReg.com</a>.
+                                            </p>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <div class="race">
+                            <p>
+                                <span>Register with</span> <a href="https://www.bikereg.com" target="new">
+                                    <img src="/img/footer-br.png"></a> <a href="https://www.runreg.com" target="new">
+                                    <img src="/img/footer-rr.png"></a> <a href="http://www.trireg.com" target="new">
+                                    <img src="/img/footer-tr.png"></a> <a href="https://www.skireg.com" target="new">
+                                    <img src="/img/footer-sr.png"></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row-full footer-bottom no-print">
+                <div class="row" style="display: flex; align-items:center;">
+
+                    <img src="https://d36gb93zszu20a.cloudfront.net/i/outside/outside.svg" data-src="/i/outside/outside.svg"
+                        alt="Outside Logo" class="outside-logo" style="max-width:125px;" />
+
+                    <div class="legal" style="margin-left: auto; color: #aaa;">
+                        &copy;
+                        2024 Outside Interactive, Inc.
+                    </div>
+                    <img src="https://d36gb93zszu20a.cloudfront.net/i/outside/O-color.svg" data-src="/i/outside/O-color.svg"
+                        alt="Outside Logo" class="o-logo" style="max-width:31px; margin-left: 0.5em;">
+                </div>
+                <div style="text-align: right" class="row">
+                    <a href="https://www.outsideinc.com/privacy-policy/" target="_blank">Privacy Policy</a> |
+                    <a href="https://www.outsideinc.com/terms-of-use/" target="_blank">Terms of Use</a> |
+                    <a href="javascript: void(0)" class="cmp-revoke-consent" style="position: relative; top: 0; left:0; padding: 0">Manage
+                        Cookie Preferences</a>
+                </div>
+            </div>
+
+                        <div id="fb-root"></div>
+            <script src="//connect.facebook.net/en_US/all.js"></script>
+            <script src="https://use.fontawesome.com/3c6a782759.js"></script>
+            <script>
+
+                FB.init({ appId: '136755476866', status: true, cookie: true, xfbml: true, oauth: true });
+                FB.Event.subscribe('auth.sessionChange', function (response) {
+                    if (response.session) {
+
+                        var user_id = FB.getSession().uid;
+                        var query = FB.Data.query('select name, uid from user where uid={0}', user_id);
+                        query.wait(function (rows) {
+                            var name = rows[0].name;
+                            jQuery.post("taguser.php", { uid: user_id, name: name });
+                        });
+                    } else {
+                        // The user has logged out, and the cookie has been cleared
+                    }
+                });
+            </script>
+            <script type="text/javascript">
+                var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+                document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+            </script>
+            <script type="text/javascript">
+                try {
+                    var pageTracker = _gat._getTracker("UA-2467733-1");
+                    pageTracker._trackPageview();
+                } catch (err) { }
+            </script>
+                          <script type="text/javascript" charset="UTF-8">!function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)
+                    window.console&&console.error&&console.error("MetaRouter snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink"
+                    ,"trackForm","pageview","identify","reset","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){
+                    var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];
+                    analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;
+                    e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.metarouter.io/outside/v2/cross_results_prod.js.gz";var n=document.getElementsByTagName("script")[0];
+                    n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.1.0";
+                    analytics.load("cross_results_prod");            
+                    analytics.page({"domain":"crossresults"});
+                }}();</script>
+    </body>
+    </html>

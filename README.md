@@ -8,6 +8,9 @@ Automatically calculates upgrade points for racers on crossresults.com
 
 ```
 DB_PATH=./db/main.db
-MOST_RECENT_RACE_DATA=2024-10-07
-MOST_RECENT_RIDER_DATA=2024-10-07
 ```
+
+## to-do list
+
+* Fine-tune category matching (e.g. a combined field like "Men Cat 3 - 40+ 50+" will get ignored even if the racer age is under 40)
+  * See fields at the [2023 Major Taylor Cross Cup](https://www.crossresults.com/race/11848) for examples of this

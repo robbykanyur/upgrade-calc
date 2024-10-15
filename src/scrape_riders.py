@@ -46,7 +46,7 @@ def scrape_rider(rider_id, save_path):
 def run_rider_scraper():
   with sqlite3.connect(os.getenv('DB_PATH')) as conn:
     cursor = conn.cursor()
-    cursor.execute('SELECT id from riders LIMIT 3')
+    cursor.execute('SELECT id from riders')
     riders = cursor.fetchall()
     for rider in riders:
       rider_id = rider[0]
