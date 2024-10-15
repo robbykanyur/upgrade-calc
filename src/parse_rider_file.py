@@ -1,69 +1,89 @@
 import os
 import sqlite3
 from bs4 import BeautifulSoup
-from dotenv import load_dotenv
 import re
 from datetime import datetime
-from time import strptime, mktime
+from dotenv import load_dotenv
+from scrape_single_rider import scrape_single_rider
 
 load_dotenv()
-conn = sqlite3.connect('./db/main.db')
-cursor = conn.cursor()
 
-most_recent_rider_data = os.getenv('MOST_RECENT_RIDER_DATA')
+def extract_rider_details(text, pattern):
+  match = re.search(pattern, text)
+  return match.group(1) if match else None
 
-cursor.execute("SELECT * FROM riders")
-riders = cursor.fetchall()
+def convert_to_number(text, default=999):
+  try:
+    return int(text)
+  except(AttributeError, ValueError, TypeError):
+    return default
 
-for rider in riders:
-  f = open(f"./data/riders/{most_recent_rider_data}/{rider[0]}.txt").read()
-  soup = BeautifulSoup(f, "html.parser")
+def parse_race_date(race_day, race_month, race_year):
+  race_date_str = f"{race_day} {race_month} {race_year}"
+  return datetime.strptime(race_date_str, "%d %b %Y").strftime("%Y-%m-%d")
 
-  rider_details = soup.select(".racerdetails")[0].text
+def process_rider_data():
+  with sqlite3.connect(os.getenv('DB_PATH')) as conn:
+    cursor = conn.cursor()
 
-  def extract_rider_details(text, pattern):
-    match = re.search(pattern, text)
-    return match.group(1) if match else None
+    cursor.execute("SELECT * FROM riders")
+    riders = cursor.fetchall()
 
-  rider_age = extract_rider_details(rider_details, r"Racing Age:\s+(\d+)")
-  rider_category = extract_rider_details(rider_details, r"Category:\s+(\d+)")
-  cursor.execute("UPDATE riders SET current_category=?, age=? WHERE id=?", (rider_category, rider_age, rider[0]))
-  print(f"Updating rider {rider[0]} ({rider[1]}) to Cat {rider_category} and age {rider_age}.")
+    cursor.execute("SELECT date from completed_scrapes WHERE type='Riders' ORDER BY id DESC")
+    most_recent_scrape_date = cursor.fetchone()[0]
 
-  history = soup.find_all(class_="expandMonth")
-  pattern = r'(\d{4})\s*.*'
-  years = []
-  for year in history:
-    match = re.search(pattern, str(year))[1]
-    years.append(match)
+    rider_update_data = []
+    result_update_data = []
 
-  race_history = soup.find_all(class_="monthContent")
-  for i,racing_year in enumerate(race_history):
-    table = racing_year.css.select(".datatable1 tr.datarow1,tr.datarow2")
-    for race in table:
-      race_data = race.css.select("td")
-      race_date = race_data[0].contents[0].split()
-      race_name = ' '.join(race_data[1].text.split())
-      race_category = race_data[2].text
-      race_position = race_data[4].text
-      race_starters = race_data[5].text
-      
-      race_year = years[i]
-      race_month = race_date[0]
-      race_day = race_date[1]
+    for rider in riders:
+      rider_id = rider[0]
+      rider_file_path = f"./data/riders/{most_recent_scrape_date}/{rider_id}.txt"
 
-      race_datestamp = datetime.fromtimestamp(mktime(strptime(f"{race_day} {race_month}, {race_year}", "%d %b, %Y")))
-      race_date = race_datestamp.strftime("%Y-%m-%d")
-      
-      cursor.execute("SELECT * FROM results where rider_id=? AND race_date=? AND race_category=?", (rider[0], race_date, race_category))
-      existing_record = cursor.fetchone()
-  
-      if not existing_record:
-        cursor.execute("""INSERT INTO results (id, rider_id, race_date, race_name, race_category, race_position, race_starters, upgrade_points) 
-                          VALUES (?, ?, ?, ?, ?, ?, ?, ?)""", 
-                          (None, rider[0], race_date, race_name, race_category, race_position, race_starters, None))
-        print(f"Added result from {race_name} on {race_date} for rider {rider[0]} to database.")
-    
-conn.commit()
-cursor.close()
-conn.close()
+      if not os.path.exists(rider_file_path):
+        print(f"File not found for rider {rider_id}. Attempting to scrape")
+        scrape_single_rider(rider_id, most_recent_scrape_date)
+
+      with open(rider_file_path, "r") as file:
+        print(f"Parsing file for rider {rider_id}")
+        soup = BeautifulSoup(file.read(), "html.parser")
+        rider_details = soup.select_one(".racerdetails").text
+        raw_details = [extract_rider_details(rider_details, r"Racing Age:\s+(\d+)"), extract_rider_details(rider_details, r"Category:\s+(\d+)")]
+        rider_age = convert_to_number(raw_details[0], default=999)
+        rider_category = convert_to_number(raw_details[1], default=999)
+        
+        rider_update_data.append([rider_age, rider_category, rider_id])
+
+        years = [re.search(r'(\d{4})', str(year)).group(1) for year in soup.find_all(class_="expandMonth")]
+        race_history = soup.find_all(class_="monthContent")
+
+        for i, racing_year in enumerate(race_history):
+          race_rows = racing_year.select(".datatable1 tr.datarow1, tr.datarow2")
+          for race in race_rows:
+            race_data = race.select("td")
+            race_date_parts = race_data[0].text.split()
+            race_name = ' '.join(race_data[1].text.split())
+            race_category = race_data[2].text
+            race_position = race_data[4].text
+            race_starters = race_data[5].text
+            race_date = parse_race_date(race_date_parts[1], race_date_parts[0], years[i])
+
+            if rider_age == 999:
+              age_at_race = 999
+            else:
+              difference = datetime.now().year - int(years[i])
+              age_at_race = rider_age - difference
+
+            result_update_data.append([rider_id, race_date, race_name, race_category, race_position, race_starters, age_at_race])
+
+    cursor.executemany("""
+      UPDATE riders SET age = ?, current_category = ? WHERE id = ?
+    """, (rider_update_data))
+
+    cursor.executemany("""
+      INSERT INTO results (rider_id, race_date, race_name, race_category, race_position, race_starters, age_at_race)
+      VALUES (?, ?, ?, ?, ?, ?, ?)            
+    """, result_update_data)
+
+    conn.commit()
+
+process_rider_data()

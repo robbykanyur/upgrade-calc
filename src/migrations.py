@@ -39,7 +39,8 @@ def create_tables(conn):
         race_category TEXT NOT NULL,
         race_position TEXT NOT NULL,
         race_starters INTEGER NOT NULL,
-        upgrade_points REAL,
+        age_at_race INTEGER NOT NULL,
+        upgrade_points INTEGER,
         FOREIGN KEY (rider_id) REFERENCES riders (id) ON DELETE CASCADE
       )
     """,

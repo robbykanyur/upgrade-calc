@@ -9,11 +9,6 @@ from pathlib import Path
 from dotenv import load_dotenv
 load_dotenv()
 
-datestamp = datetime.now().strftime('%Y-%m-%d')
-data_dir = Path(f'./data/riders/{datestamp}')
-if not os.path.exists(data_dir):
-   os.makedirs(data_dir)
-
 def scrape_rider(rider_id, save_path):
   url = f'https://crossresults.com/racer/{rider_id}'
   file_path = save_path / f"{rider_id}.txt"
@@ -44,6 +39,11 @@ def scrape_rider(rider_id, save_path):
     return False
 
 def run_rider_scraper():
+  datestamp = datetime.now().strftime('%Y-%m-%d')
+  data_dir = Path(f'./data/riders/{datestamp}')
+  if not os.path.exists(data_dir):
+    os.makedirs(data_dir)
+    
   with sqlite3.connect(os.getenv('DB_PATH')) as conn:
     cursor = conn.cursor()
     cursor.execute('SELECT id from riders')
