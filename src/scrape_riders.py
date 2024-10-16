@@ -52,7 +52,3 @@ def run_rider_scraper(conn):
       print(f"Sleeping for {sleep_interval} seconds before next request")
       sleep(sleep_interval)
 
-  cursor = conn.cursor()
-  cursor.execute("INSERT INTO completed_scrapes (id, type, date) VALUES (?, ?, ?)", (None, "Races", datestamp))
-  conn.commit()
-

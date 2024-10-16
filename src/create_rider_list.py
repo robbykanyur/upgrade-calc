@@ -44,8 +44,9 @@ def create_rider_list(conn):
       rider_update_data.extend(result)
 
   cursor.executemany("""
-    INSERT or REPLACE into riders (id, name)
+    INSERT into riders (id, name)
     VALUES (?, ?)
+    ON CONFLICT(id) DO UPDATE SET name = excluded.name
   """, rider_update_data)
 
   conn.commit()
