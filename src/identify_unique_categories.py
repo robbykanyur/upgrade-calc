@@ -1,4 +1,5 @@
 from _constants import excluded_not_elite, excluded_not_usac, category_mappings, excluded_events, excluded_exact_match, mixed_fields
+from datetime import datetime
 
 def identify_unique_categories(conn):
   cursor = conn.cursor()
@@ -8,22 +9,21 @@ def identify_unique_categories(conn):
   category_data = []
   new_categories = []
   cursor.execute("SELECT * FROM categories")
-  existing_category_list = [category[3] for category in cursor.fetchall()]
+  existing_category_list = [category[2] for category in cursor.fetchall()]
     
+  current_year = int(datetime.now().year)
+
   for result in results:
     race_date = result[0]
     race_name = result[1]
     original_category = result[2]
 
-    if int(race_date[:4]) >= 2023 and (race_name not in excluded_events) and (original_category not in excluded_exact_match):
-      if original_category not in existing_category_list and original_category not in new_categories:
-        new_categories.append(original_category)
-      category_data.append((original_category, race_name, race_date))
+    if (int(race_date[:4]) >= (current_year - 1) and (race_name not in excluded_events) and (original_category not in existing_category_list) 
+        and (original_category not in excluded_exact_match) and (original_category not in new_categories)):
+      print(f"Adding new category to database: {original_category}")
+      category_data.append((original_category, race_date))
 
-  for category in new_categories:
-    print(f"Adding new category to database: {category}")
-
-  cursor.executemany("INSERT OR IGNORE INTO categories (category_name, race_name, race_date) VALUES (?, ?, ?)", category_data)
+  cursor.executemany("INSERT OR IGNORE INTO categories (category_name, race_date) VALUES (?, ?)", category_data)
   conn.commit()
 
   cursor.execute("SELECT category_name from categories")

@@ -8,6 +8,8 @@ from scrape_riders import run_rider_scraper
 from parse_rider_file import process_rider_data
 from calculate_upgrade_points import calculate_upgrade_points
 from identify_unique_categories import identify_unique_categories
+from sum_upgrade_points import sum_upgrade_points
+from flag_upgrades import flag_upgrades
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -46,6 +48,12 @@ def run_app(skip_races, skip_riders, no_parse):
 
     print("\nIdentifying unique categories")
     identify_unique_categories(conn)
+
+    print("\nTotaling upgrade points")
+    sum_upgrade_points(conn)
+
+    # print("\nFlagging upgrades")
+    # flag_upgrades(conn)
 
 if __name__ == '__main__':
   run_app()

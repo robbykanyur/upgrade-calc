@@ -40,7 +40,6 @@ def create_tables(conn):
       CREATE TABLE IF NOT EXISTS categories (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         race_date TEXT NOT NULL,
-        race_name TEXT NOT NULL,
         category_name TEXT UNIQUE NOT NULL,
         simple_category TEXT,
         excluded INTEGER DEFAULT 0,
