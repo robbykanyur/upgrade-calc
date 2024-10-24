@@ -33,7 +33,8 @@ def create_tables(conn):
         race_starters INTEGER NOT NULL,
         age_at_race INTEGER NOT NULL,
         upgrade_points INTEGER,
-        FOREIGN KEY (rider_id) REFERENCES riders (id) ON DELETE CASCADE
+        FOREIGN KEY (rider_id) REFERENCES riders (id),
+        UNIQUE (rider_id, race_date, race_name, race_category, race_position)
       )
     """,
     "categories": """
@@ -51,10 +52,11 @@ def create_tables(conn):
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         rider_id INTEGER NOT NULL UNIQUE,
         date_calculated TEXT NOT NULL,
-        upgrade_points REAL NOT NULL,
+        upgrade_points INTEGER NOT NULL,
         cat_5_races INTEGER DEFAULT 0,
         qualified_wins INTEGER DEFAULT 0,
-        FOREIGN KEY (rider_id) REFERENCES riders (id) ON DELETE CASCADE
+        FOREIGN KEY (rider_id) REFERENCES riders (id),
+        UNIQUE (rider_id, date_calculated)
       )
     """,
     "upgrade_flags": """
@@ -66,7 +68,7 @@ def create_tables(conn):
         details TEXT NOT NULL,
         warning TEXT,
         override TEXT,
-        FOREIGN KEY (rider_id) REFERENCES riders (id) ON DELETE CASCADE
+        FOREIGN KEY (rider_id) REFERENCES riders (id)
       )
     """
   }

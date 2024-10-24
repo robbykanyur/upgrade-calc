@@ -88,7 +88,7 @@ def process_rider_data(conn):
   """, rider_update_data)
 
   cursor.executemany("""
-    INSERT INTO results (rider_id, race_date, race_name, race_category, race_position, race_starters, age_at_race)
+    REPLACE INTO results (rider_id, race_date, race_name, race_category, race_position, race_starters, age_at_race)
     VALUES (?, ?, ?, ?, ?, ?, ?)            
   """, result_update_data)
 

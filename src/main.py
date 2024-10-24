@@ -46,9 +46,6 @@ def run_app(skip_races, skip_riders, no_parse):
     print("\nCalculating upgrade points")
     calculate_upgrade_points(conn)
 
-    print("\nIdentifying unique categories")
-    identify_unique_categories(conn)
-
     print("\nTotaling upgrade points")
     sum_upgrade_points(conn)
 
